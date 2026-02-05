@@ -19,23 +19,11 @@
       "hidden": true
     },
     {
-      "name": "docs-package",
-      "inherits": "docs",
-      "configurePreset": "docs-package",
-      "hidden": true
-    },
-    {
       "name": "csharp",
       "configurePreset": "csharp",
       "targets": [
         "MSCL-CSharp"
       ],
-      "hidden": true
-    },
-    {
-      "name": "csharp-package",
-      "inherits": "csharp",
-      "configurePreset": "csharp-package",
       "hidden": true
     },
     {

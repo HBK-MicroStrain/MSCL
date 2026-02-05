@@ -18,18 +18,6 @@
       "hidden": true
     },
     {
-      "name": "package",
-      "displayName": "Package configuration",
-      "description": "This configuration enables packaging",
-      "cacheVariables": {
-        "MSCL_BUILD_PACKAGE": {
-          "type": "BOOL",
-          "value": "ON"
-        }
-      },
-      "hidden": true
-    },
-    {
       "name": "shared",
       "displayName": "Shared library configuration",
       "description": "This configuration enables shared library building",
@@ -39,16 +27,6 @@
           "value": "ON"
         }
       },
-      "hidden": true
-    },
-    {
-      "name": "shared-package",
-      "displayName": "Shared library package configuration",
-      "description": "This configuration enables shared library packaging",
-      "inherits": [
-        "shared",
-        "package"
-      ],
       "hidden": true
     },
     {
@@ -70,32 +48,12 @@
       "hidden": true
     },
     {
-      "name": "cpp-examples-package",
-      "displayName": "Enable packaging C++ examples",
-      "description": "This configuration enables packaging C++ examples",
-      "inherits": [
-        "cpp-examples",
-        "package"
-      ],
-      "hidden": true
-    },
-    {
       "name": "python2",
       "displayName": "Enable Python2 bindings",
       "description": "This configuration enables Python2 bindings",
       "cacheVariables": {
         "MSCL_BUILD_PYTHON2": "ON"
       },
-      "hidden": true
-    },
-    {
-      "name": "python2-package",
-      "displayName": "Enable packaging Python2 bindings",
-      "description": "This configuration enables packaging Python2 bindings",
-      "inherits": [
-        "python2",
-        "package"
-      ],
       "hidden": true
     },
     {
@@ -109,32 +67,12 @@
       "hidden": true
     },
     {
-      "name": "python2-examples-package",
-      "displayName": "Enable packaging Python2 examples",
-      "description": "This configuration enables packaging Python2 examples",
-      "inherits": [
-        "python2-examples",
-        "package"
-      ],
-      "hidden": true
-    },
-    {
       "name": "python3",
       "displayName": "Enable Python3 bindings",
       "description": "This configuration enables Python3 bindings",
       "cacheVariables": {
         "MSCL_BUILD_PYTHON3": "ON"
       },
-      "hidden": true
-    },
-    {
-      "name": "python3-package",
-      "displayName": "Enable packaging Python3 bindings",
-      "description": "This configuration enables packaging Python3 bindings",
-      "inherits": [
-        "python3",
-        "package"
-      ],
       "hidden": true
     },
     {
@@ -145,16 +83,6 @@
       "cacheVariables": {
         "MSCL_BUILD_PYTHON_EXAMPLES": "ON"
       },
-      "hidden": true
-    },
-    {
-      "name": "python3-examples-package",
-      "displayName": "Enable packaging Python3 examples",
-      "description": "This configuration enables packaging Python3 examples",
-      "inherits": [
-        "python3-examples",
-        "package"
-      ],
       "hidden": true
     }
   ]

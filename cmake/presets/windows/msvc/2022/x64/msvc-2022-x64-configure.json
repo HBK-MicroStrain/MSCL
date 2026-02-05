@@ -22,37 +22,19 @@
     },
     {
       "name": "msvc-2022-x64-static",
-      "displayName": "Enables static libraries for MSVC 2022 x64",
-      "description": "This configuration enables static libraries for MSVC 2022 x64",
+      "displayName": "Enables static C++ libraries for MSVC 2022 x64",
+      "description": "This configuration enables static C++ libraries for MSVC 2022 x64",
       "inherits": [
         "msvc-2022-x64"
       ]
     },
     {
-      "name": "msvc-2022-x64-static-package",
-      "displayName": "Enables packaging static libraries for MSVC 2022 x64",
-      "description": "This configuration enables packaging static libraries for MSVC 2022 x64",
-      "inherits": [
-        "msvc-2022-x64-static",
-        "package"
-      ]
-    },
-    {
       "name": "msvc-2022-x64-shared",
-      "displayName": "Enables shared libraries for MSVC 2022 x64",
-      "description": "This configuration enables shared libraries for MSVC 2022 x64",
+      "displayName": "Enables shared C++ libraries for MSVC 2022 x64",
+      "description": "This configuration enables shared C++ libraries for MSVC 2022 x64",
       "inherits": [
         "msvc-2022-x64",
         "shared"
-      ]
-    },
-    {
-      "name": "msvc-2022-x64-shared-package",
-      "displayName": "Enables packaging shared libraries for MSVC 2022 x64",
-      "description": "This configuration enables packaging shared libraries for MSVC 2022 x64",
-      "inherits": [
-        "msvc-2022-x64-shared",
-        "package"
       ]
     },
     {
@@ -83,15 +65,6 @@
       ]
     },
     {
-      "name": "msvc-2022-x64-python2-package",
-      "displayName": "Enables packaging Python2 bindings for MSVC 2022 x64",
-      "description": "This configuration enables packaging Python2 bindings for MSVC 2022 x64",
-      "inherits": [
-        "msvc-2022-x64-python2",
-        "package"
-      ]
-    },
-    {
       "name": "msvc-2022-x64-python2-examples",
       "displayName": "Enables Python2 examples for MSVC 2022 x64",
       "description": "This configuration enables Python2 examples for MSVC 2022 x64",
@@ -107,15 +80,6 @@
       "inherits": [
         "msvc-2022-x64",
         "python3"
-      ]
-    },
-    {
-      "name": "msvc-2022-x64-python3-package",
-      "displayName": "Enables packaging Python3 bindings for MSVC 2022 x64",
-      "description": "This configuration enables packaging Python3 bindings for MSVC 2022 x64",
-      "inherits": [
-        "msvc-2022-x64-python3",
-        "package"
       ]
     },
     {
@@ -137,30 +101,12 @@
       ]
     },
     {
-      "name": "msvc-2022-x64-csharp-package",
-      "displayName": "Enables packaging C# bindings for MSVC 2022 x64",
-      "description": "This configuration enables packaging C# bindings for MSVC 2022 x64",
-      "inherits": [
-        "msvc-2022-x64-csharp",
-        "package"
-      ]
-    },
-    {
       "name": "msvc-2022-x64-csharp-examples",
       "displayName": "Enables C# examples for MSVC 2022 x64",
       "description": "This configuration enables C# examples for MSVC 2022 x64",
       "inherits": [
         "msvc-2022-x64",
         "csharp-examples"
-      ]
-    },
-    {
-      "name": "msvc-2022-x64-csharp-examples-package",
-      "displayName": "Enables packaging C# examples for MSVC 2022 x64",
-      "description": "This configuration enables packaging C# examples for MSVC 2022 x64",
-      "inherits": [
-        "msvc-2022-x64",
-        "csharp-examples-package"
       ]
     },
     {
@@ -173,18 +119,9 @@
       ]
     },
     {
-      "name": "msvc-2022-x64-docs-package",
-      "displayName": "Enables packaging documentation for MSVC 2022 x64",
-      "description": "This configuration enables packaging documentation for MSVC 2022 x64",
-      "inherits": [
-        "msvc-2022-x64-docs",
-        "package"
-      ]
-    },
-    {
       "name": "msvc-2022-x64-static-all",
-      "displayName": "Enables all project options with static library configurations for MSVC 2022 x64",
-      "description": "This configuration enables all project options with static library configurations for MSVC 2022 x64",
+      "displayName": "Enables all project options with static C++ library configurations for MSVC 2022 x64",
+      "description": "This configuration enables all project options with static C++ library configurations for MSVC 2022 x64",
       "inherits": [
         "msvc-2022-x64-static",
         "msvc-2022-x64-tests",

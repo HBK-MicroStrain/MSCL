@@ -27,16 +27,6 @@
       "hidden": true
     },
     {
-      "name": "docs-package",
-      "displayName": "Enables packaging documentation",
-      "description": "This configuration enables packaging documentation",
-      "inherits": [
-        "docs",
-        "package"
-      ],
-      "hidden": true
-    },
-    {
       "name": "csharp",
       "displayName": "Enables C# bindings",
       "description": "This configuration enables C# bindings",
@@ -47,16 +37,6 @@
       "hidden": true
     },
     {
-      "name": "csharp-package",
-      "displayName": "Enable packaging C# bindings",
-      "description": "This configuration enables packaging C# bindings",
-      "inherits": [
-        "csharp",
-        "package"
-      ],
-      "hidden": true
-    },
-    {
       "name": "csharp-examples",
       "displayName": "Enable C# examples",
       "description": "This configuration enables C# examples",
@@ -64,16 +44,6 @@
       "cacheVariables": {
         "MSCL_BUILD_CSHARP_EXAMPLES": "ON"
       },
-      "hidden": true
-    },
-    {
-      "name": "csharp-examples-package",
-      "displayName": "Enable packaging C# examples",
-      "description": "This configuration enables packaging C# examples",
-      "inherits": [
-        "csharp-examples",
-        "package"
-      ],
       "hidden": true
     }
   ]

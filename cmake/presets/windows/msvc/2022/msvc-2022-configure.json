@@ -29,46 +29,6 @@
         "docs"
       ],
       "hidden": true
-    },
-    {
-      "name": "msvc-2022-docs-package",
-      "displayName": "Enables packaging documentation for MSVC 2022",
-      "description": "This configuration enables packaging documentation for MSVC 2022",
-      "inherits": [
-        "msvc-2022",
-        "docs-package"
-      ],
-      "hidden": true
-    },
-    {
-      "name": "msvc-2022-cpp-examples-package",
-      "displayName": "Enables packaging C++ examples for MSVC 2022",
-      "description": "This configuration enables packaging C++ examples for MSVC 2022",
-      "inherits": [
-        "msvc-2022",
-        "cpp-examples-package"
-      ],
-      "hidden": true
-    },
-    {
-      "name": "msvc-2022-python2-examples-package",
-      "displayName": "Enables packaging Python2 examples for MSVC 2022",
-      "description": "This configuration enables packaging Python2 examples for MSVC 2022",
-      "inherits": [
-        "msvc-2022",
-        "python2-examples-package"
-      ],
-      "hidden": true
-    },
-    {
-      "name": "msvc-2022-python3-examples-package",
-      "displayName": "Enables packaging Python3 examples for MSVC 2022",
-      "description": "This configuration enables packaging Python3 examples for MSVC 2022",
-      "inherits": [
-        "msvc-2022",
-        "python3-examples-package"
-      ],
-      "hidden": true
     }
   ]
 }

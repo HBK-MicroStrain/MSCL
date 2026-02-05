@@ -23,13 +23,6 @@
       "targets": [
         "MSCL-Docs"
       ]
-    },
-    {
-      "name": "msvc-2022-docs-package",
-      "displayName": "Enables building a documentation package for MSVC 2022",
-      "description": "This configuration builds a documentation package for MSVC 2022",
-      "inherits": "msvc-2022-docs",
-      "configurePreset": "msvc-2022-docs-package"
     }
   ]
 }
