@@ -1,0 +1,39 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "../windows-configure.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "msvc",
+      "displayName": "MSVC",
+      "description": "This configuration sets the MSVC build environment",
+      "inherits": "windows",
+      "environment": {
+        "MICROSTRAIN_BUILD_SUBDIR": "msvc"
+      },
+      "hidden": true
+    },
+    {
+      "name": "msvc-x64",
+      "displayName": "MSVC x64",
+      "description": "This configuration sets the MSVC x64 build environment",
+      "inherits": "msvc",
+      "architecture": "x64",
+      "hidden": true
+    },
+    {
+      "name": "msvc-x86",
+      "displayName": "MSVC x86",
+      "description": "This configuration sets the MSVC x86 build environment",
+      "inherits": "msvc",
+      "architecture": "Win32",
+      "hidden": true
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "../configure.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "windows",
+      "inherits": "default",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      },
+      "hidden": true
+    },
+    {
+      "name": "docs",
+      "displayName": "Enables documentation",
+      "description": "This configuration enables documentation",
+      "inherits": "windows",
+      "hidden": true
+    },
+    {
+      "name": "docs-package",
+      "displayName": "Enables packaging documentation",
+      "description": "This configuration enables packaging documentation",
+      "inherits": [
+        "docs",
+        "package"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "csharp",
+      "displayName": "Enables C# bindings",
+      "description": "This configuration enables C# bindings",
+      "inherits": "windows",
+      "cacheVariables": {
+        "MSCL_BUILD_CSHARP": "ON"
+      },
+      "hidden": true
+    },
+    {
+      "name": "csharp-package",
+      "displayName": "Enable packaging C# bindings",
+      "description": "This configuration enables packaging C# bindings",
+      "inherits": [
+        "csharp",
+        "package"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "csharp-examples",
+      "displayName": "Enable C# examples",
+      "description": "This configuration enables C# examples",
+      "inherits": "csharp",
+      "cacheVariables": {
+        "MSCL_BUILD_CSHARP_EXAMPLES": "ON"
+      },
+      "hidden": true
+    },
+    {
+      "name": "csharp-examples-package",
+      "displayName": "Enable packaging C# examples",
+      "description": "This configuration enables packaging C# examples",
+      "inherits": [
+        "csharp-examples",
+        "package"
+      ],
+      "hidden": true
+    }
+  ]
+}
