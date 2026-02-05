@@ -1,0 +1,64 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "../msvc-2022-x64-configure.json",
+    "../../../msvc-build.json"
+  ],
+  "buildPresets": [
+    {
+      "name": "msvc-2022-x64-static-release",
+      "inherits": "msvc-x64-release",
+      "configurePreset": "msvc-2022-x64-static"
+    },
+    {
+      "name": "msvc-2022-x64-shared-release",
+      "inherits": "msvc-x64-release",
+      "configurePreset": "msvc-2022-x64-shared"
+    },
+    {
+      "name": "msvc-2022-x64-tests-release",
+      "inherits": "msvc-x64-release",
+      "configurePreset": "msvc-2022-x64-tests"
+    },
+    {
+      "name": "msvc-2022-x64-cpp-examples-release",
+      "inherits": "msvc-x64-release",
+      "configurePreset": "msvc-2022-x64-cpp-examples"
+    },
+    {
+      "name": "msvc-2022-x64-python2-release",
+      "inherits": "msvc-x64-release",
+      "configurePreset": "msvc-2022-x64-python2"
+    },
+    {
+      "name": "msvc-2022-x64-python2-examples-release",
+      "inherits": "msvc-x64-release",
+      "configurePreset": "msvc-2022-x64-python2-examples"
+    },
+    {
+      "name": "msvc-2022-x64-python3-release",
+      "inherits": "msvc-x64-release",
+      "configurePreset": "msvc-2022-x64-python3"
+    },
+    {
+      "name": "msvc-2022-x64-python3-examples-release",
+      "inherits": "msvc-x64-release",
+      "configurePreset": "msvc-2022-x64-python3-examples"
+    },
+    {
+      "name": "msvc-2022-x64-csharp-release",
+      "inherits": "msvc-x64-release",
+      "configurePreset": "msvc-2022-x64-csharp"
+    },
+    {
+      "name": "msvc-2022-x64-csharp-examples-release",
+      "inherits": "msvc-x64-release",
+      "configurePreset": "msvc-2022-x64-csharp-examples"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "msvc-2022-x64-configure.json",
+    "../../msvc-build.json"
+  ],
+  "buildPresets": [
+    {
+      "name": "msvc-2022-docs",
+      "displayName": "Builds documentation for MSVC 2022",
+      "description": "This builds documentation for MSVC 2022",
+      "inherits": "msvc-x64-release",
+      "configurePreset": "docs",
+      "targets": [
+        "MSCL-Docs"
+      ]
+    },
+    {
+      "name": "msvc-2022-docs-package",
+      "displayName": "Builds and packages documentation for MSVC 2022",
+      "description": "This builds and packages documentation for MSVC 2022",
+      "inherits": "msvc-2022-docs",
+      "configurePreset": "docs-package"
+    }
+  ]
+}

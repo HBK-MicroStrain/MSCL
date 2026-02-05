@@ -1,0 +1,75 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "configure.json"
+  ],
+  "buildPresets": [
+    {
+      "name": "static",
+      "configurePreset": "default",
+      "targets": [
+        "MSCL-Cpp"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "shared",
+      "inherits": "static",
+      "configurePreset": "shared",
+      "hidden": true
+    },
+    {
+      "name": "tests",
+      "configurePreset": "tests",
+      "targets": [
+        "MSCL-Tests"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "cpp-examples",
+      "configurePreset": "cpp-examples",
+      "targets": [
+        "MSCL-Examples"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "python2",
+      "configurePreset": "python2",
+      "targets": [
+        "MSCL-Python2"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "python2-examples",
+      "configurePreset": "python2-examples",
+      "targets": [
+        "MSCL-Examples"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "python3",
+      "configurePreset": "python3",
+      "targets": [
+        "MSCL-Python3"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "python3-examples",
+      "configurePreset": "python3-examples",
+      "targets": [
+        "MSCL-Examples"
+      ],
+      "hidden": true
+    }
+  ]
+}
