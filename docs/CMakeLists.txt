@@ -18,7 +18,8 @@ add_custom_target(${MSCL_DOCS_TARGET_ALL})
 add_subdirectory("${CMAKE_CURRENT_LIST_DIR}/api_docs")
 add_subdirectory("${CMAKE_CURRENT_LIST_DIR}/full_docs")
 
-if(MSCL_BUILD_PACKAGE)
+# Installation
+if(MSCL_INSTALL)
     microstrain_set_cpack_component_file_name(
         COMPONENT_NAME "${MSCL_DOCS_COMPONENT_NAME}"
         COMPONENT_VERSION "${CPACK_PACKAGE_VERSION}"

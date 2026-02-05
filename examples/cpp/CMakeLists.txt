@@ -23,7 +23,10 @@ foreach(MSCL_CPP_EXAMPLES_SUBDIRECTORY IN LISTS MSCL_CPP_EXAMPLES_SUBDIRECTORIES
     add_dependencies("${MSCL_EXAMPLES_ALL_TARGET}" "${MSCL_CPP_EXAMPLES_TARGET_NAME}")
 endforeach()
 
-mscl_install_examples(
-    SUBDIRECTORIES ${MSCL_CPP_EXAMPLES_SUBDIRECTORIES}
-    COMPONENT_NAME "Cpp-Examples"
-)
+# Installation
+if(MSCL_INSTALL)
+    mscl_install_examples(
+        SUBDIRECTORIES ${MSCL_CPP_EXAMPLES_SUBDIRECTORIES}
+        COMPONENT_NAME "Cpp-Examples"
+    )
+endif()

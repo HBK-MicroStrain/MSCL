@@ -39,12 +39,10 @@ function(mscl_install_examples)
         )
     endforeach()
 
-    if(MSCL_BUILD_PACKAGE)
-        microstrain_set_cpack_component_file_name(
-            COMPONENT_NAME "${COMPONENT_NAME}"
-            COMPONENT_VERSION "${CPACK_PACKAGE_VERSION}"
-        )
-    endif()
+    microstrain_set_cpack_component_file_name(
+        COMPONENT_NAME "${COMPONENT_NAME}"
+        COMPONENT_VERSION "${CPACK_PACKAGE_VERSION}"
+    )
 endfunction()
 
 microstrain_append_cmake_folder()

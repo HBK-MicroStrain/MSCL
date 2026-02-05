@@ -56,18 +56,19 @@ add_library("${MSCL_CSHARP_MANAGED_TARGET}" SHARED
 )
 
 # Installation
+if(MSCL_INSTALL)
+    install(
+        TARGETS "${MSCL_CSHARP_MANAGED_TARGET}"
+        EXPORT "${MSCL_CSHARP_MANAGED_EXPORT_TARGET_NAME}"
+        RUNTIME
+            COMPONENT "${MSCL_CSHARP_COMPONENT_NAME}"
+            DESTINATION "${MSCL_CSHARP_INSTALL_LIBDIR}$<$<CONFIG:Debug>:/debug>"
+    )
 
-install(
-    TARGETS "${MSCL_CSHARP_MANAGED_TARGET}"
-    EXPORT "${MSCL_CSHARP_MANAGED_EXPORT_TARGET_NAME}"
-    RUNTIME
+    # Create export files for the library for all configurations
+    install(
+        EXPORT "${MSCL_CSHARP_MANAGED_EXPORT_TARGET_NAME}"
+        DESTINATION "${MSCL_CSHARP_CONFIG_INSTALL_DIR}/${MSCL_ARCH_NAME}"
         COMPONENT "${MSCL_CSHARP_COMPONENT_NAME}"
-        DESTINATION "${MSCL_CSHARP_INSTALL_LIBDIR}$<$<CONFIG:Debug>:/debug>"
-)
-
-# Create export files for the library for all configurations
-install(
-    EXPORT "${MSCL_CSHARP_MANAGED_EXPORT_TARGET_NAME}"
-    DESTINATION "${MSCL_CSHARP_CONFIG_INSTALL_DIR}/${MSCL_ARCH_NAME}"
-    COMPONENT "${MSCL_CSHARP_COMPONENT_NAME}"
-)
+    )
+endif()

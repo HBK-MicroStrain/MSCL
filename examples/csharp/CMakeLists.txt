@@ -28,7 +28,10 @@ foreach(MSCL_CSHARP_EXAMPLES_SUBDIRECTORY IN LISTS MSCL_CSHARP_EXAMPLES_SUBDIREC
     add_dependencies("${MSCL_EXAMPLES_ALL_TARGET}" "${MSCL_CSHARP_EXAMPLES_TARGET_NAME}")
 endforeach()
 
-mscl_install_examples(
-    SUBDIRECTORIES ${MSCL_CSHARP_EXAMPLES_SUBDIRECTORIES}
-    COMPONENT_NAME "CSharp-Examples"
-)
+# Installation
+if(MSCL_INSTALL)
+    mscl_install_examples(
+        SUBDIRECTORIES ${MSCL_CSHARP_EXAMPLES_SUBDIRECTORIES}
+        COMPONENT_NAME "CSharp-Examples"
+    )
+endif()

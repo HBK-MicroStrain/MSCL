@@ -71,48 +71,48 @@ macro(mscl_add_swig_python_module_library MSCL_PYTHON_VERSION MSCL_PYTHON_MAJOR_
         )
     endif()
 
-    # Get the generated .py files
-    get_target_property(MSCL_GENERATED_PYTHON_SOURCES "${MSCL_PYTHON_TARGET_NAME}" SWIG_SUPPORT_FILES)
-
     # Installation
-    if(MSVC)
-        string(REPLACE "\." "" MSCL_PYTHON_INSTALL_DIR_VERSION "${MSCL_PYTHON_VERSION}")
-        set(MSCL_PYTHON_SITE_PACKAGES_DIR "Python${MSCL_PYTHON_INSTALL_DIR_VERSION}/Lib/site-packages")
-    else()
-        set(MSCL_PYTHON_SITE_PACKAGES_DIR ${CMAKE_INSTALL_LIBDIR}/python${MSCL_PYTHON_VERSION}/)
+    if(MSCL_INSTALL)
+        # Get the generated .py files
+        get_target_property(MSCL_GENERATED_PYTHON_SOURCES "${MSCL_PYTHON_TARGET_NAME}" SWIG_SUPPORT_FILES)
 
-        microstrain_detect_deb(MSCL_IS_DEB)
-        if(MSCL_IS_DEB)
-            string(APPEND MSCL_PYTHON_SITE_PACKAGES_DIR "dist-packages")
+        if(MSVC)
+            string(REPLACE "\." "" MSCL_PYTHON_INSTALL_DIR_VERSION "${MSCL_PYTHON_VERSION}")
+            set(MSCL_PYTHON_SITE_PACKAGES_DIR "Python${MSCL_PYTHON_INSTALL_DIR_VERSION}/Lib/site-packages")
         else()
-            string(APPEND MSCL_PYTHON_SITE_PACKAGES_DIR "site-packages")
+            set(MSCL_PYTHON_SITE_PACKAGES_DIR ${CMAKE_INSTALL_LIBDIR}/python${MSCL_PYTHON_VERSION}/)
+
+            microstrain_detect_deb(MSCL_IS_DEB)
+            if(MSCL_IS_DEB)
+                string(APPEND MSCL_PYTHON_SITE_PACKAGES_DIR "dist-packages")
+            else()
+                string(APPEND MSCL_PYTHON_SITE_PACKAGES_DIR "site-packages")
+            endif()
         endif()
-    endif()
 
-    set(MSCL_PYTHON_INSTALL_CONFIGURATIONS "Release")
-    if(MSCL_PACKAGE_PYTHON_DEBUG)
-        list(APPEND MSCL_PYTHON_INSTALL_CONFIGURATIONS "Debug")
-    endif()
+        set(MSCL_PYTHON_INSTALL_CONFIGURATIONS "Release")
+        if(MSCL_PACKAGE_PYTHON_DEBUG)
+            list(APPEND MSCL_PYTHON_INSTALL_CONFIGURATIONS "Debug")
+        endif()
 
-    install(
-        TARGETS "${MSCL_PYTHON_TARGET_NAME}"
-        CONFIGURATIONS ${MSCL_PYTHON_INSTALL_CONFIGURATIONS}
-        RUNTIME
-            COMPONENT "${MSCL_PYTHON_COMPONENT_NAME}"
+        install(
+            TARGETS "${MSCL_PYTHON_TARGET_NAME}"
+            CONFIGURATIONS ${MSCL_PYTHON_INSTALL_CONFIGURATIONS}
+            RUNTIME
+                COMPONENT "${MSCL_PYTHON_COMPONENT_NAME}"
+                DESTINATION "${MSCL_PYTHON_SITE_PACKAGES_DIR}"
+            LIBRARY
+                COMPONENT "${MSCL_PYTHON_COMPONENT_NAME}"
+                DESTINATION "${MSCL_PYTHON_SITE_PACKAGES_DIR}"
+        )
+
+        install(
+            FILES "${MSCL_GENERATED_PYTHON_SOURCES}"
             DESTINATION "${MSCL_PYTHON_SITE_PACKAGES_DIR}"
-        LIBRARY
+            CONFIGURATIONS ${MSCL_PYTHON_INSTALL_CONFIGURATIONS}
             COMPONENT "${MSCL_PYTHON_COMPONENT_NAME}"
-            DESTINATION "${MSCL_PYTHON_SITE_PACKAGES_DIR}"
-    )
+        )
 
-    install(
-        FILES "${MSCL_GENERATED_PYTHON_SOURCES}"
-        DESTINATION "${MSCL_PYTHON_SITE_PACKAGES_DIR}"
-        CONFIGURATIONS ${MSCL_PYTHON_INSTALL_CONFIGURATIONS}
-        COMPONENT "${MSCL_PYTHON_COMPONENT_NAME}"
-    )
-
-    if(MSCL_BUILD_PACKAGE)
         microstrain_set_cpack_component_file_name(
             COMPONENT_NAME "${MSCL_PYTHON_COMPONENT_NAME}"
             COMPONENT_VERSION "${CPACK_PACKAGE_VERSION}"

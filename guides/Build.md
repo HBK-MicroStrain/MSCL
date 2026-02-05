@@ -147,17 +147,17 @@ MSCL features such as examples, language bindings, tests, and documentation have
 their own sets of configuration variables. See the relevant directory READMEs
 for more information.
 
-| Option                       | Description                                                                     | Default |
-|:-----------------------------|:--------------------------------------------------------------------------------|:--------|
-| `MSCL_BUILD_CPP_EXAMPLES`    | Enables C++ examples.                                                           | `OFF`   |
-| `MSCL_BUILD_PYTHON3`         | Enables Python 3 bindings.                                                      | `OFF`   |
-| `MSCL_BUILD_PYTHON2`         | Enables Python 2 bindings (legacy).                                             | `OFF`   |
-| `MSCL_BUILD_PYTHON_EXAMPLES` | Enables Python examples. (Requires `MSCL_BUILD_PYTHON3` or `MSCL_BUILD_PYTHON2` | `OFF`   |
-| `MSCL_BUILD_CSHARP`          | ENables C# bindings (Windows only).                                             | `OFF`   |
-| `MSCL_BUILD_CSHARP_EXAMPLES` | Enables C# examples. (Requires `MSCL_BUILD_CSHARP`)                             | `OFF`   |
-| `MSCL_BUILD_TESTS`           | Enables the unit test suite.                                                    | `OFF`   |
-| `MSCL_BUILD_DOCUMENTATION`   | Enables documentation (Windows only).                                           | `OFF`   |
-| `MSCL_BUILD_PACKAGE`         | Enables packaging support (CPack).                                              | `OFF`   |
+| Option                       | Description                                                                      | Default |
+|:-----------------------------|:---------------------------------------------------------------------------------|:--------|
+| `MSCL_BUILD_CPP_EXAMPLES`    | Enables C++ examples.                                                            | `OFF`   |
+| `MSCL_BUILD_PYTHON3`         | Enables Python 3 bindings.                                                       | `OFF`   |
+| `MSCL_BUILD_PYTHON2`         | Enables Python 2 bindings (legacy).                                              | `OFF`   |
+| `MSCL_BUILD_PYTHON_EXAMPLES` | Enables Python examples. (Requires `MSCL_BUILD_PYTHON3` or `MSCL_BUILD_PYTHON2`  | `OFF`   |
+| `MSCL_BUILD_CSHARP`          | ENables C# bindings (Windows only).                                              | `OFF`   |
+| `MSCL_BUILD_CSHARP_EXAMPLES` | Enables C# examples. (Requires `MSCL_BUILD_CSHARP`)                              | `OFF`   |
+| `MSCL_BUILD_TESTS`           | Enables the unit test suite.                                                     | `OFF`   |
+| `MSCL_BUILD_DOCUMENTATION`   | Enables documentation (Windows only).                                            | `OFF`   |
+| `MSCL_INSTALL`               | Enables CMake install rules. Typically used for packaging or local installation. | `OFF`   |
 
 - For detailed **Binding** information, see the bindings
   [instructions](../bindings/README.md).

@@ -17,6 +17,55 @@ project("MSCL"
     VERSION 68.1.0
 )
 
+# Enable a message context when outputting messages to the console
+set(CMAKE_MESSAGE_CONTEXT ${PROJECT_NAME})
+set(CMAKE_MESSAGE_CONTEXT_SHOW ON)
+
+# Parse some flags
+# These are all ON/OFF flags. For example, -DBUILD_SHARED_LIBS="ON"
+option(MSCL_WITH_WEBSOCKETS "Whether or not to compile the library with Websocket support" ON)
+option(MSCL_BUILD_CPP_EXAMPLES "Whether to build the C++ examples" OFF)
+
+# Enable installation rules by default when MSCL is the main project
+# unless explicitly disabled as a configuration option
+if("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_LIST_DIR}")
+    if(NOT DEFINED CACHE{MSCL_INSTALL} AND NOT MSCL_INSTALL)
+        set(MSCL_INSTALL ON)
+    endif()
+endif()
+
+option(MSCL_INSTALL "Setup CMake installation rules. Typically only needed for packaging" OFF)
+if(MSCL_INSTALL)
+    message(STATUS "MSCL installation rules are enabled")
+endif()
+
+if(WIN32)
+    option(MSCL_BUILD_CSHARP "Whether to build the C# bindings. Only supported on Windows" OFF)
+    option(MSCL_BUILD_CSHARP_EXAMPLES "Whether to build the C# examples" OFF)
+
+    if(MSCL_BUILD_CSHARP_EXAMPLES AND NOT MSCL_BUILD_CSHARP)
+        message(WARNING "'MSCL_BUILD_CSHARP_EXAMPLES' is ON but 'MSCL_BUILD_CSHARP' is not. Enabling 'MSCL_BUILD_CSHARP'")
+        set(MSCL_BUILD_CSHARP ON)
+    endif()
+
+    option(MSCL_BUILD_DOCUMENTATION "Whether to build the documentation" OFF)
+else()
+    if(MSCL_BUILD_CSHARP)
+        message(WARNING "'MSCL_BUILD_CSHARP' is enabled but not supported. Disabling")
+        set(MSCL_BUILD_CSHARP OFF)
+    endif()
+
+    if(MSCL_BUILD_CSHARP_EXAMPLES)
+        message(WARNING "'MSCL_BUILD_CSHARP_EXAMPLES' is enabled but not supported. Disabling")
+        set(MSCL_BUILD_CSHARP_EXAMPLES OFF)
+    endif()
+
+    if(MSCL_BUILD_DOCUMENTATION)
+        message(WARNING "'MSCL_BUILD_DOCUMENTATION' is enabled but not supported. Disabling")
+        set(MSCL_BUILD_DOCUMENTATION OFF)
+    endif()
+endif()
+
 # Enable the use of organizing projects into folders for IDEs that support it
 set_property(GLOBAL PROPERTY
     USE_FOLDERS ON
@@ -75,39 +124,6 @@ endif()
 # This will make windows create a .lib file with all the symbols of the .dll files exported
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
-# Parse some flags
-# These are all ON/OFF flags. For example, -DBUILD_SHARED_LIBS="ON"
-option(MSCL_WITH_WEBSOCKETS "Whether or not to compile the library with Websocket support" ON)
-option(MSCL_BUILD_CPP_EXAMPLES "Whether to build the C++ examples" OFF)
-option(MSCL_BUILD_PACKAGE "Whether to build a package from the resulting binaries" OFF)
-
-if(WIN32)
-    option(MSCL_BUILD_CSHARP "Whether to build the C# bindings. Only supported on Windows" OFF)
-    option(MSCL_BUILD_CSHARP_EXAMPLES "Whether to build the C# examples" OFF)
-
-    if(MSCL_BUILD_CSHARP_EXAMPLES AND NOT MSCL_BUILD_CSHARP)
-        message(WARNING "'MSCL_BUILD_CSHARP_EXAMPLES' is ON but 'MSCL_BUILD_CSHARP' is not. Enabling 'MSCL_BUILD_CSHARP'")
-        set(MSCL_BUILD_CSHARP ON)
-    endif()
-
-    option(MSCL_BUILD_DOCUMENTATION "Whether to build the documentation" OFF)
-else()
-    if(MSCL_BUILD_CSHARP)
-        message(WARNING "'MSCL_BUILD_CSHARP' is enabled but not supported. Disabling")
-        set(MSCL_BUILD_CSHARP OFF)
-    endif()
-
-    if(MSCL_BUILD_CSHARP_EXAMPLES)
-        message(WARNING "'MSCL_BUILD_CSHARP_EXAMPLES' is enabled but not supported. Disabling")
-        set(MSCL_BUILD_CSHARP_EXAMPLES OFF)
-    endif()
-
-    if(MSCL_BUILD_DOCUMENTATION)
-        message(WARNING "'MSCL_BUILD_DOCUMENTATION' is enabled but not supported. Disabling")
-        set(MSCL_BUILD_DOCUMENTATION OFF)
-    endif()
-endif()
-
 # Use Git to find the version and commit of this repo
 microstrain_get_git_version(MSCL_GIT_VERSION MSCL_GIT_VERSION_CLEAN)
 microstrain_get_git_commit(MSCL_GIT_COMMIT)
@@ -116,7 +132,7 @@ string(TOLOWER "${PROJECT_NAME}" PROJECT_NAME_LOWER)
 
 # Configure packaging before including all the targets with add_subdirectory
 # Subdirectories depend on most of these options
-if(MSCL_BUILD_PACKAGE)
+if(MSCL_INSTALL)
     # Set the CPack generators to use based on the system
     microstrain_set_cpack_archive_generators()
 
@@ -210,7 +226,7 @@ endif()
 
 # Include the CPack module for packaging
 # Package options are configured before including any subdirectories to ensure proper configurations
-if(MSCL_BUILD_PACKAGE)
+if(MSCL_INSTALL)
     # Make sure to always create separate packages per component
     # When only one component is specified CPack will make a project package instead of a component package
     get_cmake_property(CPACK_COMPONENTS_ALL COMPONENTS)

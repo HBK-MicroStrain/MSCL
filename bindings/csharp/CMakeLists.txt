@@ -47,6 +47,7 @@ add_custom_command(TARGET "${MSCL_CSHARP_TARGET}" POST_BUILD
         "-DMSCL_CSHARP_CONFIG_INSTALL_DIR=${MSCL_CSHARP_CONFIG_INSTALL_DIR}"
         "-DMSCL_CSHARP_COMPONENT_NAME=${MSCL_CSHARP_COMPONENT_NAME}"
         "-DMSCL_ARCH_NAME=${MSCL_ARCH_NAME}"
+        "-DMSCL_INSTALL=${MSCL_INSTALL}"
 
         # Assembly file generation values
         "-DPROJECT_VERSION=${PROJECT_VERSION}"
@@ -98,42 +99,41 @@ set(MSCL_CSHARP_MANAGED_REF_UTILS_FILENAME "mscl-managed-ref-utils.cmake")
 set(MSCL_CSHARP_MANAGED_REF_UTILS "${CMAKE_CURRENT_LIST_DIR}/cmake/${MSCL_CSHARP_MANAGED_REF_UTILS_FILENAME}" CACHE INTERNAL "The location of the MSCL Managed reference utilities file")
 
 # Installation
+if(MSCL_INSTALL)
+    set(MSCL_CSHARP_EXPORT_TARGET_NAME "${MSCL_CSHARP_TARGET_LOWER}-targets")
+    string(APPEND MSCL_CSHARP_INSTALL_LIBDIR "$<$<CONFIG:Debug>:/debug>")
+    install(
+        TARGETS "${MSCL_CSHARP_TARGET}"
+        EXPORT "${MSCL_CSHARP_EXPORT_TARGET_NAME}"
+        RUNTIME
+            COMPONENT "${MSCL_CSHARP_COMPONENT_NAME}"
+            DESTINATION "${MSCL_CSHARP_INSTALL_LIBDIR}"
+    )
 
-set(MSCL_CSHARP_EXPORT_TARGET_NAME "${MSCL_CSHARP_TARGET_LOWER}-targets")
-string(APPEND MSCL_CSHARP_INSTALL_LIBDIR "$<$<CONFIG:Debug>:/debug>")
-install(
-    TARGETS "${MSCL_CSHARP_TARGET}"
-    EXPORT "${MSCL_CSHARP_EXPORT_TARGET_NAME}"
-    RUNTIME
+    # Install the reference utilities file alongside the find package module
+    install(
+        FILES "${MSCL_CSHARP_MANAGED_REF_UTILS}"
+        DESTINATION "${MSCL_CSHARP_CONFIG_INSTALL_DIR}"
         COMPONENT "${MSCL_CSHARP_COMPONENT_NAME}"
-        DESTINATION "${MSCL_CSHARP_INSTALL_LIBDIR}"
-)
+    )
 
-# Install the reference utilities file alongside the find package module
-install(
-    FILES "${MSCL_CSHARP_MANAGED_REF_UTILS}"
-    DESTINATION "${MSCL_CSHARP_CONFIG_INSTALL_DIR}"
-    COMPONENT "${MSCL_CSHARP_COMPONENT_NAME}"
-)
+    # Create export files for the library for all configurations
+    install(
+        EXPORT "${MSCL_CSHARP_EXPORT_TARGET_NAME}"
+        DESTINATION "${MSCL_CSHARP_CONFIG_INSTALL_DIR}/${MSCL_ARCH_NAME}"
+        COMPONENT "${MSCL_CSHARP_COMPONENT_NAME}"
+    )
 
-# Create export files for the library for all configurations
-install(
-    EXPORT "${MSCL_CSHARP_EXPORT_TARGET_NAME}"
-    DESTINATION "${MSCL_CSHARP_CONFIG_INSTALL_DIR}/${MSCL_ARCH_NAME}"
-    COMPONENT "${MSCL_CSHARP_COMPONENT_NAME}"
-)
+    # Run the installation script for the managed target as part of the CSharp installation
+    install(
+        SCRIPT "${MSCL_CSHARP_MANAGED_BUILD_DIR}/cmake_install.cmake"
+        COMPONENT "${MSCL_CSHARP_COMPONENT_NAME}"
+    )
 
-# Run the installation script for the managed target as part of the CSharp installation
-install(
-    SCRIPT "${MSCL_CSHARP_MANAGED_BUILD_DIR}/cmake_install.cmake"
-    COMPONENT "${MSCL_CSHARP_COMPONENT_NAME}"
-)
+    # Create the find_package config and version files for MSCL_Managed
+    list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
+    include("mscl-managed-create-config-file")
 
-# Create the find_package config and version files for MSCL_Managed
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
-include("mscl-managed-create-config-file")
-
-if(MSCL_BUILD_PACKAGE)
     microstrain_set_cpack_component_file_name(
         COMPONENT_NAME "${MSCL_CSHARP_COMPONENT_NAME}"
         COMPONENT_VERSION "${CPACK_PACKAGE_VERSION}"

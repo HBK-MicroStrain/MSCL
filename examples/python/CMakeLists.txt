@@ -35,7 +35,10 @@ endforeach()
 
 list(TRANSFORM MSCL_PYTHON_EXAMPLES_SUBDIRECTORIES PREPEND "${CMAKE_CURRENT_LIST_DIR}/")
 
-mscl_install_examples(
-    SUBDIRECTORIES ${MSCL_PYTHON_EXAMPLES_SUBDIRECTORIES}
-    COMPONENT_NAME "Python-Examples"
-)
+# Installation
+if(MSCL_INSTALL)
+    mscl_install_examples(
+        SUBDIRECTORIES ${MSCL_PYTHON_EXAMPLES_SUBDIRECTORIES}
+        COMPONENT_NAME "Python-Examples"
+    )
+endif()

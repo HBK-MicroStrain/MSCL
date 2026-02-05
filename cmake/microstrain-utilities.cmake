@@ -483,6 +483,10 @@ endfunction()
 macro(microstrain_append_cmake_folder)
     get_filename_component(CURRENT_DIR_NAME "${CMAKE_CURRENT_LIST_DIR}" NAME)
     string(APPEND CMAKE_FOLDER "/${CURRENT_DIR_NAME}")
+
+    # Also configure message contexts to allow console messages to display
+    # their current scope
+    string(APPEND CMAKE_MESSAGE_CONTEXT "-${CURRENT_DIR_NAME}")
 endmacro()
 
 function(microstrain_update_copyright_in_files)
