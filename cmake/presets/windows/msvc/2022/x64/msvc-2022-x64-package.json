@@ -1,0 +1,95 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "msvc-2022-x64-configure.json",
+    "../../../../package.json"
+  ],
+  "packagePresets": [
+    {
+      "name": "msvc-2022-x64-static",
+      "displayName": "Packages static C++ libraries for MSVC 2022 x64 Release and Debug",
+      "description": "This packages static C++ libraries for MSVC 2022 x64 Release and Debug",
+      "inherits": [
+        "all-configurations"
+      ],
+      "configurePreset": "msvc-2022-x64-static"
+    },
+    {
+      "name": "msvc-2022-x64-shared",
+      "displayName": "Packages shared C++ libraries for MSVC 2022 x64 Release and Debug",
+      "description": "This packages shared C++ libraries for MSVC 2022 x64 Release and Debug",
+      "inherits": [
+        "all-configurations"
+      ],
+      "configurePreset": "msvc-2022-x64-shared"
+    },
+    {
+      "name": "msvc-2022-x64-cpp-examples",
+      "displayName": "Packages C++ examples for MSVC 2022 x64",
+      "description": "This packages C++ examples for MSVC 2022 x64",
+      "inherits": [
+        "default"
+      ],
+      "configurePreset": "msvc-2022-x64-cpp-examples"
+    },
+    {
+      "name": "msvc-2022-x64-python2-examples",
+      "displayName": "Packages Python2 examples for MSVC 2022 x64",
+      "description": "This packages Python2 examples for MSVC 2022 x64",
+      "inherits": [
+        "default"
+      ],
+      "configurePreset": "msvc-2022-x64-python2-examples"
+    },
+    {
+      "name": "msvc-2022-x64-python3-examples",
+      "displayName": "Packages Python3 examples for MSVC 2022 x64",
+      "description": "This packages Python3 examples for MSVC 2022 x64",
+      "inherits": [
+        "default"
+      ],
+      "configurePreset": "msvc-2022-x64-python3-examples"
+    },
+    {
+      "name": "msvc-2022-x64-csharp",
+      "displayName": "Packages C# bindings for MSVC 2022 x64 Release and Debug",
+      "description": "This packages C# bindings for MSVC 2022 x64 Release and Debug",
+      "inherits": [
+        "all-configurations"
+      ],
+      "configurePreset": "msvc-2022-x64-csharp"
+    },
+    {
+      "name": "msvc-2022-x64-csharp-examples",
+      "displayName": "Packages C# examples for MSVC 2022 x64",
+      "description": "This packages C# examples for MSVC 2022 x64",
+      "inherits": [
+        "default"
+      ],
+      "configurePreset": "msvc-2022-x64-csharp-examples"
+    },
+    {
+      "name": "msvc-2022-x64-docs",
+      "displayName": "Packages documentation for MSVC 2022 x64",
+      "description": "This packages documentation for MSVC 2022 x64",
+      "inherits": [
+        "default"
+      ],
+      "configurePreset": "msvc-2022-x64-docs"
+    },
+    {
+      "name": "msvc-2022-x64-static-all",
+      "displayName": "Packages all project options with static C++ library configurations for MSVC 2022 x64 Release and Debug",
+      "description": "This packages all project options with static C++ library configurations for MSVC 2022 x64 Release and Debug",
+      "inherits": [
+        "all-configurations"
+      ],
+      "configurePreset": "msvc-2022-x64-static-all"
+    }
+  ]
+}

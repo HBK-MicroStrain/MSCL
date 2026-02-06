@@ -7,6 +7,7 @@
   },
   "include": [
     "release/msvc-2022-x64-release-build.json",
-    "release/msvc-2022-x64-release-test.json"
+    "release/msvc-2022-x64-release-test.json",
+    "release/msvc-2022-x64-release-package.json"
   ]
 }

@@ -1,0 +1,46 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "configure.json"
+  ],
+  "packagePresets": [
+    {
+      "name": "default",
+      "packageDirectory": "${sourceDir}/packages",
+      "hidden": true
+    },
+    {
+      "name": "release",
+      "inherits": [
+        "default"
+      ],
+      "configurations": [
+        "Release"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "debug",
+      "inherits": [
+        "default"
+      ],
+      "configurations": [
+        "Debug"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "all-configurations",
+      "inherits": [
+        "release",
+        "debug"
+      ],
+      "hidden": true
+    }
+  ]
+}
