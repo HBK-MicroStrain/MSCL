@@ -6,6 +6,7 @@
     "patch": 0
   },
   "include": [
-    "release/msvc-2022-x64-release-build.json"
+    "release/msvc-2022-x64-release-build.json",
+    "release/msvc-2022-x64-release-test.json"
   ]
 }

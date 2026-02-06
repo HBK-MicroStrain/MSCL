@@ -1,0 +1,32 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "../msvc-2022-x64-configure.json",
+    "../../../../../test.json"
+  ],
+  "testPresets": [
+    {
+      "name": "msvc-2022-x64-tests-release",
+      "displayName": "Runs unit tests for MSVC 2022 x64 Release",
+      "description": "This runs unit tests for MSVC 2022 x64 Release",
+      "inherits": [
+        "release"
+      ],
+      "configurePreset": "msvc-2022-x64-tests"
+    },
+    {
+      "name": "msvc-2022-x64-static-all-release",
+      "displayName": "Enables test support when all project options with static C++ library configurations are needed for MSVC 2022 x64 Release",
+      "description": "This enables test support for all project options with static C++ library configurations for MSVC 2022 x64 Release",
+      "inherits": [
+        "release"
+      ],
+      "configurePreset": "msvc-2022-x64-static-all"
+    }
+  ]
+}

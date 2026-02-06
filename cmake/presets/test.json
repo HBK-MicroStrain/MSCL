@@ -1,0 +1,40 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "configure.json"
+  ],
+  "testPresets": [
+    {
+      "name": "default",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "stopOnFailure": false,
+        "noTestsAction": "error"
+      },
+      "hidden": true
+    },
+    {
+      "name": "release",
+      "inherits": [
+        "default"
+      ],
+      "configuration": "Release",
+      "hidden": true
+    },
+    {
+      "name": "debug",
+      "inherits": [
+        "default"
+      ],
+      "configuration": "Debug",
+      "hidden": true
+    }
+  ]
+}
