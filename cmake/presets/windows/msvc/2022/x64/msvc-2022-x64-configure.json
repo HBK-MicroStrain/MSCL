@@ -11,6 +11,8 @@
   "configurePresets": [
     {
       "name": "msvc-2022-x64",
+      "displayName": "MSVC 2022 x64",
+      "description": "This configuration sets the MSVC 2022 x64 build environment",
       "inherits": [
         "msvc-2022",
         "msvc-x64"

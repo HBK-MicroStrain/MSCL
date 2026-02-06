@@ -11,19 +11,14 @@
   "configurePresets": [
     {
       "name": "windows",
+      "displayName": "Windows only configuration",
+      "description": "This configuration is only available on Windows",
       "inherits": "default",
       "condition": {
         "type": "equals",
         "lhs": "${hostSystemName}",
         "rhs": "Windows"
       },
-      "hidden": true
-    },
-    {
-      "name": "docs",
-      "displayName": "Enables documentation",
-      "description": "This configuration enables documentation",
-      "inherits": "windows",
       "hidden": true
     },
     {
@@ -43,6 +38,16 @@
       "inherits": "csharp",
       "cacheVariables": {
         "MSCL_BUILD_CSHARP_EXAMPLES": "ON"
+      },
+      "hidden": true
+    },
+    {
+      "name": "docs",
+      "displayName": "Enables documentation",
+      "description": "This configuration enables documentation",
+      "inherits": "windows",
+      "cacheVariables": {
+        "MSCL_BUILD_DOCUMENTATION": "ON"
       },
       "hidden": true
     }

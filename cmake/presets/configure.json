@@ -21,6 +21,7 @@
       "name": "shared",
       "displayName": "Shared library configuration",
       "description": "This configuration enables shared library building",
+      "inherits": "default",
       "cacheVariables": {
         "BUILD_SHARED_LIBS": {
           "type": "BOOL",
@@ -33,6 +34,7 @@
       "name": "tests",
       "displayName": "Enables unit testing",
       "description": "This configuration enables unit testing",
+      "inherits": "default",
       "cacheVariables": {
         "MSCL_BUILD_TESTS": "ON"
       },
@@ -42,6 +44,7 @@
       "name": "cpp-examples",
       "displayName": "Enable C++ examples",
       "description": "This configuration enables C++ examples",
+      "inherits": "default",
       "cacheVariables": {
         "MSCL_BUILD_CPP_EXAMPLES": "ON"
       },
@@ -51,6 +54,7 @@
       "name": "python2",
       "displayName": "Enable Python2 bindings",
       "description": "This configuration enables Python2 bindings",
+      "inherits": "default",
       "cacheVariables": {
         "MSCL_BUILD_PYTHON2": "ON"
       },
@@ -70,6 +74,7 @@
       "name": "python3",
       "displayName": "Enable Python3 bindings",
       "description": "This configuration enables Python3 bindings",
+      "inherits": "default",
       "cacheVariables": {
         "MSCL_BUILD_PYTHON3": "ON"
       },
