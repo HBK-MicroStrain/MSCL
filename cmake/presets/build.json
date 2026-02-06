@@ -10,22 +10,24 @@
   ],
   "buildPresets": [
     {
-      "name": "static",
-      "configurePreset": "default",
+      "name": "release",
+      "configuration": "Release",
+      "hidden": true
+    },
+    {
+      "name": "debug",
+      "configuration": "Debug",
+      "hidden": true
+    },
+    {
+      "name": "cpp",
       "targets": [
         "MSCL-Cpp"
       ],
       "hidden": true
     },
     {
-      "name": "shared",
-      "inherits": "static",
-      "configurePreset": "shared",
-      "hidden": true
-    },
-    {
       "name": "tests",
-      "configurePreset": "tests",
       "targets": [
         "MSCL-Tests"
       ],
@@ -33,7 +35,6 @@
     },
     {
       "name": "cpp-examples",
-      "configurePreset": "cpp-examples",
       "targets": [
         "MSCL-Examples"
       ],
@@ -41,7 +42,6 @@
     },
     {
       "name": "python2",
-      "configurePreset": "python2",
       "targets": [
         "MSCL-Python2"
       ],
@@ -49,7 +49,6 @@
     },
     {
       "name": "python2-examples",
-      "configurePreset": "python2-examples",
       "targets": [
         "MSCL-Examples"
       ],
@@ -57,7 +56,6 @@
     },
     {
       "name": "python3",
-      "configurePreset": "python3",
       "targets": [
         "MSCL-Python3"
       ],
@@ -65,7 +63,6 @@
     },
     {
       "name": "python3-examples",
-      "configurePreset": "python3-examples",
       "targets": [
         "MSCL-Examples"
       ],

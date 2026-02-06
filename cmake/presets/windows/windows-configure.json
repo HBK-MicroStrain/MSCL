@@ -50,6 +50,18 @@
         "MSCL_BUILD_DOCUMENTATION": "ON"
       },
       "hidden": true
+    },
+    {
+      "name": "windows-static-all",
+      "displayName": "Enables all project options with static C++ library configurations for Windows",
+      "description": "This configuration enables all project options with static C++ library configurations for Windows",
+      "inherits": [
+        "static-all",
+        "csharp",
+        "csharp-examples",
+        "docs"
+      ],
+      "hidden": true
     }
   ]
 }

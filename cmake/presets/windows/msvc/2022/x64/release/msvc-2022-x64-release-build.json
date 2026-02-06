@@ -7,78 +7,116 @@
   },
   "include": [
     "../msvc-2022-x64-configure.json",
-    "../msvc-2022-x64-build.json"
+    "../../../../windows-build.json"
   ],
   "buildPresets": [
     {
       "name": "msvc-2022-x64-static-release",
       "displayName": "Builds static C++ libraries for MSVC 2022 x64 Release",
       "description": "This builds static C++ libraries for MSVC 2022 x64 Release",
-      "inherits": "msvc-x64-release",
+      "inherits": [
+        "release"
+      ],
       "configurePreset": "msvc-2022-x64-static"
     },
     {
       "name": "msvc-2022-x64-shared-release",
       "displayName": "Builds shared C++ libraries for MSVC 2022 x64 Release",
       "description": "This builds shared C++ libraries for MSVC 2022 x64 Release",
-      "inherits": "msvc-x64-release",
+      "inherits": [
+        "release"
+      ],
       "configurePreset": "msvc-2022-x64-shared"
     },
     {
       "name": "msvc-2022-x64-tests-release",
       "displayName": "Builds unit tests for MSVC 2022 x64 Release",
       "description": "This builds unit tests for MSVC 2022 x64 Release",
-      "inherits": "msvc-x64-release",
+      "inherits": [
+        "release"
+      ],
       "configurePreset": "msvc-2022-x64-tests"
     },
     {
       "name": "msvc-2022-x64-cpp-examples-release",
       "displayName": "Builds C++ examples for MSVC 2022 x64 Release",
       "description": "This builds C++ examples for MSVC 2022 x64 Release",
-      "inherits": "msvc-x64-release",
+      "inherits": [
+        "release"
+      ],
       "configurePreset": "msvc-2022-x64-cpp-examples"
     },
     {
       "name": "msvc-2022-x64-python2-release",
       "displayName": "Builds Python2 bindings for MSVC 2022 x64 Release",
       "description": "This builds Python2 bindings for MSVC 2022 x64 Release",
-      "inherits": "msvc-x64-release",
+      "inherits": [
+        "release"
+      ],
       "configurePreset": "msvc-2022-x64-python2"
     },
     {
       "name": "msvc-2022-x64-python2-examples-release",
       "displayName": "Builds Python2 examples for MSVC 2022 x64 Release",
       "description": "This builds Python2 examples for MSVC 2022 x64 Release",
-      "inherits": "msvc-x64-release",
+      "inherits": [
+        "release"
+      ],
       "configurePreset": "msvc-2022-x64-python2-examples"
     },
     {
       "name": "msvc-2022-x64-python3-release",
       "displayName": "Builds Python3 bindings for MSVC 2022 x64 Release",
       "description": "This builds Python3 bindings for MSVC 2022 x64 Release",
-      "inherits": "msvc-x64-release",
+      "inherits": [
+        "release"
+      ],
       "configurePreset": "msvc-2022-x64-python3"
     },
     {
       "name": "msvc-2022-x64-python3-examples-release",
       "displayName": "Builds Python3 examples for MSVC 2022 x64 Release",
       "description": "This builds Python3 examples for MSVC 2022 x64 Release",
-      "inherits": "msvc-x64-release",
+      "inherits": [
+        "release"
+      ],
       "configurePreset": "msvc-2022-x64-python3-examples"
     },
     {
       "name": "msvc-2022-x64-csharp-release",
       "displayName": "Builds C# bindings for MSVC 2022 x64 Release",
       "description": "This builds C# bindings for MSVC 2022 x64 Release",
-      "inherits": "msvc-x64-release",
+      "inherits": [
+        "release"
+      ],
       "configurePreset": "msvc-2022-x64-csharp"
     },
     {
       "name": "msvc-2022-x64-csharp-examples-release",
       "displayName": "Builds C# examples for MSVC 2022 x64 Release",
       "description": "This builds C# examples for MSVC 2022 x64 Release",
-      "inherits": "msvc-x64-release",
+      "inherits": [
+        "release"
+      ],
       "configurePreset": "msvc-2022-x64-csharp-examples"
+    },
+    {
+      "name": "msvc-2022-x64-docs-release",
+      "displayName": "Builds documentation for MSVC 2022 x64 Release",
+      "description": "This builds documentation for MSVC 2022 x64 Release",
+      "inherits": [
+        "release"
+      ],
+      "configurePreset": "msvc-2022-x64-docs"
+    },
+    {
+      "name": "msvc-2022-x64-static-all-release",
+      "displayName": "Builds all project options with static C++ library configurations for MSVC 2022 x64 Release",
+      "description": "This builds all project options with static C++ library configurations for MSVC 2022 x64 Release",
+      "inherits": [
+        "release"
+      ],
+      "configurePreset": "msvc-2022-x64-static-all"
     }
   ]
 }

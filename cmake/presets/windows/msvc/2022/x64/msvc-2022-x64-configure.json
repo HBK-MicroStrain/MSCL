@@ -125,14 +125,8 @@
       "displayName": "Enables all project options with static C++ library configurations for MSVC 2022 x64",
       "description": "This configuration enables all project options with static C++ library configurations for MSVC 2022 x64",
       "inherits": [
-        "msvc-2022-x64-static",
-        "msvc-2022-x64-tests",
-        "msvc-2022-x64-cpp-examples",
-        "msvc-2022-x64-python3",
-        "msvc-2022-x64-python3-examples",
-        "msvc-2022-x64-csharp",
-        "msvc-2022-x64-csharp-examples",
-        "msvc-2022-x64-docs"
+        "msvc-2022-x64",
+        "windows-static-all"
       ]
     }
   ]

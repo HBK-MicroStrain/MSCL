@@ -11,16 +11,7 @@
   ],
   "buildPresets": [
     {
-      "name": "docs",
-      "configurePreset": "docs",
-      "targets": [
-        "MSCL-Docs"
-      ],
-      "hidden": true
-    },
-    {
       "name": "csharp",
-      "configurePreset": "csharp",
       "targets": [
         "MSCL-CSharp"
       ],
@@ -28,9 +19,15 @@
     },
     {
       "name": "csharp-examples",
-      "configurePreset": "csharp-examples",
       "targets": [
         "MSCL-Examples"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "docs",
+      "targets": [
+        "MSCL-Docs"
       ],
       "hidden": true
     }

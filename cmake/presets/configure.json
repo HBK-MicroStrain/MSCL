@@ -89,6 +89,18 @@
         "MSCL_BUILD_PYTHON_EXAMPLES": "ON"
       },
       "hidden": true
+    },
+    {
+      "name": "static-all",
+      "displayName": "Enables all project options with static C++ library configurations",
+      "description": "This configuration enables all project options with static C++ library configurations",
+      "inherits": [
+        "tests",
+        "cpp-examples",
+        "python3",
+        "python3-examples"
+      ],
+      "hidden": true
     }
   ]
 }
