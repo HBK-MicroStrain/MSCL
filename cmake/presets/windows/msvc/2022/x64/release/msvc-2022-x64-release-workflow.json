@@ -1,0 +1,333 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "msvc-2022-x64-release-build.json",
+    "msvc-2022-x64-release-test.json",
+    "msvc-2022-x64-release-package.json"
+  ],
+  "workflowPresets": [
+    {
+      "name": "msvc-2022-x64-static-release",
+      "displayName": "Builds static C++ libraries for MSVC 2022 x64 Release",
+      "description": "This builds static C++ libraries for MSVC 2022 x64 Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-static"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-static-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-static-release-package",
+      "displayName": "Builds and packages static C++ libraries for MSVC 2022 x64 Release",
+      "description": "This builds and packages static C++ libraries for MSVC 2022 x64 Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-static"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-static-release"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x64-static"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-shared-release",
+      "displayName": "Builds shared C++ libraries for MSVC 2022 x64 Release",
+      "description": "This builds shared C++ libraries for MSVC 2022 x64 Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-shared"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-shared-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-shared-release-package",
+      "displayName": "Builds and packages shared C++ libraries for MSVC 2022 x64 Release",
+      "description": "This builds and packages shared C++ libraries for MSVC 2022 x64 Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-shared"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-shared-release"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x64-shared"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-static-tests-release",
+      "displayName": "Builds and tests static C++ libraries for MSVC 2022 x64 Release",
+      "description": "This builds and tests static C++ libraries for MSVC 2022 x64 Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-tests"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-tests-release"
+        },
+        {
+          "type": "test",
+          "name": "msvc-2022-x64-tests-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-static-tests-release-package",
+      "displayName": "Builds, tests, and packages static C++ libraries for MSVC 2022 x64 Release",
+      "description": "This builds, tests, and packages static C++ libraries for MSVC 2022 x64 Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-tests"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-tests-release"
+        },
+        {
+          "type": "test",
+          "name": "msvc-2022-x64-tests-release"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x64-tests-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-cpp-examples-release",
+      "displayName": "Builds C++ examples for MSVC 2022 x64 Release",
+      "description": "This builds C++ examples for MSVC 2022 x64 Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-cpp-examples"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-cpp-examples-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-python2-release",
+      "displayName": "Builds Python2 bindings for MSVC 2022 x64 Release",
+      "description": "This builds Python2 bindings for MSVC 2022 x64 Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-python2"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-python2-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-python2-release-package",
+      "displayName": "Builds and packages Python2 bindings for MSVC 2022 x64 Release",
+      "description": "This builds and packages Python2 bindings for MSVC 2022 x64 Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-python2"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-python2-release"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x64-python2-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-python3-release",
+      "displayName": "Builds Python3 bindings for MSVC 2022 x64 Release",
+      "description": "This builds Python3 bindings for MSVC 2022 x64 Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-python3"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-python3-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-python3-release-package",
+      "displayName": "Builds and packages Python3 bindings for MSVC 2022 x64 Release",
+      "description": "This builds and packages Python3 bindings for MSVC 2022 x64 Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-python3"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-python3-release"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x64-python3-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-csharp-release",
+      "displayName": "Builds C# bindings for MSVC 2022 x64 Release",
+      "description": "This builds C# bindings for MSVC 2022 x64 Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-csharp"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-csharp-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-csharp-release-package",
+      "displayName": "Builds and packages C# bindings for MSVC 2022 x64 Release",
+      "description": "This builds and packages C# bindings for MSVC 2022 x64 Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-csharp"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-csharp-release"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x64-csharp-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-csharp-examples-release",
+      "displayName": "Builds C# examples for MSVC 2022 x64 Release",
+      "description": "This builds C# examples for MSVC 2022 x64 Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-csharp-examples"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-csharp-examples-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-static-all-release",
+      "displayName": "Builds all project options with static C++ library configurations for MSVC 2022 x64 Release",
+      "description": "This builds all project options with static C++ library configurations for MSVC 2022 x64 Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-static-all"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-static-all-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-static-all-release-package",
+      "displayName": "Builds, tests, and packages all project options with static C++ library configurations for MSVC 2022 x64 Release",
+      "description": "This builds, tests, and packages all project options with static C++ library configurations for MSVC 2022 x64 Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-static-all"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-static-all-release"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x64-static-all-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-static-tests-all-release",
+      "displayName": "Builds and tests all project options with static C++ library configurations for MSVC 2022 x64 Release",
+      "description": "This builds and tests all project options with static C++ library configurations for MSVC 2022 x64 Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-static-all"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-static-all-release"
+        },
+        {
+          "type": "test",
+          "name": "msvc-2022-x64-static-all-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-static-tests-all-release-package",
+      "displayName": "Builds, tests, and packages all project options with static C++ library configurations for MSVC 2022 x64 Release",
+      "description": "This builds, tests, and packages all project options with static C++ library configurations for MSVC 2022 x64 Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-static-all"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-static-all-release"
+        },
+        {
+          "type": "test",
+          "name": "msvc-2022-x64-static-all-release"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x64-static-all-release"
+        }
+      ]
+    }
+  ]
+}

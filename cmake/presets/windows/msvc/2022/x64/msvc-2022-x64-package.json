@@ -29,6 +29,15 @@
       "configurePreset": "msvc-2022-x64-shared"
     },
     {
+      "name": "msvc-2022-x64-tests",
+      "displayName": "Packages static C++ libraries with tests enabled for MSVC 2022 x64 Release and Debug",
+      "description": "This packages static C++ libraries with tests enabled for MSVC 2022 x64 Release and Debug",
+      "inherits": [
+        "all-configurations"
+      ],
+      "configurePreset": "msvc-2022-x64-tests"
+    },
+    {
       "name": "msvc-2022-x64-cpp-examples",
       "displayName": "Packages C++ examples for MSVC 2022 x64",
       "description": "This packages C++ examples for MSVC 2022 x64",

@@ -28,6 +28,15 @@
       "configurePreset": "msvc-2022-x64-shared"
     },
     {
+      "name": "msvc-2022-x64-tests-release",
+      "displayName": "Packages static C++ libraries with tests enabled for MSVC 2022 x64 Release",
+      "description": "This packages static C++ libraries with tests enabled for MSVC 2022 x64 Release",
+      "inherits": [
+        "release"
+      ],
+      "configurePreset": "msvc-2022-x64-tests"
+    },
+    {
       "name": "msvc-2022-x64-python2-release",
       "displayName": "Packages Python2 bindings for MSVC 2022 x64 Release",
       "description": "This packages Python2 bindings for MSVC 2022 x64 Release",

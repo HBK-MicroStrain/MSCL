@@ -86,9 +86,13 @@ if(MSVC)
     )
 endif()
 
-# TODO: Add CI/CD plugin support for JUNIT results
+set(JUNIT_OUTPUT_FILE_NAME "mscl-test-results")
+if(GENERATOR_IS_MULTI_CONFIG)
+    string(APPEND JUNIT_OUTPUT_FILE_NAME "-$<CONFIG>")
+endif()
+
 # Reporting as JUNIT isn't compatible for direct CI/CD logging, but it can be easily parsed with a plugin
 add_test(
     NAME "${MSCL_TEST_TARGET}"
-    COMMAND ${MSCL_TEST_TARGET} --log_level=test_suite --log_format=JUNIT  --log_sink=mscl_test_results.xml --report_level=no
+    COMMAND ${MSCL_TEST_TARGET} --log_level=test_suite --log_format=JUNIT  --log_sink=${JUNIT_OUTPUT_FILE_NAME}.xml --report_level=no
 )

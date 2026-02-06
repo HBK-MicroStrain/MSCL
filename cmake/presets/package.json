@@ -37,8 +37,11 @@
     {
       "name": "all-configurations",
       "inherits": [
-        "release",
-        "debug"
+        "default"
+      ],
+      "configurations": [
+        "Release",
+        "Debug"
       ],
       "hidden": true
     }

@@ -86,5 +86,5 @@ already exist on the system.
 
 ## Test Results
 The tests are configured to output results in JUNIT format to
-`mscl_test_results.xml` by default when run via the build system, which is
+`mscl-test-results.xml` or `mscl-test-results-<CONFIG_TYPE>.xml` by default when run via the build system, which is
 useful for CI/CD integration.
