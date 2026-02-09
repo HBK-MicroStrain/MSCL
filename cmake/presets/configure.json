@@ -36,7 +36,10 @@
       "description": "This configuration enables unit testing",
       "inherits": "default",
       "cacheVariables": {
-        "MSCL_BUILD_TESTS": "ON"
+        "MSCL_BUILD_TESTS": {
+          "type": "BOOL",
+          "value": "ON"
+        }
       },
       "hidden": true
     },
@@ -46,7 +49,10 @@
       "description": "This configuration enables C++ examples",
       "inherits": "default",
       "cacheVariables": {
-        "MSCL_BUILD_CPP_EXAMPLES": "ON"
+        "MSCL_BUILD_CPP_EXAMPLES": {
+          "type": "BOOL",
+          "value": "ON"
+        }
       },
       "hidden": true
     },
@@ -56,7 +62,10 @@
       "description": "This configuration enables Python2 bindings",
       "inherits": "default",
       "cacheVariables": {
-        "MSCL_BUILD_PYTHON2": "ON"
+        "MSCL_BUILD_PYTHON2": {
+          "type": "BOOL",
+          "value": "ON"
+        }
       },
       "hidden": true
     },
@@ -66,7 +75,10 @@
       "description": "This configuration enables Python2 examples",
       "inherits": "python2",
       "cacheVariables": {
-        "MSCL_BUILD_PYTHON_EXAMPLES": "ON"
+        "MSCL_BUILD_PYTHON_EXAMPLES": {
+          "type": "BOOL",
+          "value": "ON"
+        }
       },
       "hidden": true
     },
@@ -76,7 +88,10 @@
       "description": "This configuration enables Python3 bindings",
       "inherits": "default",
       "cacheVariables": {
-        "MSCL_BUILD_PYTHON3": "ON"
+        "MSCL_BUILD_PYTHON3": {
+          "type": "BOOL",
+          "value": "ON"
+        }
       },
       "hidden": true
     },
@@ -86,7 +101,10 @@
       "description": "This configuration enables Python3 examples",
       "inherits": "python3",
       "cacheVariables": {
-        "MSCL_BUILD_PYTHON_EXAMPLES": "ON"
+        "MSCL_BUILD_PYTHON_EXAMPLES": {
+          "type": "BOOL",
+          "value": "ON"
+        }
       },
       "hidden": true
     },

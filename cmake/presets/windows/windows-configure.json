@@ -27,7 +27,10 @@
       "description": "This configuration enables C# bindings",
       "inherits": "windows",
       "cacheVariables": {
-        "MSCL_BUILD_CSHARP": "ON"
+        "MSCL_BUILD_CSHARP": {
+          "type": "BOOL",
+          "value": "ON"
+        }
       },
       "hidden": true
     },
@@ -37,7 +40,10 @@
       "description": "This configuration enables C# examples",
       "inherits": "csharp",
       "cacheVariables": {
-        "MSCL_BUILD_CSHARP_EXAMPLES": "ON"
+        "MSCL_BUILD_CSHARP_EXAMPLES": {
+          "type": "BOOL",
+          "value": "ON"
+        }
       },
       "hidden": true
     },
@@ -47,7 +53,10 @@
       "description": "This configuration enables documentation",
       "inherits": "windows",
       "cacheVariables": {
-        "MSCL_BUILD_DOCUMENTATION": "ON"
+        "MSCL_BUILD_DOCUMENTATION": {
+          "type": "BOOL",
+          "value": "ON"
+        }
       },
       "hidden": true
     },

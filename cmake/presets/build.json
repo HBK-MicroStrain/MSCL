@@ -10,16 +10,6 @@
   ],
   "buildPresets": [
     {
-      "name": "debug",
-      "configuration": "Debug",
-      "hidden": true
-    },
-    {
-      "name": "release",
-      "configuration": "Release",
-      "hidden": true
-    },
-    {
       "name": "cpp",
       "targets": [
         "MSCL-Cpp"
