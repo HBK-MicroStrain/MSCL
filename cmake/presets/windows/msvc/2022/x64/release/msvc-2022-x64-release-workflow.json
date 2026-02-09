@@ -41,7 +41,7 @@
         },
         {
           "type": "package",
-          "name": "msvc-2022-x64-static"
+          "name": "msvc-2022-x64-static-release"
         }
       ]
     },
@@ -75,7 +75,7 @@
         },
         {
           "type": "package",
-          "name": "msvc-2022-x64-shared"
+          "name": "msvc-2022-x64-shared-release"
         }
       ]
     },
@@ -133,6 +133,25 @@
         {
           "type": "build",
           "name": "msvc-2022-x64-cpp-examples-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-cpp-examples-release-package",
+      "displayName": "Builds and packages C++ examples for MSVC 2022 x64 Release",
+      "description": "This builds and packages C++ examples for MSVC 2022 x64 Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-cpp-examples"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-cpp-examples-release"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x64-cpp-examples"
         }
       ]
     },
@@ -270,8 +289,8 @@
     },
     {
       "name": "msvc-2022-x64-static-all-release-package",
-      "displayName": "Builds, tests, and packages all project options with static C++ library configurations for MSVC 2022 x64 Release",
-      "description": "This builds, tests, and packages all project options with static C++ library configurations for MSVC 2022 x64 Release",
+      "displayName": "Builds and packages all project options with static C++ library configurations for MSVC 2022 x64 Release",
+      "description": "This builds and packages all project options with static C++ library configurations for MSVC 2022 x64 Release",
       "steps": [
         {
           "type": "configure",

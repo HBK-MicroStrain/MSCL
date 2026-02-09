@@ -1,0 +1,100 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "../msvc-2022-x64-configure.json",
+    "../../../../windows-build.json"
+  ],
+  "buildPresets": [
+    {
+      "name": "msvc-2022-x64-static-debug",
+      "displayName": "Builds static C++ libraries for MSVC 2022 x64 Debug",
+      "description": "This builds static C++ libraries for MSVC 2022 x64 Debug",
+      "inherits": [
+        "debug"
+      ],
+      "configurePreset": "msvc-2022-x64-static"
+    },
+    {
+      "name": "msvc-2022-x64-shared-debug",
+      "displayName": "Builds shared C++ libraries for MSVC 2022 x64 Debug",
+      "description": "This builds shared C++ libraries for MSVC 2022 x64 Debug",
+      "inherits": [
+        "debug"
+      ],
+      "configurePreset": "msvc-2022-x64-shared"
+    },
+    {
+      "name": "msvc-2022-x64-tests-debug",
+      "displayName": "Builds unit tests for MSVC 2022 x64 Debug",
+      "description": "This builds unit tests for MSVC 2022 x64 Debug",
+      "inherits": [
+        "debug"
+      ],
+      "configurePreset": "msvc-2022-x64-tests"
+    },
+    {
+      "name": "msvc-2022-x64-cpp-examples-debug",
+      "displayName": "Builds C++ examples for MSVC 2022 x64 Debug",
+      "description": "This builds C++ examples for MSVC 2022 x64 Debug",
+      "inherits": [
+        "debug"
+      ],
+      "configurePreset": "msvc-2022-x64-cpp-examples"
+    },
+    {
+      "name": "msvc-2022-x64-python2-debug",
+      "displayName": "Builds Python2 bindings for MSVC 2022 x64 Debug",
+      "description": "This builds Python2 bindings for MSVC 2022 x64 Debug",
+      "inherits": [
+        "debug"
+      ],
+      "configurePreset": "msvc-2022-x64-python2"
+    },
+    {
+      "name": "msvc-2022-x64-python3-debug",
+      "displayName": "Builds Python3 bindings for MSVC 2022 x64 Debug",
+      "description": "This builds Python3 bindings for MSVC 2022 x64 Debug",
+      "inherits": [
+        "debug"
+      ],
+      "configurePreset": "msvc-2022-x64-python3"
+    },
+    {
+      "name": "msvc-2022-x64-csharp-debug",
+      "displayName": "Builds C# bindings for MSVC 2022 x64 Debug",
+      "description": "This builds C# bindings for MSVC 2022 x64 Debug",
+      "inherits": [
+        "debug"
+      ],
+      "configurePreset": "msvc-2022-x64-csharp"
+    },
+    {
+      "name": "msvc-2022-x64-csharp-examples-debug",
+      "displayName": "Builds C# examples for MSVC 2022 x64 Debug",
+      "description": "This builds C# examples for MSVC 2022 x64 Debug",
+      "inherits": [
+        "debug"
+      ],
+      "configurePreset": "msvc-2022-x64-csharp-examples"
+    },
+    {
+      "name": "msvc-2022-x64-static-all-debug",
+      "displayName": "Builds all project options with static C++ library configurations for MSVC 2022 x64 Debug",
+      "description": "This builds all project options with static C++ library configurations for MSVC 2022 x64 Debug",
+      "inherits": [
+        "debug",
+        "tests",
+        "cpp-examples",
+        "python3",
+        "csharp",
+        "csharp-examples"
+      ],
+      "configurePreset": "msvc-2022-x64-static-all"
+    }
+  ]
+}

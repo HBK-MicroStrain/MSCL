@@ -1,0 +1,295 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "msvc-2022-x64-debug-build.json",
+    "msvc-2022-x64-debug-test.json",
+    "msvc-2022-x64-debug-package.json"
+  ],
+  "workflowPresets": [
+    {
+      "name": "msvc-2022-x64-static-debug",
+      "displayName": "Builds static C++ libraries for MSVC 2022 x64 Debug",
+      "description": "This builds static C++ libraries for MSVC 2022 x64 Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-static"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-static-debug"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-static-debug-package",
+      "displayName": "Builds and packages static C++ libraries for MSVC 2022 x64 Debug",
+      "description": "This builds and packages static C++ libraries for MSVC 2022 x64 Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-static"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-static-debug"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x64-static-debug"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-shared-debug",
+      "displayName": "Builds shared C++ libraries for MSVC 2022 x64 Debug",
+      "description": "This builds shared C++ libraries for MSVC 2022 x64 Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-shared"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-shared-debug"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-shared-debug-package",
+      "displayName": "Builds and packages shared C++ libraries for MSVC 2022 x64 Debug",
+      "description": "This builds and packages shared C++ libraries for MSVC 2022 x64 Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-shared"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-shared-debug"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x64-shared-debug"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-static-tests-debug",
+      "displayName": "Builds and tests static C++ libraries for MSVC 2022 x64 Debug",
+      "description": "This builds and tests static C++ libraries for MSVC 2022 x64 Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-tests"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-tests-debug"
+        },
+        {
+          "type": "test",
+          "name": "msvc-2022-x64-tests-debug"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-static-tests-debug-package",
+      "displayName": "Builds, tests, and packages static C++ libraries for MSVC 2022 x64 Debug",
+      "description": "This builds, tests, and packages static C++ libraries for MSVC 2022 x64 Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-tests"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-tests-debug"
+        },
+        {
+          "type": "test",
+          "name": "msvc-2022-x64-tests-debug"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x64-tests-debug"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-cpp-examples-debug",
+      "displayName": "Builds C++ examples for MSVC 2022 x64 Debug",
+      "description": "This builds C++ examples for MSVC 2022 x64 Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-cpp-examples"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-cpp-examples-debug"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-python2-debug",
+      "displayName": "Builds Python2 bindings for MSVC 2022 x64 Debug",
+      "description": "This builds Python2 bindings for MSVC 2022 x64 Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-python2"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-python2-debug"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-python3-debug",
+      "displayName": "Builds Python3 bindings for MSVC 2022 x64 Debug",
+      "description": "This builds Python3 bindings for MSVC 2022 x64 Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-python3"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-python3-debug"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-csharp-debug",
+      "displayName": "Builds C# bindings for MSVC 2022 x64 Debug",
+      "description": "This builds C# bindings for MSVC 2022 x64 Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-csharp"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-csharp-debug"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-csharp-debug-package",
+      "displayName": "Builds and packages C# bindings for MSVC 2022 x64 Debug",
+      "description": "This builds and packages C# bindings for MSVC 2022 x64 Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-csharp"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-csharp-debug"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x64-csharp-debug"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-csharp-examples-debug",
+      "displayName": "Builds C# examples for MSVC 2022 x64 Debug",
+      "description": "This builds C# examples for MSVC 2022 x64 Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-csharp-examples"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-csharp-examples-debug"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-static-all-debug",
+      "displayName": "Builds all project options with static C++ library configurations for MSVC 2022 x64 Debug",
+      "description": "This builds all project options with static C++ library configurations for MSVC 2022 x64 Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-static-all"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-static-all-debug"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-static-all-debug-package",
+      "displayName": "Builds, tests, and packages all project options with static C++ library configurations for MSVC 2022 x64 Debug",
+      "description": "This builds, tests, and packages all project options with static C++ library configurations for MSVC 2022 x64 Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-static-all"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-static-all-debug"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x64-static-all-debug"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-static-tests-all-debug",
+      "displayName": "Builds and tests all project options with static C++ library configurations for MSVC 2022 x64 Debug",
+      "description": "This builds and tests all project options with static C++ library configurations for MSVC 2022 x64 Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-static-all"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-static-all-debug"
+        },
+        {
+          "type": "test",
+          "name": "msvc-2022-x64-static-all-debug"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x64-static-tests-all-debug-package",
+      "displayName": "Builds, tests, and packages all project options with static C++ library configurations for MSVC 2022 x64 Debug",
+      "description": "This builds, tests, and packages all project options with static C++ library configurations for MSVC 2022 x64 Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x64-static-all"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x64-static-all-debug"
+        },
+        {
+          "type": "test",
+          "name": "msvc-2022-x64-static-all-debug"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x64-static-all-debug"
+        }
+      ]
+    }
+  ]
+}

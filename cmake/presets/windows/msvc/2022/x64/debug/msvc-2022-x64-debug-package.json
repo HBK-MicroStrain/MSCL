@@ -1,0 +1,76 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "../msvc-2022-x64-package.json"
+  ],
+  "packagePresets": [
+    {
+      "name": "msvc-2022-x64-static-debug",
+      "displayName": "Packages static C++ libraries for MSVC 2022 x64 Debug",
+      "description": "This packages static C++ libraries for MSVC 2022 x64 Debug",
+      "inherits": [
+        "debug"
+      ],
+      "configurePreset": "msvc-2022-x64-static"
+    },
+    {
+      "name": "msvc-2022-x64-shared-debug",
+      "displayName": "Packages shared C++ libraries for MSVC 2022 x64 Debug",
+      "description": "This packages shared C++ libraries for MSVC 2022 x64 Debug",
+      "inherits": [
+        "debug"
+      ],
+      "configurePreset": "msvc-2022-x64-shared"
+    },
+    {
+      "name": "msvc-2022-x64-tests-debug",
+      "displayName": "Packages static C++ libraries with tests enabled for MSVC 2022 x64 Debug",
+      "description": "This packages static C++ libraries with tests enabled for MSVC 2022 x64 Debug",
+      "inherits": [
+        "debug"
+      ],
+      "configurePreset": "msvc-2022-x64-tests"
+    },
+    {
+      "name": "msvc-2022-x64-python2-debug",
+      "displayName": "Packages Python2 bindings for MSVC 2022 x64 Debug",
+      "description": "This packages Python2 bindings for MSVC 2022 x64 Debug",
+      "inherits": [
+        "debug"
+      ],
+      "configurePreset": "msvc-2022-x64-python2"
+    },
+    {
+      "name": "msvc-2022-x64-python3-debug",
+      "displayName": "Packages Python3 bindings for MSVC 2022 x64 Debug",
+      "description": "This packages Python3 bindings for MSVC 2022 x64 Debug",
+      "inherits": [
+        "debug"
+      ],
+      "configurePreset": "msvc-2022-x64-python3"
+    },
+    {
+      "name": "msvc-2022-x64-csharp-debug",
+      "displayName": "Packages C# bindings for MSVC 2022 x64 Debug",
+      "description": "This packages C# bindings for MSVC 2022 x64 Debug",
+      "inherits": [
+        "debug"
+      ],
+      "configurePreset": "msvc-2022-x64-csharp"
+    },
+    {
+      "name": "msvc-2022-x64-static-all-debug",
+      "displayName": "Packages all project options with static C++ library configurations for MSVC 2022 x64 Debug",
+      "description": "This packages all project options with static C++ library configurations for MSVC 2022 x64 Debug",
+      "inherits": [
+        "debug"
+      ],
+      "configurePreset": "msvc-2022-x64-static-all"
+    }
+  ]
+}

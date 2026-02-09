@@ -10,13 +10,13 @@
   ],
   "buildPresets": [
     {
-      "name": "release",
-      "configuration": "Release",
+      "name": "debug",
+      "configuration": "Debug",
       "hidden": true
     },
     {
-      "name": "debug",
-      "configuration": "Debug",
+      "name": "release",
+      "configuration": "Release",
       "hidden": true
     },
     {

@@ -12,8 +12,8 @@
   "packagePresets": [
     {
       "name": "msvc-2022-x64-static",
-      "displayName": "Packages static C++ libraries for MSVC 2022 x64 Release and Debug",
-      "description": "This packages static C++ libraries for MSVC 2022 x64 Release and Debug",
+      "displayName": "Packages static C++ libraries for MSVC 2022 x64 Debug and Release",
+      "description": "This packages static C++ libraries for MSVC 2022 x64 Debug and Release",
       "inherits": [
         "all-configurations"
       ],
@@ -21,8 +21,8 @@
     },
     {
       "name": "msvc-2022-x64-shared",
-      "displayName": "Packages shared C++ libraries for MSVC 2022 x64 Release and Debug",
-      "description": "This packages shared C++ libraries for MSVC 2022 x64 Release and Debug",
+      "displayName": "Packages shared C++ libraries for MSVC 2022 x64 Debug and Release",
+      "description": "This packages shared C++ libraries for MSVC 2022 x64 Debug and Release",
       "inherits": [
         "all-configurations"
       ],
@@ -30,8 +30,8 @@
     },
     {
       "name": "msvc-2022-x64-tests",
-      "displayName": "Packages static C++ libraries with tests enabled for MSVC 2022 x64 Release and Debug",
-      "description": "This packages static C++ libraries with tests enabled for MSVC 2022 x64 Release and Debug",
+      "displayName": "Packages static C++ libraries with tests enabled for MSVC 2022 x64 Debug and Release",
+      "description": "This packages static C++ libraries with tests enabled for MSVC 2022 x64 Debug and Release",
       "inherits": [
         "all-configurations"
       ],
@@ -66,8 +66,8 @@
     },
     {
       "name": "msvc-2022-x64-csharp",
-      "displayName": "Packages C# bindings for MSVC 2022 x64 Release and Debug",
-      "description": "This packages C# bindings for MSVC 2022 x64 Release and Debug",
+      "displayName": "Packages C# bindings for MSVC 2022 x64 Debug and Release",
+      "description": "This packages C# bindings for MSVC 2022 x64 Debug and Release",
       "inherits": [
         "all-configurations"
       ],
@@ -93,8 +93,8 @@
     },
     {
       "name": "msvc-2022-x64-static-all",
-      "displayName": "Packages all project options with static C++ library configurations for MSVC 2022 x64 Release and Debug",
-      "description": "This packages all project options with static C++ library configurations for MSVC 2022 x64 Release and Debug",
+      "displayName": "Packages all project options with static C++ library configurations for MSVC 2022 x64 Debug and Release",
+      "description": "This packages all project options with static C++ library configurations for MSVC 2022 x64 Debug and Release",
       "inherits": [
         "all-configurations"
       ],

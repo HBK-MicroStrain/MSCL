@@ -56,15 +56,6 @@
       "configurePreset": "msvc-2022-x64-python2"
     },
     {
-      "name": "msvc-2022-x64-python2-examples-release",
-      "displayName": "Builds Python2 examples for MSVC 2022 x64 Release",
-      "description": "This builds Python2 examples for MSVC 2022 x64 Release",
-      "inherits": [
-        "release"
-      ],
-      "configurePreset": "msvc-2022-x64-python2-examples"
-    },
-    {
       "name": "msvc-2022-x64-python3-release",
       "displayName": "Builds Python3 bindings for MSVC 2022 x64 Release",
       "description": "This builds Python3 bindings for MSVC 2022 x64 Release",
@@ -72,15 +63,6 @@
         "release"
       ],
       "configurePreset": "msvc-2022-x64-python3"
-    },
-    {
-      "name": "msvc-2022-x64-python3-examples-release",
-      "displayName": "Builds Python3 examples for MSVC 2022 x64 Release",
-      "description": "This builds Python3 examples for MSVC 2022 x64 Release",
-      "inherits": [
-        "release"
-      ],
-      "configurePreset": "msvc-2022-x64-python3-examples"
     },
     {
       "name": "msvc-2022-x64-csharp-release",
@@ -114,7 +96,13 @@
       "displayName": "Builds all project options with static C++ library configurations for MSVC 2022 x64 Release",
       "description": "This builds all project options with static C++ library configurations for MSVC 2022 x64 Release",
       "inherits": [
-        "release"
+        "debug",
+        "tests",
+        "cpp-examples",
+        "python3",
+        "csharp",
+        "csharp-examples",
+        "docs"
       ],
       "configurePreset": "msvc-2022-x64-static-all"
     }

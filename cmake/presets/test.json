@@ -21,19 +21,19 @@
       "hidden": true
     },
     {
-      "name": "release",
-      "inherits": [
-        "default"
-      ],
-      "configuration": "Release",
-      "hidden": true
-    },
-    {
       "name": "debug",
       "inherits": [
         "default"
       ],
       "configuration": "Debug",
+      "hidden": true
+    },
+    {
+      "name": "release",
+      "inherits": [
+        "default"
+      ],
+      "configuration": "Release",
       "hidden": true
     }
   ]
