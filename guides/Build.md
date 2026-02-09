@@ -38,8 +38,14 @@ git submodule update --recursive
 
 ### Build Steps
 
-1.  **Configure the project**:
+#### CMake Presets
 
+For a more streamlined build experience, the project supports CMake
+[Presets](https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html)
+(CMake 3.23+). Since presets are highly system-dependent, you can find more
+information on how to list and use them [here](../cmake/presets/README.md).
+
+1. **Configure the project**:
    #### Windows
 
    ```powershell
@@ -52,7 +58,7 @@ git submodule update --recursive
    cmake -S . -B build -DCMAKE_BUILD_TYPE:STRING=Release -DMSCL_BUILD_CPP_EXAMPLES:BOOL=ON
    ```
 
-2.  **Build the project**:
+2. **Build the project**:
 
    #### Windows
 
