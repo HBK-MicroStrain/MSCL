@@ -81,3 +81,37 @@ Once you have identified the preset you wish to use, you can execute it using th
   ```shell
   cmake --workflow --preset <workflow-preset-name>
   ```
+
+#### Integration with CMakePresets.json
+
+You can integrate these presets into your own `CMakePresets.json` at the project
+root by including the desired preset files. We provide various levels of
+granularity to allow you to select exactly what you need.
+
+- **Catch-all**: Include `cmake/presets/all-presets.json` to enable every
+  available preset for all supported platforms and components.
+- **Platform/Compiler Specific**: Each subdirectory contains a generic preset
+  file (e.g., `cmake/presets/windows/msvc/2022/msvc-2022.json`) that includes
+  all presets specifically for that environment.
+- **Fine-grained Control**: For even more specific needs, you can include files
+  targeting a specific architecture or preset type. Files suffixed with a preset
+  type (e.g., `msvc-2022-x64-build.json`) include only presets of that type.
+  Generally, it is recommended to include the generic file for your
+  configuration (e.g., `msvc-2022-x64.json`) to ensure all related preset types
+  (configure, build, test, etc.) are available.
+
+To use these, add an `include` field to your `CMakePresets.json`:
+
+```json
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "cmake/presets/all-presets.json"
+  ]
+}
+```

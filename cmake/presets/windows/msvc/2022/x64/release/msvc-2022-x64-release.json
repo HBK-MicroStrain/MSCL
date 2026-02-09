@@ -6,8 +6,6 @@
     "patch": 0
   },
   "include": [
-    "msvc-2022-x86-workflow.json",
-    "debug/msvc-2022-x86-debug.json",
-    "release/msvc-2022-x86-release.json"
+    "msvc-2022-x64-release-workflow.json"
   ]
 }
