@@ -3,6 +3,9 @@
 .*git-askpass
 _deps
 
+## Ignore user presets
+[Cc][Mm]ake[Uu]ser[Pp]resets.json
+
 ## Ignore any CMake generated project files
 LibVersion.h
 AssemblyInfo.cs
