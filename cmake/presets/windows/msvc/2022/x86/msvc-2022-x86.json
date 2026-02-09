@@ -1,0 +1,13 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "msvc-2022-x86-workflow.json",
+    "debug/msvc-2022-x86-debug-workflow.json",
+    "release/msvc-2022-x86-release-workflow.json"
+  ]
+}

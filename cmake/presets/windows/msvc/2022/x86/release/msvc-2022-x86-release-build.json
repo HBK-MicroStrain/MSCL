@@ -1,0 +1,110 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "../msvc-2022-x86-configure.json",
+    "../../../../windows-build.json"
+  ],
+  "buildPresets": [
+    {
+      "name": "msvc-2022-x86-static-release",
+      "displayName": "Builds static C++ libraries for MSVC 2022 x86 Release",
+      "description": "This builds static C++ libraries for MSVC 2022 x86 Release",
+      "inherits": [
+        "release"
+      ],
+      "configurePreset": "msvc-2022-x86-static"
+    },
+    {
+      "name": "msvc-2022-x86-shared-release",
+      "displayName": "Builds shared C++ libraries for MSVC 2022 x86 Release",
+      "description": "This builds shared C++ libraries for MSVC 2022 x86 Release",
+      "inherits": [
+        "release"
+      ],
+      "configurePreset": "msvc-2022-x86-shared"
+    },
+    {
+      "name": "msvc-2022-x86-tests-release",
+      "displayName": "Builds unit tests for MSVC 2022 x86 Release",
+      "description": "This builds unit tests for MSVC 2022 x86 Release",
+      "inherits": [
+        "release"
+      ],
+      "configurePreset": "msvc-2022-x86-tests"
+    },
+    {
+      "name": "msvc-2022-x86-cpp-examples-release",
+      "displayName": "Builds C++ examples for MSVC 2022 x86 Release",
+      "description": "This builds C++ examples for MSVC 2022 x86 Release",
+      "inherits": [
+        "release"
+      ],
+      "configurePreset": "msvc-2022-x86-cpp-examples"
+    },
+    {
+      "name": "msvc-2022-x86-python2-release",
+      "displayName": "Builds Python2 bindings for MSVC 2022 x86 Release",
+      "description": "This builds Python2 bindings for MSVC 2022 x86 Release",
+      "inherits": [
+        "release"
+      ],
+      "configurePreset": "msvc-2022-x86-python2"
+    },
+    {
+      "name": "msvc-2022-x86-python3-release",
+      "displayName": "Builds Python3 bindings for MSVC 2022 x86 Release",
+      "description": "This builds Python3 bindings for MSVC 2022 x86 Release",
+      "inherits": [
+        "release"
+      ],
+      "configurePreset": "msvc-2022-x86-python3"
+    },
+    {
+      "name": "msvc-2022-x86-csharp-release",
+      "displayName": "Builds C# bindings for MSVC 2022 x86 Release",
+      "description": "This builds C# bindings for MSVC 2022 x86 Release",
+      "inherits": [
+        "release"
+      ],
+      "configurePreset": "msvc-2022-x86-csharp"
+    },
+    {
+      "name": "msvc-2022-x86-csharp-examples-release",
+      "displayName": "Builds C# examples for MSVC 2022 x86 Release",
+      "description": "This builds C# examples for MSVC 2022 x86 Release",
+      "inherits": [
+        "release"
+      ],
+      "configurePreset": "msvc-2022-x86-csharp-examples"
+    },
+    {
+      "name": "msvc-2022-x86-docs-release",
+      "displayName": "Builds documentation for MSVC 2022 x86 Release",
+      "description": "This builds documentation for MSVC 2022 x86 Release",
+      "inherits": [
+        "release"
+      ],
+      "configurePreset": "msvc-2022-x86-docs"
+    },
+    {
+      "name": "msvc-2022-x86-static-all-release",
+      "displayName": "Builds all project options with static C++ library configurations for MSVC 2022 x86 Release",
+      "description": "This builds all project options with static C++ library configurations for MSVC 2022 x86 Release",
+      "inherits": [
+        "debug",
+        "tests",
+        "cpp-examples",
+        "python3",
+        "csharp",
+        "csharp-examples",
+        "docs"
+      ],
+      "configurePreset": "msvc-2022-x86-static-all"
+    }
+  ]
+}

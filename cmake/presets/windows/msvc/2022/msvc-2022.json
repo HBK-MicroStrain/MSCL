@@ -6,6 +6,7 @@
     "patch": 0
   },
   "include": [
-    "x64/msvc-2022-x64.json"
+    "x64/msvc-2022-x64.json",
+    "x86/msvc-2022-x86.json"
   ]
 }

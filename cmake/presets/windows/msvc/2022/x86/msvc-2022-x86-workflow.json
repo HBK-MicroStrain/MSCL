@@ -1,0 +1,488 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "debug/msvc-2022-x86-debug-build.json",
+    "debug/msvc-2022-x86-debug-test.json",
+    "debug/msvc-2022-x86-debug-package.json",
+    "release/msvc-2022-x86-release-build.json",
+    "release/msvc-2022-x86-release-test.json",
+    "release/msvc-2022-x86-release-package.json"
+  ],
+  "workflowPresets": [
+    {
+      "name": "msvc-2022-x86-static",
+      "displayName": "Builds static C++ libraries for MSVC 2022 x86 Debug and Release",
+      "description": "This builds static C++ libraries for MSVC 2022 x86 Debug and Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x86-static"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-static-debug"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-static-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-static-package",
+      "displayName": "Builds and packages static C++ libraries for MSVC 2022 x86 Debug and Release",
+      "description": "This builds and packages static C++ libraries for MSVC 2022 x86 Debug and Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x86-static"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-static-debug"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-static-release"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x86-static"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-shared",
+      "displayName": "Builds shared C++ libraries for MSVC 2022 x86 Debug and Release",
+      "description": "This builds shared C++ libraries for MSVC 2022 x86 Debug and Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x86-shared"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-shared-debug"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-shared-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-shared-package",
+      "displayName": "Builds and packages shared C++ libraries for MSVC 2022 x86 Debug and Release",
+      "description": "This builds and packages shared C++ libraries for MSVC 2022 x86 Debug and Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x86-shared"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-shared-debug"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-shared-release"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x86-shared"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-static-tests",
+      "displayName": "Builds and tests static C++ libraries for MSVC 2022 x86 Debug and Release",
+      "description": "This builds and tests static C++ libraries for MSVC 2022 x86 Debug and Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x86-tests"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-tests-debug"
+        },
+        {
+          "type": "test",
+          "name": "msvc-2022-x86-tests-debug"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-tests-release"
+        },
+        {
+          "type": "test",
+          "name": "msvc-2022-x86-tests-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-static-tests-package",
+      "displayName": "Builds, tests, and packages static C++ libraries for MSVC 2022 x86 Debug and Release",
+      "description": "This builds, tests, and packages static C++ libraries for MSVC 2022 x86 Debug and Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x86-tests"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-tests-debug"
+        },
+        {
+          "type": "test",
+          "name": "msvc-2022-x86-tests-debug"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-tests-release"
+        },
+        {
+          "type": "test",
+          "name": "msvc-2022-x86-tests-release"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x86-tests"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-cpp-examples",
+      "displayName": "Builds C++ examples for MSVC 2022 x86 Debug and Release",
+      "description": "This builds C++ examples for MSVC 2022 x86 Debug and Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x86-cpp-examples"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-cpp-examples-debug"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-cpp-examples-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-cpp-examples-package",
+      "displayName": "Builds and packages C++ examples for MSVC 2022 x86 Debug and Release",
+      "description": "This builds and packages C++ examples for MSVC 2022 x86 Debug and Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x86-cpp-examples"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-cpp-examples-debug"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-cpp-examples-release"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x86-cpp-examples"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-python2",
+      "displayName": "Builds Python2 bindings for MSVC 2022 x86 Debug and Release",
+      "description": "This builds Python2 bindings for MSVC 2022 x86 Debug and Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x86-python2"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-python2-debug"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-python2-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-python2-examples-package",
+      "displayName": "Packages Python2 examples for MSVC 2022 x86",
+      "description": "This packages Python2 examples for MSVC 2022 x86",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x86-python2-examples"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x86-python2-examples"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-python3",
+      "displayName": "Builds Python3 bindings for MSVC 2022 x86 Debug and Release",
+      "description": "This builds Python3 bindings for MSVC 2022 x86 Debug and Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x86-python3"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-python3-debug"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-python3-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-python3-examples-package",
+      "displayName": "Packages Python3 examples for MSVC 2022 x86",
+      "description": "This packages Python3 examples for MSVC 2022 x86",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x86-python3-examples"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x86-python3-examples"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-csharp",
+      "displayName": "Builds C# bindings for MSVC 2022 x86 Debug and Release",
+      "description": "This builds C# bindings for MSVC 2022 x86 Debug and Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x86-csharp"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-csharp-debug"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-csharp-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-csharp-package",
+      "displayName": "Builds and packages C# bindings for MSVC 2022 x86 Debug and Release",
+      "description": "This builds and packages C# bindings for MSVC 2022 x86 Debug and Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x86-csharp"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-csharp-debug"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-csharp-release"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x86-csharp"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-csharp-examples",
+      "displayName": "Builds C# examples for MSVC 2022 x86 Debug and Release",
+      "description": "This builds C# examples for MSVC 2022 x86 Debug and Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x86-csharp-examples"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-csharp-examples-debug"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-csharp-examples-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-csharp-examples-package",
+      "displayName": "Builds and packages C# examples for MSVC 2022 x86 Debug and Release",
+      "description": "This builds and packages C# examples for MSVC 2022 x86 Debug and Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x86-csharp-examples"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-csharp-examples-debug"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-csharp-examples-release"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x86-csharp-examples"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-docs",
+      "displayName": "Builds documentation for MSVC 2022 x86",
+      "description": "This builds documentation for MSVC 2022 x86",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x86-docs"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-docs-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-docs-package",
+      "displayName": "Builds and packages documentation for MSVC 2022 x86",
+      "description": "This builds and packages documentation for MSVC 2022 x86",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x86-docs"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-docs-release"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x86-docs"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-static-all",
+      "displayName": "Builds all project options with static C++ library configurations for MSVC 2022 x86 Debug and Release",
+      "description": "This builds all project options with static C++ library configurations for MSVC 2022 x86 Debug and Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x86-static-all"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-static-all-debug"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-static-all-release"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-static-all-package",
+      "displayName": "Builds and packages all project options with static C++ library configurations for MSVC 2022 x86 Debug and Release",
+      "description": "This builds and packages all project options with static C++ library configurations for MSVC 2022 x86 Debug and Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x86-static-all"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-static-all-debug"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-static-all-release"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x86-static-all"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-static-tests-all",
+      "displayName": "Builds and tests all project options with static C++ library configurations for MSVC 2022 x86 Debug and Release",
+      "description": "This builds and tests all project options with static C++ library configurations for MSVC 2022 x86 Debug and Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x86-static-all"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-static-all-release"
+        },
+        {
+          "type": "test",
+          "name": "msvc-2022-x86-static-all-release"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-static-all-debug"
+        },
+        {
+          "type": "test",
+          "name": "msvc-2022-x86-static-all-debug"
+        }
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-static-tests-all-package",
+      "displayName": "Builds, tests, and packages all project options with static C++ library configurations for MSVC 2022 x86 Debug and Release",
+      "description": "This builds, tests, and packages all project options with static C++ library configurations for MSVC 2022 x86 Debug and Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "msvc-2022-x86-static-all"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-static-all-debug"
+        },
+        {
+          "type": "test",
+          "name": "msvc-2022-x86-static-all-debug"
+        },
+        {
+          "type": "build",
+          "name": "msvc-2022-x86-static-all-release"
+        },
+        {
+          "type": "test",
+          "name": "msvc-2022-x86-static-all-release"
+        },
+        {
+          "type": "package",
+          "name": "msvc-2022-x86-static-all"
+        }
+      ]
+    }
+  ]
+}

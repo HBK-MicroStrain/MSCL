@@ -1,0 +1,133 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "../msvc-2022-configure.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "msvc-2022-x86",
+      "displayName": "MSVC 2022 x86",
+      "description": "This configuration sets the MSVC 2022 x86 build environment",
+      "inherits": [
+        "msvc-2022",
+        "msvc-x86"
+      ],
+      "environment": {
+        "MICROSTRAIN_BUILD_SUBDIR": "msvc/2022/x86"
+      },
+      "hidden": true
+    },
+    {
+      "name": "msvc-2022-x86-static",
+      "displayName": "Enables static C++ libraries for MSVC 2022 x86",
+      "description": "This configuration enables static C++ libraries for MSVC 2022 x86",
+      "inherits": [
+        "msvc-2022-x86"
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-shared",
+      "displayName": "Enables shared C++ libraries for MSVC 2022 x86",
+      "description": "This configuration enables shared C++ libraries for MSVC 2022 x86",
+      "inherits": [
+        "msvc-2022-x86",
+        "shared"
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-tests",
+      "displayName": "Enables unit tests for MSVC 2022 x86",
+      "description": "This configuration enables unit tests for MSVC 2022 x86",
+      "inherits": [
+        "msvc-2022-x86",
+        "tests"
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-cpp-examples",
+      "displayName": "Enables C++ examples for MSVC 2022 x86",
+      "description": "This configuration enables C++ examples for MSVC 2022 x86",
+      "inherits": [
+        "msvc-2022-x86",
+        "cpp-examples"
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-python2",
+      "displayName": "Enables Python2 bindings for MSVC 2022 x86",
+      "description": "This configuration enables Python2 bindings for MSVC 2022 x86",
+      "inherits": [
+        "msvc-2022-x86",
+        "python2"
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-python2-examples",
+      "displayName": "Enables Python2 examples for MSVC 2022 x86",
+      "description": "This configuration enables Python2 examples for MSVC 2022 x86",
+      "inherits": [
+        "msvc-2022-x86",
+        "python2-examples"
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-python3",
+      "displayName": "Enables Python3 bindings for MSVC 2022 x86",
+      "description": "This configuration enables Python3 bindings for MSVC 2022 x86",
+      "inherits": [
+        "msvc-2022-x86",
+        "python3"
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-python3-examples",
+      "displayName": "Enables Python3 examples for MSVC 2022 x86",
+      "description": "This configuration enables Python3 examples for MSVC 2022 x86",
+      "inherits": [
+        "msvc-2022-x86",
+        "python3-examples"
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-csharp",
+      "displayName": "Enables C# bindings for MSVC 2022 x86",
+      "description": "This configuration enables C# bindings for MSVC 2022 x86",
+      "inherits": [
+        "msvc-2022-x86",
+        "csharp"
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-csharp-examples",
+      "displayName": "Enables C# examples for MSVC 2022 x86",
+      "description": "This configuration enables C# examples for MSVC 2022 x86",
+      "inherits": [
+        "msvc-2022-x86",
+        "csharp-examples"
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-docs",
+      "displayName": "Enables documentation for MSVC 2022 x86",
+      "description": "This configuration enables documentation for MSVC 2022 x86",
+      "inherits": [
+        "msvc-2022-x86",
+        "docs"
+      ]
+    },
+    {
+      "name": "msvc-2022-x86-static-all",
+      "displayName": "Enables all project options with static C++ library configurations for MSVC 2022 x86",
+      "description": "This configuration enables all project options with static C++ library configurations for MSVC 2022 x86",
+      "inherits": [
+        "msvc-2022-x86",
+        "windows-static-all"
+      ]
+    }
+  ]
+}

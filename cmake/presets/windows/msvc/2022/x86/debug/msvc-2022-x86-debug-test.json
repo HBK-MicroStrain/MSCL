@@ -1,0 +1,32 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "../msvc-2022-x86-configure.json",
+    "../../../../../test.json"
+  ],
+  "testPresets": [
+    {
+      "name": "msvc-2022-x86-tests-debug",
+      "displayName": "Runs unit tests for MSVC 2022 x86 Debug",
+      "description": "This runs unit tests for MSVC 2022 x86 Debug",
+      "inherits": [
+        "debug"
+      ],
+      "configurePreset": "msvc-2022-x86-tests"
+    },
+    {
+      "name": "msvc-2022-x86-static-all-debug",
+      "displayName": "Enables test support when all project options with static C++ library configurations are needed for MSVC 2022 x86 Debug",
+      "description": "This enables test support for all project options with static C++ library configurations for MSVC 2022 x86 Debug",
+      "inherits": [
+        "debug"
+      ],
+      "configurePreset": "msvc-2022-x86-static-all"
+    }
+  ]
+}
