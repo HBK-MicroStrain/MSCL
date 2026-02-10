@@ -6,12 +6,11 @@
     "patch": 0
   },
   "include": [
+    "msvc-2022-x64-package.json",
     "debug/msvc-2022-x64-debug-build.json",
     "debug/msvc-2022-x64-debug-test.json",
-    "debug/msvc-2022-x64-debug-package.json",
     "release/msvc-2022-x64-release-build.json",
-    "release/msvc-2022-x64-release-test.json",
-    "release/msvc-2022-x64-release-package.json"
+    "release/msvc-2022-x64-release-test.json"
   ],
   "workflowPresets": [
     {
