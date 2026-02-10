@@ -1,0 +1,28 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "unix-configure.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "unix-release",
+      "displayName": "Unix Makefiles Release",
+      "description": "This configuration sets the Unix Makefiles release build environment",
+      "inherits": [
+        "unix"
+      ],
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": {
+          "type": "STRING",
+          "value": "Release"
+        }
+      },
+      "hidden": true
+    }
+  ]
+}

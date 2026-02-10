@@ -18,36 +18,6 @@
       ],
       "generator": "Unix Makefiles",
       "hidden": true
-    },
-    {
-      "name": "unix-debug",
-      "displayName": "Unix Makefiles Debug",
-      "description": "This configuration sets the Unix Makefiles debug build environment",
-      "inherits": [
-        "unix"
-      ],
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": {
-          "type": "STRING",
-          "value": "Debug"
-        }
-      },
-      "hidden": true
-    },
-    {
-      "name": "unix-release",
-      "displayName": "Unix Makefiles Release",
-      "description": "This configuration sets the Unix Makefiles release build environment",
-      "inherits": [
-        "unix"
-      ],
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": {
-          "type": "STRING",
-          "value": "Release"
-        }
-      },
-      "hidden": true
     }
   ]
 }

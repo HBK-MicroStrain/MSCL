@@ -1,0 +1,28 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "unix-configure.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "unix-debug",
+      "displayName": "Unix Makefiles Debug",
+      "description": "This configuration sets the Unix Makefiles debug build environment",
+      "inherits": [
+        "unix"
+      ],
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": {
+          "type": "STRING",
+          "value": "Debug"
+        }
+      },
+      "hidden": true
+    }
+  ]
+}

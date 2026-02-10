@@ -6,13 +6,25 @@
     "patch": 0
   },
   "include": [
-    "../unix-host-configure.json"
+    "../../unix-release-configure.json"
   ],
   "configurePresets": [
     {
+      "name": "unix-host-release",
+      "displayName": "Unix host release build environment",
+      "description": "This configuration sets the host Unix release build environment",
+      "inherits": [
+        "unix-release"
+      ],
+      "environment": {
+        "MICROSTRAIN_BUILD_SUBDIR": "unix/host/release"
+      },
+      "hidden": true
+    },
+    {
       "name": "unix-host-static-release",
-      "displayName": "Enables static C++ libraries for host Unix Release",
-      "description": "This configuration enables static C++ libraries for host Unix Release",
+      "displayName": "Enables static C++ libraries for Unix Release",
+      "description": "This enables static C++ libraries for Unix Release",
       "inherits": [
         "unix-host-release",
         "static"
@@ -20,8 +32,8 @@
     },
     {
       "name": "unix-host-shared-release",
-      "displayName": "Enables shared C++ libraries for host Unix Release",
-      "description": "This configuration enables shared C++ libraries for host Unix Release",
+      "displayName": "Enables shared C++ libraries for Unix Release",
+      "description": "This enables shared C++ libraries for Unix Release",
       "inherits": [
         "unix-host-release",
         "shared"
@@ -29,8 +41,8 @@
     },
     {
       "name": "unix-host-tests-release",
-      "displayName": "Enables unit tests for host Unix Release",
-      "description": "This configuration enables unit tests for host Unix Release",
+      "displayName": "Enables unit tests for Unix Release",
+      "description": "This enables unit tests for Unix Release",
       "inherits": [
         "unix-host-release",
         "tests"
@@ -38,8 +50,8 @@
     },
     {
       "name": "unix-host-cpp-examples-release",
-      "displayName": "Enables C++ examples for host Unix Release",
-      "description": "This configuration enables C++ examples for host Unix Release",
+      "displayName": "Enables C++ examples for Unix Release",
+      "description": "This enables C++ examples for Unix Release",
       "inherits": [
         "unix-host-release",
         "cpp-examples"
@@ -47,8 +59,8 @@
     },
     {
       "name": "unix-host-python2-release",
-      "displayName": "Enables Python2 bindings for host Unix Release",
-      "description": "This configuration enables Python2 bindings for host Unix Release",
+      "displayName": "Enables Python2 bindings for Unix Release",
+      "description": "This enables Python2 bindings for Unix Release",
       "inherits": [
         "unix-host-release",
         "python2"
@@ -56,8 +68,8 @@
     },
     {
       "name": "unix-host-python3-release",
-      "displayName": "Enables Python3 bindings for host Unix Release",
-      "description": "This configuration enables Python3 bindings for host Unix Release",
+      "displayName": "Enables Python3 bindings for Unix Release",
+      "description": "This enables Python3 bindings for Unix Release",
       "inherits": [
         "unix-host-release",
         "python3"
@@ -65,8 +77,8 @@
     },
     {
       "name": "unix-host-static-all-release",
-      "displayName": "Enables all project options with static C++ library configurations for host Unix Release",
-      "description": "This configuration enables all project options with static C++ library configurations for host Unix Release",
+      "displayName": "Enables all project options with static C++ library configurations for Unix Release",
+      "description": "This enables all project options with static C++ library configurations for Unix Release",
       "inherits": [
         "unix-host-release",
         "static-all"
