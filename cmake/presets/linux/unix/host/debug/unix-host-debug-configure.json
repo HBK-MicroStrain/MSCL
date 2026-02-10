@@ -23,8 +23,8 @@
     },
     {
       "name": "unix-host-static-debug",
-      "displayName": "Enables static C++ libraries for Unix Debug",
-      "description": "This enables static C++ libraries for Unix Debug",
+      "displayName": "Enables static C++ libraries for host Unix Debug",
+      "description": "This enables static C++ libraries for host Unix Debug",
       "inherits": [
         "unix-host-debug",
         "static"
@@ -32,8 +32,8 @@
     },
     {
       "name": "unix-host-shared-debug",
-      "displayName": "Enables shared C++ libraries for Unix Debug",
-      "description": "This enables shared C++ libraries for Unix Debug",
+      "displayName": "Enables shared C++ libraries for host Unix Debug",
+      "description": "This enables shared C++ libraries for host Unix Debug",
       "inherits": [
         "unix-host-debug",
         "shared"
@@ -41,8 +41,8 @@
     },
     {
       "name": "unix-host-tests-debug",
-      "displayName": "Enables unit tests for Unix Debug",
-      "description": "This enables unit tests for Unix Debug",
+      "displayName": "Enables unit tests for host Unix Debug",
+      "description": "This enables unit tests for host Unix Debug",
       "inherits": [
         "unix-host-debug",
         "tests"
@@ -50,8 +50,8 @@
     },
     {
       "name": "unix-host-cpp-examples-debug",
-      "displayName": "Enables C++ examples for Unix Debug",
-      "description": "This enables C++ examples for Unix Debug",
+      "displayName": "Enables C++ examples for host Unix Debug",
+      "description": "This enables C++ examples for host Unix Debug",
       "inherits": [
         "unix-host-debug",
         "cpp-examples"
@@ -59,8 +59,8 @@
     },
     {
       "name": "unix-host-python2-debug",
-      "displayName": "Enables Python2 bindings for Unix Debug",
-      "description": "This enables Python2 bindings for Unix Debug",
+      "displayName": "Enables Python2 bindings for host Unix Debug",
+      "description": "This enables Python2 bindings for host Unix Debug",
       "inherits": [
         "unix-host-debug",
         "python2"
@@ -68,8 +68,8 @@
     },
     {
       "name": "unix-host-python3-debug",
-      "displayName": "Enables Python3 bindings for Unix Debug",
-      "description": "This enables Python3 bindings for Unix Debug",
+      "displayName": "Enables Python3 bindings for host Unix Debug",
+      "description": "This enables Python3 bindings for host Unix Debug",
       "inherits": [
         "unix-host-debug",
         "python3"
@@ -77,8 +77,8 @@
     },
     {
       "name": "unix-host-static-all-debug",
-      "displayName": "Enables all project options with static C++ library configurations for Unix Debug",
-      "description": "This enables all project options with static C++ library configurations for Unix Debug",
+      "displayName": "Enables all project options with static C++ library configurations for host Unix Debug",
+      "description": "This enables all project options with static C++ library configurations for host Unix Debug",
       "inherits": [
         "unix-host-debug",
         "static-all"
