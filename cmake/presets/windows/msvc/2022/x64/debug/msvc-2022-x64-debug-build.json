@@ -87,12 +87,7 @@
       "displayName": "Builds all project options with static C++ library configurations for MSVC 2022 x64 Debug",
       "description": "This builds all project options with static C++ library configurations for MSVC 2022 x64 Debug",
       "inherits": [
-        "msvc-debug",
-        "tests",
-        "cpp-examples",
-        "python3",
-        "csharp",
-        "csharp-examples"
+        "msvc-debug"
       ],
       "configurePreset": "msvc-2022-x64-static-all"
     }
