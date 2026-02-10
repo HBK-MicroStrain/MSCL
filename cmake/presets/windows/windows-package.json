@@ -1,0 +1,35 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "windows-configure.json",
+    "../package.json"
+  ],
+  "packagePresets": [
+    {
+      "name": "windows",
+      "displayName": "Creates a Windows package",
+      "description": "This creates a Windows package",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      },
+      "hidden": true
+    },
+    {
+      "name": "windows-all-configurations",
+      "displayName": "Creates a Windows debug and release package",
+      "description": "This creates a Windows debug and release package",
+      "inherits": [
+        "windows",
+        "all-configurations"
+      ],
+      "hidden": true
+    }
+  ]
+}

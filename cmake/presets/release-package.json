@@ -1,0 +1,23 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "package.json"
+  ],
+  "packagePresets": [
+    {
+      "name": "release",
+      "displayName": "Release packages",
+      "description": "This creates release packages",
+      "packageDirectory": "${sourceDir}/packages/release",
+      "configurations": [
+        "Release"
+      ],
+      "hidden": true
+    }
+  ]
+}

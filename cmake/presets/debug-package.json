@@ -1,0 +1,23 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "package.json"
+  ],
+  "packagePresets": [
+    {
+      "name": "debug",
+      "displayName": "Debug packages",
+      "description": "This creates debug packages",
+      "packageDirectory": "${sourceDir}/packages/debug",
+      "configurations": [
+        "Debug"
+      ],
+      "hidden": true
+    }
+  ]
+}

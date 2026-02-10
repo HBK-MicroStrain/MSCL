@@ -1,0 +1,24 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "windows-package.json",
+    "../release-package.json"
+  ],
+  "packagePresets": [
+    {
+      "name": "windows-release",
+      "displayName": "Creates a Windows release package",
+      "description": "This creates a Windows release package",
+      "inherits": [
+        "windows",
+        "release"
+      ],
+      "hidden": true
+    }
+  ]
+}

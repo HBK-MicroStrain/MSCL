@@ -7,7 +7,7 @@
   },
   "include": [
     "msvc-2022-x86-configure.json",
-    "../../../../package.json"
+    "../../../windows-package.json"
   ],
   "packagePresets": [
     {
@@ -15,7 +15,7 @@
       "displayName": "Packages static C++ libraries for MSVC 2022 x86 Debug and Release",
       "description": "This packages static C++ libraries for MSVC 2022 x86 Debug and Release",
       "inherits": [
-        "all-configurations"
+        "windows-all-configurations"
       ],
       "configurePreset": "msvc-2022-x86-static"
     },
@@ -24,7 +24,7 @@
       "displayName": "Packages shared C++ libraries for MSVC 2022 x86 Debug and Release",
       "description": "This packages shared C++ libraries for MSVC 2022 x86 Debug and Release",
       "inherits": [
-        "all-configurations"
+        "windows-all-configurations"
       ],
       "configurePreset": "msvc-2022-x86-shared"
     },
@@ -33,7 +33,7 @@
       "displayName": "Packages static C++ libraries with tests enabled for MSVC 2022 x86 Debug and Release",
       "description": "This packages static C++ libraries with tests enabled for MSVC 2022 x86 Debug and Release",
       "inherits": [
-        "all-configurations"
+        "windows-all-configurations"
       ],
       "configurePreset": "msvc-2022-x86-tests"
     },
@@ -42,7 +42,7 @@
       "displayName": "Packages C++ examples for MSVC 2022 x86",
       "description": "This packages C++ examples for MSVC 2022 x86",
       "inherits": [
-        "default"
+        "windows-all-configurations"
       ],
       "configurePreset": "msvc-2022-x86-cpp-examples"
     },
@@ -51,7 +51,7 @@
       "displayName": "Packages Python2 examples for MSVC 2022 x86",
       "description": "This packages Python2 examples for MSVC 2022 x86",
       "inherits": [
-        "default"
+        "windows-all-configurations"
       ],
       "configurePreset": "msvc-2022-x86-python2-examples"
     },
@@ -60,7 +60,7 @@
       "displayName": "Packages Python3 examples for MSVC 2022 x86",
       "description": "This packages Python3 examples for MSVC 2022 x86",
       "inherits": [
-        "default"
+        "windows-all-configurations"
       ],
       "configurePreset": "msvc-2022-x86-python3-examples"
     },
@@ -69,7 +69,7 @@
       "displayName": "Packages C# bindings for MSVC 2022 x86 Debug and Release",
       "description": "This packages C# bindings for MSVC 2022 x86 Debug and Release",
       "inherits": [
-        "all-configurations"
+        "windows-all-configurations"
       ],
       "configurePreset": "msvc-2022-x86-csharp"
     },
@@ -78,7 +78,7 @@
       "displayName": "Packages C# examples for MSVC 2022 x86",
       "description": "This packages C# examples for MSVC 2022 x86",
       "inherits": [
-        "default"
+        "windows-all-configurations"
       ],
       "configurePreset": "msvc-2022-x86-csharp-examples"
     },
@@ -87,7 +87,7 @@
       "displayName": "Packages documentation for MSVC 2022 x86",
       "description": "This packages documentation for MSVC 2022 x86",
       "inherits": [
-        "default"
+        "windows-all-configurations"
       ],
       "configurePreset": "msvc-2022-x86-docs"
     },
@@ -96,7 +96,7 @@
       "displayName": "Packages all project options with static C++ library configurations for MSVC 2022 x86 Debug and Release",
       "description": "This packages all project options with static C++ library configurations for MSVC 2022 x86 Debug and Release",
       "inherits": [
-        "all-configurations"
+        "windows-all-configurations"
       ],
       "configurePreset": "msvc-2022-x86-static-all"
     }

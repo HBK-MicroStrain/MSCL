@@ -6,7 +6,8 @@
     "patch": 0
   },
   "include": [
-    "../msvc-2022-x64-package.json"
+    "../msvc-2022-x64-configure.json",
+    "../../../../windows-release-package.json"
   ],
   "packagePresets": [
     {
@@ -14,7 +15,7 @@
       "displayName": "Packages static C++ libraries for MSVC 2022 x64 Release",
       "description": "This packages static C++ libraries for MSVC 2022 x64 Release",
       "inherits": [
-        "release"
+        "windows-release"
       ],
       "configurePreset": "msvc-2022-x64-static"
     },
@@ -23,7 +24,7 @@
       "displayName": "Packages shared C++ libraries for MSVC 2022 x64 Release",
       "description": "This packages shared C++ libraries for MSVC 2022 x64 Release",
       "inherits": [
-        "release"
+        "windows-release"
       ],
       "configurePreset": "msvc-2022-x64-shared"
     },
@@ -32,7 +33,7 @@
       "displayName": "Packages static C++ libraries with tests enabled for MSVC 2022 x64 Release",
       "description": "This packages static C++ libraries with tests enabled for MSVC 2022 x64 Release",
       "inherits": [
-        "release"
+        "windows-release"
       ],
       "configurePreset": "msvc-2022-x64-tests"
     },
@@ -41,7 +42,7 @@
       "displayName": "Packages Python2 bindings for MSVC 2022 x64 Release",
       "description": "This packages Python2 bindings for MSVC 2022 x64 Release",
       "inherits": [
-        "release"
+        "windows-release"
       ],
       "configurePreset": "msvc-2022-x64-python2"
     },
@@ -50,7 +51,7 @@
       "displayName": "Packages Python3 bindings for MSVC 2022 x64 Release",
       "description": "This packages Python3 bindings for MSVC 2022 x64 Release",
       "inherits": [
-        "release"
+        "windows-release"
       ],
       "configurePreset": "msvc-2022-x64-python3"
     },
@@ -59,7 +60,7 @@
       "displayName": "Packages C# bindings for MSVC 2022 x64 Release",
       "description": "This packages C# bindings for MSVC 2022 x64 Release",
       "inherits": [
-        "release"
+        "windows-release"
       ],
       "configurePreset": "msvc-2022-x64-csharp"
     },
@@ -68,7 +69,7 @@
       "displayName": "Packages all project options with static C++ library configurations for MSVC 2022 x64 Release",
       "description": "This packages all project options with static C++ library configurations for MSVC 2022 x64 Release",
       "inherits": [
-        "release"
+        "windows-release"
       ],
       "configurePreset": "msvc-2022-x64-static-all"
     }
