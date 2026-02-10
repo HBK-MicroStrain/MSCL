@@ -1,0 +1,25 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "../configure.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "linux",
+      "displayName": "Linux only configuration",
+      "description": "This configuration is only available on Linux",
+      "inherits": "default",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      },
+      "hidden": true
+    }
+  ]
+}

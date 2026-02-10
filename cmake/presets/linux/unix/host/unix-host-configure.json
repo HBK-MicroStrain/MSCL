@@ -1,0 +1,37 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "../unix-configure.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "unix-host-debug",
+      "displayName": "Unix Makefiles Host Debug",
+      "description": "This configuration sets the host Unix debug build environment",
+      "inherits": [
+        "unix-debug"
+      ],
+      "environment": {
+        "MICROSTRAIN_BUILD_SUBDIR": "unix/host/debug"
+      },
+      "hidden": true
+    },
+    {
+      "name": "unix-host-release",
+      "displayName": "Unix Makefiles Host Release",
+      "description": "This configuration sets the host Unix release build environment",
+      "inherits": [
+        "unix-release"
+      ],
+      "environment": {
+        "MICROSTRAIN_BUILD_SUBDIR": "unix/host/release"
+      },
+      "hidden": true
+    }
+  ]
+}

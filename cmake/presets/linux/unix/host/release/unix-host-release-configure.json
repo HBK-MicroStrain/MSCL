@@ -1,0 +1,75 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "../unix-host-configure.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "unix-host-static-release",
+      "displayName": "Enables static C++ libraries for host Unix Release",
+      "description": "This configuration enables static C++ libraries for host Unix Release",
+      "inherits": [
+        "unix-host-release"
+      ]
+    },
+    {
+      "name": "unix-host-shared-release",
+      "displayName": "Enables shared C++ libraries for host Unix Release",
+      "description": "This configuration enables shared C++ libraries for host Unix Release",
+      "inherits": [
+        "unix-host-release",
+        "shared"
+      ]
+    },
+    {
+      "name": "unix-host-tests-release",
+      "displayName": "Enables unit tests for host Unix Release",
+      "description": "This configuration enables unit tests for host Unix Release",
+      "inherits": [
+        "unix-host-release",
+        "tests"
+      ]
+    },
+    {
+      "name": "unix-host-cpp-examples-release",
+      "displayName": "Enables C++ examples for host Unix Release",
+      "description": "This configuration enables C++ examples for host Unix Release",
+      "inherits": [
+        "unix-host-release",
+        "cpp-examples"
+      ]
+    },
+    {
+      "name": "unix-host-python2-release",
+      "displayName": "Enables Python2 bindings for host Unix Release",
+      "description": "This configuration enables Python2 bindings for host Unix Release",
+      "inherits": [
+        "unix-host-release",
+        "python2"
+      ]
+    },
+    {
+      "name": "unix-host-python3-release",
+      "displayName": "Enables Python3 bindings for host Unix Release",
+      "description": "This configuration enables Python3 bindings for host Unix Release",
+      "inherits": [
+        "unix-host-release",
+        "python3"
+      ]
+    },
+    {
+      "name": "unix-host-static-all-release",
+      "displayName": "Enables all project options with static C++ library configurations for host Unix Release",
+      "description": "This configuration enables all project options with static C++ library configurations for host Unix Release",
+      "inherits": [
+        "unix-host-release",
+        "static-all"
+      ]
+    }
+  ]
+}

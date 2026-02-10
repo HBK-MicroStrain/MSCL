@@ -1,0 +1,75 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "../unix-host-configure.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "unix-host-static-debug",
+      "displayName": "Enables static C++ libraries for host Unix Debug",
+      "description": "This configuration enables static C++ libraries for host Unix Debug",
+      "inherits": [
+        "unix-host-debug"
+      ]
+    },
+    {
+      "name": "unix-host-shared-debug",
+      "displayName": "Enables shared C++ libraries for host Unix Debug",
+      "description": "This configuration enables shared C++ libraries for host Unix Debug",
+      "inherits": [
+        "unix-host-debug",
+        "shared"
+      ]
+    },
+    {
+      "name": "unix-host-tests-debug",
+      "displayName": "Enables unit tests for host Unix Debug",
+      "description": "This configuration enables unit tests for host Unix Debug",
+      "inherits": [
+        "unix-host-debug",
+        "tests"
+      ]
+    },
+    {
+      "name": "unix-host-cpp-examples-debug",
+      "displayName": "Enables C++ examples for host Unix Debug",
+      "description": "This configuration enables C++ examples for host Unix Debug",
+      "inherits": [
+        "unix-host-debug",
+        "cpp-examples"
+      ]
+    },
+    {
+      "name": "unix-host-python2-debug",
+      "displayName": "Enables Python2 bindings for host Unix Debug",
+      "description": "This configuration enables Python2 bindings for host Unix Debug",
+      "inherits": [
+        "unix-host-debug",
+        "python2"
+      ]
+    },
+    {
+      "name": "unix-host-python3-debug",
+      "displayName": "Enables Python3 bindings for host Unix Debug",
+      "description": "This configuration enables Python3 bindings for host Unix Debug",
+      "inherits": [
+        "unix-host-debug",
+        "python3"
+      ]
+    },
+    {
+      "name": "unix-host-static-all-debug",
+      "displayName": "Enables all project options with static C++ library configurations for host Unix Debug",
+      "description": "This configuration enables all project options with static C++ library configurations for host Unix Debug",
+      "inherits": [
+        "unix-host-debug",
+        "static-all"
+      ]
+    }
+  ]
+}

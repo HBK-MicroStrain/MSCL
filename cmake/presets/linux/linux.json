@@ -6,7 +6,6 @@
     "patch": 0
   },
   "include": [
-    "windows/windows.json",
-    "linux/linux.json"
+    "unix/unix.json"
   ]
 }
