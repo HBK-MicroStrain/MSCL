@@ -6,6 +6,6 @@
     "patch": 0
   },
   "include": [
-    "unix-host-release-configure.json"
+    "unix-host-release-build.json"
   ]
 }

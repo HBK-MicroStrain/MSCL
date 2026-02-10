@@ -1,0 +1,25 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "linux-configure.json",
+    "../build.json"
+  ],
+  "buildPresets": [
+    {
+      "name": "linux",
+      "displayName": "Linux only build",
+      "description": "This build is only available on Linux",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      },
+      "hidden": true
+    }
+  ]
+}

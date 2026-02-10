@@ -1,0 +1,84 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "unix-host-debug-configure.json",
+    "../../../linux-build.json"
+  ],
+  "buildPresets": [
+    {
+      "name": "unix-host-static-debug",
+      "displayName": "Builds static C++ libraries for host Unix Debug",
+      "description": "This builds static C++ libraries for host Unix Debug",
+      "inherits": [
+        "linux",
+        "static"
+      ],
+      "configurePreset": "unix-host-static-debug"
+    },
+    {
+      "name": "unix-host-shared-debug",
+      "displayName": "Builds shared C++ libraries for host Unix Debug",
+      "description": "This builds shared C++ libraries for host Unix Debug",
+      "inherits": [
+        "linux",
+        "static"
+      ],
+      "configurePreset": "unix-host-shared-debug"
+    },
+    {
+      "name": "unix-host-tests-debug",
+      "displayName": "Builds unit tests for host Unix Debug",
+      "description": "This builds unit tests for host Unix Debug",
+      "inherits": [
+        "linux",
+        "tests"
+      ],
+      "configurePreset": "unix-host-tests-debug"
+    },
+    {
+      "name": "unix-host-cpp-examples-debug",
+      "displayName": "Builds C++ examples for host Unix Debug",
+      "description": "This builds C++ examples for host Unix Debug",
+      "inherits": [
+        "linux",
+        "cpp-examples"
+      ],
+      "configurePreset": "unix-host-cpp-examples-debug"
+    },
+    {
+      "name": "unix-host-python2-debug",
+      "displayName": "Builds Python2 bindings for host Unix Debug",
+      "description": "This builds Python2 bindings for host Unix Debug",
+      "inherits": [
+        "linux",
+        "python2"
+      ],
+      "configurePreset": "unix-host-python2-debug"
+    },
+    {
+      "name": "unix-host-python3-debug",
+      "displayName": "Builds Python3 bindings for host Unix Debug",
+      "description": "This builds Python3 bindings for host Unix Debug",
+      "inherits": [
+        "linux",
+        "python3"
+      ],
+      "configurePreset": "unix-host-python3-debug"
+    },
+    {
+      "name": "unix-host-static-all-debug",
+      "displayName": "Builds all project options with static C++ library configurations for host Unix Debug",
+      "description": "This builds all project options with static C++ library configurations for host Unix Debug",
+      "inherits": [
+        "linux",
+        "static-all"
+      ],
+      "configurePreset": "unix-host-static-all-debug"
+    }
+  ]
+}
