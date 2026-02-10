@@ -11,7 +11,21 @@
   ],
   "buildPresets": [
     {
+      "name": "windows",
+      "displayName": "Windows only build",
+      "description": "This build is only available on Windows",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      },
+      "hidden": true
+    },
+    {
       "name": "csharp",
+      "inherits": [
+        "windows"
+      ],
       "targets": [
         "MSCL-CSharp"
       ],
@@ -19,6 +33,9 @@
     },
     {
       "name": "csharp-examples",
+      "inherits": [
+        "windows"
+      ],
       "targets": [
         "MSCL-Examples"
       ],
@@ -26,8 +43,21 @@
     },
     {
       "name": "docs",
+      "inherits": [
+        "windows"
+      ],
       "targets": [
         "MSCL-Docs"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "windows-static-all",
+      "inherits": [
+        "static-all",
+        "csharp",
+        "csharp-examples",
+        "docs"
       ],
       "hidden": true
     }

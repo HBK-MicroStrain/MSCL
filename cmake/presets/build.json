@@ -57,6 +57,16 @@
         "MSCL-Examples"
       ],
       "hidden": true
+    },
+    {
+      "name": "static-all",
+      "inherits": [
+        "cpp",
+        "tests",
+        "cpp-examples",
+        "python3"
+      ],
+      "hidden": true
     }
   ]
 }

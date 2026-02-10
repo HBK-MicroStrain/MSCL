@@ -1,0 +1,124 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "msvc-configure.json",
+    "../windows-build.json"
+  ],
+  "buildPresets": [
+    {
+      "name": "msvc-debug",
+      "displayName": "MSVC Debug",
+      "description": "This configuration sets the MSVC debug build environment",
+      "inherits": [
+        "windows"
+      ],
+      "configuration": "Debug",
+      "hidden": true
+    },
+    {
+      "name": "msvc-static-debug",
+      "displayName": "Builds static C++ libraries for MSVC Debug",
+      "description": "This builds static C++ libraries for MSVC Debug",
+      "inherits": [
+        "msvc-debug",
+        "cpp"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "msvc-shared-debug",
+      "displayName": "Builds shared C++ libraries for MSVC Debug",
+      "description": "This builds shared C++ libraries for MSVC Debug",
+      "inherits": [
+        "msvc-debug",
+        "cpp"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "msvc-tests-debug",
+      "displayName": "Builds unit tests for MSVC Debug",
+      "description": "This builds unit tests for MSVC Debug",
+      "inherits": [
+        "msvc-debug",
+        "tests"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "msvc-cpp-examples-debug",
+      "displayName": "Builds C++ examples for MSVC Debug",
+      "description": "This builds C++ examples for MSVC Debug",
+      "inherits": [
+        "msvc-debug",
+        "cpp-examples"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "msvc-python2-debug",
+      "displayName": "Builds Python2 bindings for MSVC Debug",
+      "description": "This builds Python2 bindings for MSVC Debug",
+      "inherits": [
+        "msvc-debug",
+        "python2"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "msvc-python3-debug",
+      "displayName": "Builds Python3 bindings for MSVC Debug",
+      "description": "This builds Python3 bindings for MSVC Debug",
+      "inherits": [
+        "msvc-debug",
+        "python3"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "msvc-csharp-debug",
+      "displayName": "Builds C# bindings for MSVC Debug",
+      "description": "This builds C# bindings for MSVC Debug",
+      "inherits": [
+        "msvc-debug",
+        "csharp"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "msvc-csharp-examples-debug",
+      "displayName": "Builds C# examples for MSVC Debug",
+      "description": "This builds C# examples for MSVC Debug",
+      "inherits": [
+        "msvc-debug",
+        "csharp-examples"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "msvc-docs-debug",
+      "displayName": "Builds documentation for MSVC Debug",
+      "description": "This builds documentation for MSVC Debug",
+      "inherits": [
+        "msvc-debug",
+        "docs"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "msvc-static-all-debug",
+      "displayName": "Builds all project options with static C++ library configurations for MSVC Debug",
+      "description": "This builds all project options with static C++ library configurations for MSVC Debug",
+      "inherits": [
+        "msvc-debug",
+        "windows-static-all"
+      ],
+      "hidden": true
+    }
+  ]
+}

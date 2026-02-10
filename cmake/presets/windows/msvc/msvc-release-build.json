@@ -1,0 +1,124 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "msvc-configure.json",
+    "../windows-build.json"
+  ],
+  "buildPresets": [
+    {
+      "name": "msvc-release",
+      "displayName": "MSVC Release",
+      "description": "This configuration sets the MSVC release build environment",
+      "inherits": [
+        "windows"
+      ],
+      "configuration": "Release",
+      "hidden": true
+    },
+    {
+      "name": "msvc-static-release",
+      "displayName": "Builds static C++ libraries for MSVC Release",
+      "description": "This builds static C++ libraries for MSVC Release",
+      "inherits": [
+        "msvc-release",
+        "cpp"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "msvc-shared-release",
+      "displayName": "Builds shared C++ libraries for MSVC Release",
+      "description": "This builds shared C++ libraries for MSVC Release",
+      "inherits": [
+        "msvc-release",
+        "cpp"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "msvc-tests-release",
+      "displayName": "Builds unit tests for MSVC Release",
+      "description": "This builds unit tests for MSVC Release",
+      "inherits": [
+        "msvc-release",
+        "tests"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "msvc-cpp-examples-release",
+      "displayName": "Builds C++ examples for MSVC Release",
+      "description": "This builds C++ examples for MSVC Release",
+      "inherits": [
+        "msvc-release",
+        "cpp-examples"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "msvc-python2-release",
+      "displayName": "Builds Python2 bindings for MSVC Release",
+      "description": "This builds Python2 bindings for MSVC Release",
+      "inherits": [
+        "msvc-release",
+        "python2"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "msvc-python3-release",
+      "displayName": "Builds Python3 bindings for MSVC Release",
+      "description": "This builds Python3 bindings for MSVC Release",
+      "inherits": [
+        "msvc-release",
+        "python3"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "msvc-csharp-release",
+      "displayName": "Builds C# bindings for MSVC Release",
+      "description": "This builds C# bindings for MSVC Release",
+      "inherits": [
+        "msvc-release",
+        "csharp"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "msvc-csharp-examples-release",
+      "displayName": "Builds C# examples for MSVC Release",
+      "description": "This builds C# examples for MSVC Release",
+      "inherits": [
+        "msvc-release",
+        "csharp-examples"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "msvc-docs-release",
+      "displayName": "Builds documentation for MSVC Release",
+      "description": "This builds documentation for MSVC Release",
+      "inherits": [
+        "msvc-release",
+        "docs"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "msvc-static-all-release",
+      "displayName": "Builds all project options with static C++ library configurations for MSVC Release",
+      "description": "This builds all project options with static C++ library configurations for MSVC Release",
+      "inherits": [
+        "msvc-release",
+        "windows-static-all"
+      ],
+      "hidden": true
+    }
+  ]
+}

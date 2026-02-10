@@ -7,7 +7,7 @@
   },
   "include": [
     "../msvc-2022-x86-configure.json",
-    "../../../msvc-build.json"
+    "../../../msvc-debug-build.json"
   ],
   "buildPresets": [
     {
@@ -15,7 +15,7 @@
       "displayName": "Builds static C++ libraries for MSVC 2022 x86 Debug",
       "description": "This builds static C++ libraries for MSVC 2022 x86 Debug",
       "inherits": [
-        "msvc-debug"
+        "msvc-static-debug"
       ],
       "configurePreset": "msvc-2022-x86-static"
     },
@@ -24,7 +24,7 @@
       "displayName": "Builds shared C++ libraries for MSVC 2022 x86 Debug",
       "description": "This builds shared C++ libraries for MSVC 2022 x86 Debug",
       "inherits": [
-        "msvc-debug"
+        "msvc-shared-debug"
       ],
       "configurePreset": "msvc-2022-x86-shared"
     },
@@ -33,7 +33,7 @@
       "displayName": "Builds unit tests for MSVC 2022 x86 Debug",
       "description": "This builds unit tests for MSVC 2022 x86 Debug",
       "inherits": [
-        "msvc-debug"
+        "msvc-tests-debug"
       ],
       "configurePreset": "msvc-2022-x86-tests"
     },
@@ -42,7 +42,7 @@
       "displayName": "Builds C++ examples for MSVC 2022 x86 Debug",
       "description": "This builds C++ examples for MSVC 2022 x86 Debug",
       "inherits": [
-        "msvc-debug"
+        "msvc-cpp-examples-debug"
       ],
       "configurePreset": "msvc-2022-x86-cpp-examples"
     },
@@ -51,7 +51,7 @@
       "displayName": "Builds Python2 bindings for MSVC 2022 x86 Debug",
       "description": "This builds Python2 bindings for MSVC 2022 x86 Debug",
       "inherits": [
-        "msvc-debug"
+        "msvc-python2-debug"
       ],
       "configurePreset": "msvc-2022-x86-python2"
     },
@@ -60,7 +60,7 @@
       "displayName": "Builds Python3 bindings for MSVC 2022 x86 Debug",
       "description": "This builds Python3 bindings for MSVC 2022 x86 Debug",
       "inherits": [
-        "msvc-debug"
+        "msvc-python3-debug"
       ],
       "configurePreset": "msvc-2022-x86-python3"
     },
@@ -69,7 +69,7 @@
       "displayName": "Builds C# bindings for MSVC 2022 x86 Debug",
       "description": "This builds C# bindings for MSVC 2022 x86 Debug",
       "inherits": [
-        "msvc-debug"
+        "msvc-csharp-debug"
       ],
       "configurePreset": "msvc-2022-x86-csharp"
     },
@@ -78,7 +78,7 @@
       "displayName": "Builds C# examples for MSVC 2022 x86 Debug",
       "description": "This builds C# examples for MSVC 2022 x86 Debug",
       "inherits": [
-        "msvc-debug"
+        "msvc-csharp-examples-debug"
       ],
       "configurePreset": "msvc-2022-x86-csharp-examples"
     },
@@ -87,7 +87,7 @@
       "displayName": "Builds all project options with static C++ library configurations for MSVC 2022 x86 Debug",
       "description": "This builds all project options with static C++ library configurations for MSVC 2022 x86 Debug",
       "inherits": [
-        "msvc-debug"
+        "msvc-static-all-debug"
       ],
       "configurePreset": "msvc-2022-x86-static-all"
     }
