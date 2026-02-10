@@ -1,0 +1,32 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "unix-host-release-configure.json",
+    "../../../linux-test.json"
+  ],
+  "testPresets": [
+    {
+      "name": "unix-host-tests-release",
+      "displayName": "Runs unit tests for host Unix Release",
+      "description": "This runs unit tests for host Unix Release",
+      "inherits": [
+        "linux"
+      ],
+      "configurePreset": "unix-host-tests-release"
+    },
+    {
+      "name": "unix-host-static-all-release",
+      "displayName": "Enables test support when all project options with static C++ library configurations are needed for host Unix Release",
+      "description": "This enables test support for all project options with static C++ library configurations for host Unix Release",
+      "inherits": [
+        "linux"
+      ],
+      "configurePreset": "unix-host-static-all-release"
+    }
+  ]
+}

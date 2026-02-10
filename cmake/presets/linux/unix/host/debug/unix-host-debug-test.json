@@ -1,0 +1,32 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "unix-host-debug-configure.json",
+    "../../../linux-test.json"
+  ],
+  "testPresets": [
+    {
+      "name": "unix-host-tests-debug",
+      "displayName": "Runs unit tests for host Unix Debug",
+      "description": "This runs unit tests for host Unix Debug",
+      "inherits": [
+        "linux"
+      ],
+      "configurePreset": "unix-host-tests-debug"
+    },
+    {
+      "name": "unix-host-static-all-debug",
+      "displayName": "Enables test support when all project options with static C++ library configurations are needed for host Unix Debug",
+      "description": "This enables test support for all project options with static C++ library configurations for host Unix Debug",
+      "inherits": [
+        "linux"
+      ],
+      "configurePreset": "unix-host-static-all-debug"
+    }
+  ]
+}

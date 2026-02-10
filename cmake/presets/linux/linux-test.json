@@ -1,0 +1,27 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "../test.json"
+  ],
+  "testPresets": [
+    {
+      "name": "linux",
+      "displayName": "Linux only test",
+      "description": "This test is only available on Linux",
+      "inherits": [
+        "default"
+      ],
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      },
+      "hidden": true
+    }
+  ]
+}
