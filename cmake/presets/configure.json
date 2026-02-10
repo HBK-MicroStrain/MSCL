@@ -18,6 +18,21 @@
       "hidden": true
     },
     {
+      "name": "static",
+      "displayName": "Static library configuration",
+      "description": "This configuration enables static library building",
+      "inherits": [
+        "default"
+      ],
+      "cacheVariables": {
+        "BUILD_SHARED_LIBS": {
+          "type": "BOOL",
+          "value": "OFF"
+        }
+      },
+      "hidden": true
+    },
+    {
       "name": "shared",
       "displayName": "Shared library configuration",
       "description": "This configuration enables shared library building",
@@ -37,7 +52,8 @@
       "displayName": "Enables unit testing",
       "description": "This configuration enables unit testing",
       "inherits": [
-        "default"
+        "default",
+        "static"
       ],
       "cacheVariables": {
         "MSCL_BUILD_TESTS": {
@@ -52,7 +68,8 @@
       "displayName": "Enable C++ examples",
       "description": "This configuration enables C++ examples",
       "inherits": [
-        "default"
+        "default",
+        "static"
       ],
       "cacheVariables": {
         "MSCL_BUILD_CPP_EXAMPLES": {
@@ -67,7 +84,8 @@
       "displayName": "Enable Python2 bindings",
       "description": "This configuration enables Python2 bindings",
       "inherits": [
-        "default"
+        "default",
+        "static"
       ],
       "cacheVariables": {
         "MSCL_BUILD_PYTHON2": {
@@ -97,7 +115,8 @@
       "displayName": "Enable Python3 bindings",
       "description": "This configuration enables Python3 bindings",
       "inherits": [
-        "default"
+        "default",
+        "static"
       ],
       "cacheVariables": {
         "MSCL_BUILD_PYTHON3": {
@@ -127,6 +146,7 @@
       "displayName": "Enables all project options with static C++ library configurations",
       "description": "This configuration enables all project options with static C++ library configurations",
       "inherits": [
+        "static",
         "tests",
         "cpp-examples",
         "python3",

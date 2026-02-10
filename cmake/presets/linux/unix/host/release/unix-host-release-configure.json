@@ -14,7 +14,8 @@
       "displayName": "Enables static C++ libraries for host Unix Release",
       "description": "This configuration enables static C++ libraries for host Unix Release",
       "inherits": [
-        "unix-host-release"
+        "unix-host-release",
+        "static"
       ]
     },
     {

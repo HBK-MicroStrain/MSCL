@@ -27,7 +27,8 @@
       "displayName": "Enables static C++ libraries for MSVC 2022 x64",
       "description": "This configuration enables static C++ libraries for MSVC 2022 x64",
       "inherits": [
-        "msvc-2022-x64"
+        "msvc-2022-x64",
+        "static"
       ]
     },
     {

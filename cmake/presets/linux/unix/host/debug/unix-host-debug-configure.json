@@ -14,7 +14,8 @@
       "displayName": "Enables static C++ libraries for host Unix Debug",
       "description": "This configuration enables static C++ libraries for host Unix Debug",
       "inherits": [
-        "unix-host-debug"
+        "unix-host-debug",
+        "static"
       ]
     },
     {

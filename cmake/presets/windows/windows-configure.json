@@ -28,7 +28,8 @@
       "displayName": "Enables C# bindings",
       "description": "This configuration enables C# bindings",
       "inherits": [
-        "windows"
+        "windows",
+        "static"
       ],
       "cacheVariables": {
         "MSCL_BUILD_CSHARP": {
