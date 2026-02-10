@@ -7,7 +7,7 @@
   },
   "include": [
     "../msvc-2022-x86-configure.json",
-    "../../../../../test.json"
+    "../../../msvc-release-test.json"
   ],
   "testPresets": [
     {
@@ -15,7 +15,7 @@
       "displayName": "Runs unit tests for MSVC 2022 x86 Release",
       "description": "This runs unit tests for MSVC 2022 x86 Release",
       "inherits": [
-        "release"
+        "msvc-release"
       ],
       "configurePreset": "msvc-2022-x86-tests"
     },
@@ -24,7 +24,7 @@
       "displayName": "Enables test support when all project options with static C++ library configurations are needed for MSVC 2022 x86 Release",
       "description": "This enables test support for all project options with static C++ library configurations for MSVC 2022 x86 Release",
       "inherits": [
-        "release"
+        "msvc-release"
       ],
       "configurePreset": "msvc-2022-x86-static-all"
     }

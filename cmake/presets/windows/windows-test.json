@@ -1,0 +1,28 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "windows-configure.json",
+    "../test.json"
+  ],
+  "testPresets": [
+    {
+      "name": "windows",
+      "displayName": "Windows only test",
+      "description": "This test is only available on Windows",
+      "inherits": [
+        "default"
+      ],
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      },
+      "hidden": true
+    }
+  ]
+}
