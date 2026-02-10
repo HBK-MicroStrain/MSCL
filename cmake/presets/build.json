@@ -19,6 +19,24 @@
       "hidden": true
     },
     {
+      "name": "static",
+      "displayName": "Builds static C++ libraries",
+      "description": "This builds static C++ libraries",
+      "inherits": [
+        "cpp"
+      ],
+      "hidden": true
+    },
+    {
+      "name": "shared",
+      "displayName": "Builds shared C++ libraries",
+      "description": "This builds shared C++ libraries",
+      "inherits": [
+        "cpp"
+      ],
+      "hidden": true
+    },
+    {
       "name": "tests",
       "displayName": "Builds unit tests",
       "description": "This builds unit tests",
@@ -77,7 +95,7 @@
       "displayName": "Builds all configurations with static C++ libraries",
       "description": "This builds all configurations with static C++ libraries",
       "inherits": [
-        "cpp",
+        "static",
         "tests",
         "cpp-examples",
         "python3"
