@@ -23,6 +23,8 @@
     },
     {
       "name": "csharp",
+      "displayName": "Builds C# bindings",
+      "description": "This builds C# bindings",
       "inherits": [
         "windows"
       ],
@@ -33,6 +35,8 @@
     },
     {
       "name": "csharp-examples",
+      "displayName": "Builds C# examples",
+      "description": "This builds C# examples",
       "inherits": [
         "windows"
       ],
@@ -43,6 +47,8 @@
     },
     {
       "name": "docs",
+      "displayName": "Builds documentation",
+      "description": "This builds documentation",
       "inherits": [
         "windows"
       ],
@@ -53,6 +59,8 @@
     },
     {
       "name": "windows-static-all",
+      "displayName": "Builds all configurations, including Windows-specific, with static C++ libraries",
+      "description": "This builds all configurations, including Windows-specific, with static C++ libraries",
       "inherits": [
         "static-all",
         "csharp",

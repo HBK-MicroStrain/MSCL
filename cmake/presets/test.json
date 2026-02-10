@@ -11,6 +11,8 @@
   "testPresets": [
     {
       "name": "default",
+      "displayName": "Default test configuration",
+      "description": "This is the default test configuration",
       "output": {
         "outputOnFailure": true
       },
