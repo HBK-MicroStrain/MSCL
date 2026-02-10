@@ -13,7 +13,9 @@
       "name": "windows",
       "displayName": "Windows only configuration",
       "description": "This configuration is only available on Windows",
-      "inherits": "default",
+      "inherits": [
+        "default"
+      ],
       "condition": {
         "type": "equals",
         "lhs": "${hostSystemName}",
@@ -25,7 +27,9 @@
       "name": "csharp",
       "displayName": "Enables C# bindings",
       "description": "This configuration enables C# bindings",
-      "inherits": "windows",
+      "inherits": [
+        "windows"
+      ],
       "cacheVariables": {
         "MSCL_BUILD_CSHARP": {
           "type": "BOOL",
@@ -38,7 +42,9 @@
       "name": "csharp-examples",
       "displayName": "Enable C# examples",
       "description": "This configuration enables C# examples",
-      "inherits": "csharp",
+      "inherits": [
+        "csharp"
+      ],
       "cacheVariables": {
         "MSCL_BUILD_CSHARP_EXAMPLES": {
           "type": "BOOL",
@@ -51,7 +57,9 @@
       "name": "docs",
       "displayName": "Enables documentation",
       "description": "This configuration enables documentation",
-      "inherits": "windows",
+      "inherits": [
+        "windows"
+      ],
       "cacheVariables": {
         "MSCL_BUILD_DOCUMENTATION": {
           "type": "BOOL",

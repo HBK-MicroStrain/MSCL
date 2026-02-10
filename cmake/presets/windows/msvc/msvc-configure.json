@@ -13,7 +13,9 @@
       "name": "msvc-x64",
       "displayName": "MSVC x64",
       "description": "This configuration sets the MSVC x64 build environment",
-      "inherits": "windows",
+      "inherits": [
+        "windows"
+      ],
       "architecture": "x64",
       "hidden": true
     },
@@ -21,7 +23,9 @@
       "name": "msvc-x86",
       "displayName": "MSVC x86",
       "description": "This configuration sets the MSVC x86 build environment",
-      "inherits": "windows",
+      "inherits": [
+        "windows"
+      ],
       "architecture": "Win32",
       "hidden": true
     }

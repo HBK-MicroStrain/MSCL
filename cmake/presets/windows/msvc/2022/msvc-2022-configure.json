@@ -13,7 +13,9 @@
       "name": "msvc-2022",
       "displayName": "MSVC 2022",
       "description": "This configuration sets the MSVC 2022 build environment",
-      "inherits": "windows",
+      "inherits": [
+        "windows"
+      ],
       "generator": "Visual Studio 17 2022",
       "hidden": true
     }

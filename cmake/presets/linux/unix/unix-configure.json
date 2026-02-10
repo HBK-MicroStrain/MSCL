@@ -13,7 +13,9 @@
       "name": "unix",
       "displayName": "Unix Makefiles",
       "description": "This configuration sets the Unix Makefile build environment",
-      "inherits": "linux",
+      "inherits": [
+        "linux"
+      ],
       "generator": "Unix Makefiles",
       "hidden": true
     },
@@ -21,7 +23,9 @@
       "name": "unix-debug",
       "displayName": "Unix Makefiles Debug",
       "description": "This configuration sets the Unix Makefiles debug build environment",
-      "inherits": "unix",
+      "inherits": [
+        "unix"
+      ],
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": {
           "type": "STRING",
@@ -34,7 +38,9 @@
       "name": "unix-release",
       "displayName": "Unix Makefiles Release",
       "description": "This configuration sets the Unix Makefiles release build environment",
-      "inherits": "unix",
+      "inherits": [
+        "unix"
+      ],
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": {
           "type": "STRING",

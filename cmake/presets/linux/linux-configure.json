@@ -13,7 +13,9 @@
       "name": "linux",
       "displayName": "Linux only configuration",
       "description": "This configuration is only available on Linux",
-      "inherits": "default",
+      "inherits": [
+        "default"
+      ],
       "condition": {
         "type": "equals",
         "lhs": "${hostSystemName}",

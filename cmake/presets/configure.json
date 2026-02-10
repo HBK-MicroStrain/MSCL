@@ -21,7 +21,9 @@
       "name": "shared",
       "displayName": "Shared library configuration",
       "description": "This configuration enables shared library building",
-      "inherits": "default",
+      "inherits": [
+        "default"
+      ],
       "cacheVariables": {
         "BUILD_SHARED_LIBS": {
           "type": "BOOL",
@@ -34,7 +36,9 @@
       "name": "tests",
       "displayName": "Enables unit testing",
       "description": "This configuration enables unit testing",
-      "inherits": "default",
+      "inherits": [
+        "default"
+      ],
       "cacheVariables": {
         "MSCL_BUILD_TESTS": {
           "type": "BOOL",
@@ -47,7 +51,9 @@
       "name": "cpp-examples",
       "displayName": "Enable C++ examples",
       "description": "This configuration enables C++ examples",
-      "inherits": "default",
+      "inherits": [
+        "default"
+      ],
       "cacheVariables": {
         "MSCL_BUILD_CPP_EXAMPLES": {
           "type": "BOOL",
@@ -60,7 +66,9 @@
       "name": "python2",
       "displayName": "Enable Python2 bindings",
       "description": "This configuration enables Python2 bindings",
-      "inherits": "default",
+      "inherits": [
+        "default"
+      ],
       "cacheVariables": {
         "MSCL_BUILD_PYTHON2": {
           "type": "BOOL",
@@ -73,7 +81,9 @@
       "name": "python2-examples",
       "displayName": "Enable Python2 examples",
       "description": "This configuration enables Python2 examples",
-      "inherits": "python2",
+      "inherits": [
+        "python2"
+      ],
       "cacheVariables": {
         "MSCL_BUILD_PYTHON_EXAMPLES": {
           "type": "BOOL",
@@ -86,7 +96,9 @@
       "name": "python3",
       "displayName": "Enable Python3 bindings",
       "description": "This configuration enables Python3 bindings",
-      "inherits": "default",
+      "inherits": [
+        "default"
+      ],
       "cacheVariables": {
         "MSCL_BUILD_PYTHON3": {
           "type": "BOOL",
@@ -99,7 +111,9 @@
       "name": "python3-examples",
       "displayName": "Enable Python3 examples",
       "description": "This configuration enables Python3 examples",
-      "inherits": "python3",
+      "inherits": [
+        "python3"
+      ],
       "cacheVariables": {
         "MSCL_BUILD_PYTHON_EXAMPLES": {
           "type": "BOOL",
