@@ -6,7 +6,8 @@
     "patch": 0
   },
   "include": [
-    "../linux-package.json"
+    "../linux-package.json",
+    "../../debug-package.json"
   ],
   "packagePresets": [
     {
@@ -14,7 +15,8 @@
       "displayName": "Creates a Unix debug package",
       "description": "This creates a Unix debug package",
       "inherits": [
-        "linux"
+        "linux",
+        "debug"
       ],
       "environment": {
         "MICROSTRAIN_BUILD_DIR_DEBUG": "$env{MICROSTRAIN_BINARY_DIR}"
