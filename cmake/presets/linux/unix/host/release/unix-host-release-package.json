@@ -54,6 +54,15 @@
         "unix-release"
       ],
       "configurePreset": "unix-host-python3-release"
+    },
+    {
+      "name": "unix-host-static-all-release",
+      "displayName": "Packages all project options with static C++ library configurations for host Unix Release",
+      "description": "This packages all project options with static C++ library configurations for host Unix Release",
+      "inherits": [
+        "unix-release"
+      ],
+      "configurePreset": "unix-host-static-all-release"
     }
   ]
 }

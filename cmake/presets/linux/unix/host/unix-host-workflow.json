@@ -1,0 +1,73 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "unix-host-package.json"
+  ],
+  "workflowPresets": [
+    {
+      "name": "unix-host-static-package",
+      "displayName": "Packages static C++ libraries for host Unix Debug and Release",
+      "description": "This packages static C++ libraries for host Unix Debug and Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "unix-host-static-release"
+        },
+        {
+          "type": "package",
+          "name": "unix-host-static"
+        }
+      ]
+    },
+    {
+      "name": "unix-host-shared-package",
+      "displayName": "Packages shared C++ libraries for host Unix Debug and Release",
+      "description": "This packages shared C++ libraries for host Unix Debug and Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "unix-host-shared-release"
+        },
+        {
+          "type": "package",
+          "name": "unix-host-shared"
+        }
+      ]
+    },
+    {
+      "name": "unix-host-static-tests-package",
+      "displayName": "Packages static C++ libraries when testing is enabled for host Unix Debug and Release",
+      "description": "This packages static C++ libraries when testing is enabled for host Unix Debug and Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "unix-host-tests-release"
+        },
+        {
+          "type": "package",
+          "name": "unix-host-tests"
+        }
+      ]
+    },
+    {
+      "name": "unix-host-static-all-package",
+      "displayName": "Packages all project options with static C++ library configurations for host Unix Debug and Release",
+      "description": "This packages all project options with static C++ library configurations for host Unix Debug and Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "unix-host-static-all-release"
+        },
+        {
+          "type": "package",
+          "name": "unix-host-static-all"
+        }
+      ]
+    }
+  ]
+}

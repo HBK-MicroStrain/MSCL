@@ -1,0 +1,246 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "unix-host-debug-build.json",
+    "unix-host-debug-test.json",
+    "unix-host-debug-package.json"
+  ],
+  "workflowPresets": [
+    {
+      "name": "unix-host-static-debug",
+      "displayName": "Builds static C++ libraries for host Unix Debug",
+      "description": "This builds static C++ libraries for host Unix Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "unix-host-static-debug"
+        },
+        {
+          "type": "build",
+          "name": "unix-host-static-debug"
+        }
+      ]
+    },
+    {
+      "name": "unix-host-static-debug-package",
+      "displayName": "Builds and packages static C++ libraries for host Unix Debug",
+      "description": "This builds and packages static C++ libraries for host Unix Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "unix-host-static-debug"
+        },
+        {
+          "type": "build",
+          "name": "unix-host-static-debug"
+        },
+        {
+          "type": "package",
+          "name": "unix-host-static-debug"
+        }
+      ]
+    },
+    {
+      "name": "unix-host-shared-debug",
+      "displayName": "Builds shared C++ libraries for host Unix Debug",
+      "description": "This builds shared C++ libraries for host Unix Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "unix-host-shared-debug"
+        },
+        {
+          "type": "build",
+          "name": "unix-host-shared-debug"
+        }
+      ]
+    },
+    {
+      "name": "unix-host-shared-debug-package",
+      "displayName": "Builds and packages shared C++ libraries for host Unix Debug",
+      "description": "This builds and packages shared C++ libraries for host Unix Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "unix-host-shared-debug"
+        },
+        {
+          "type": "build",
+          "name": "unix-host-shared-debug"
+        },
+        {
+          "type": "package",
+          "name": "unix-host-shared-debug"
+        }
+      ]
+    },
+    {
+      "name": "unix-host-static-tests-debug",
+      "displayName": "Builds and tests static C++ libraries for host Unix Debug",
+      "description": "This builds and tests static C++ libraries for host Unix Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "unix-host-tests-debug"
+        },
+        {
+          "type": "build",
+          "name": "unix-host-tests-debug"
+        },
+        {
+          "type": "test",
+          "name": "unix-host-tests-debug"
+        }
+      ]
+    },
+    {
+      "name": "unix-host-static-tests-debug-package",
+      "displayName": "Builds, tests, and packages static C++ libraries for host Unix Debug",
+      "description": "This builds, tests, and packages static C++ libraries for host Unix Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "unix-host-tests-debug"
+        },
+        {
+          "type": "build",
+          "name": "unix-host-tests-debug"
+        },
+        {
+          "type": "test",
+          "name": "unix-host-tests-debug"
+        },
+        {
+          "type": "package",
+          "name": "unix-host-tests-debug"
+        }
+      ]
+    },
+    {
+      "name": "unix-host-cpp-examples-debug",
+      "displayName": "Builds C++ examples for host Unix Debug",
+      "description": "This builds C++ examples for host Unix Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "unix-host-cpp-examples-debug"
+        },
+        {
+          "type": "build",
+          "name": "unix-host-cpp-examples-debug"
+        }
+      ]
+    },
+    {
+      "name": "unix-host-python2-debug",
+      "displayName": "Builds Python2 bindings for host Unix Debug",
+      "description": "This builds Python2 bindings for host Unix Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "unix-host-python2-debug"
+        },
+        {
+          "type": "build",
+          "name": "unix-host-python2-debug"
+        }
+      ]
+    },
+    {
+      "name": "unix-host-python3-debug",
+      "displayName": "Builds Python3 bindings for host Unix Debug",
+      "description": "This builds Python3 bindings for host Unix Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "unix-host-python3-debug"
+        },
+        {
+          "type": "build",
+          "name": "unix-host-python3-debug"
+        }
+      ]
+    },
+    {
+      "name": "unix-host-static-all-debug",
+      "displayName": "Builds all project options with static C++ library configurations for host Unix Debug",
+      "description": "This builds all project options with static C++ library configurations for host Unix Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "unix-host-static-all-debug"
+        },
+        {
+          "type": "build",
+          "name": "unix-host-static-all-debug"
+        }
+      ]
+    },
+    {
+      "name": "unix-host-static-all-debug-package",
+      "displayName": "Builds and packages all project options with static C++ library configurations for host Unix Debug",
+      "description": "This builds and packages all project options with static C++ library configurations for host Unix Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "unix-host-static-all-debug"
+        },
+        {
+          "type": "build",
+          "name": "unix-host-static-all-debug"
+        },
+        {
+          "type": "package",
+          "name": "unix-host-static-all-debug"
+        }
+      ]
+    },
+    {
+      "name": "unix-host-static-tests-all-debug",
+      "displayName": "Builds and tests all project options with static C++ library configurations for host Unix Debug",
+      "description": "This builds and tests all project options with static C++ library configurations for host Unix Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "unix-host-static-all-debug"
+        },
+        {
+          "type": "build",
+          "name": "unix-host-static-all-debug"
+        },
+        {
+          "type": "test",
+          "name": "unix-host-static-all-debug"
+        }
+      ]
+    },
+    {
+      "name": "unix-host-static-tests-all-debug-package",
+      "displayName": "Builds, tests, and packages all project options with static C++ library configurations for host Unix Debug",
+      "description": "This builds, tests, and packages all project options with static C++ library configurations for host Unix Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "unix-host-static-all-debug"
+        },
+        {
+          "type": "build",
+          "name": "unix-host-static-all-debug"
+        },
+        {
+          "type": "test",
+          "name": "unix-host-static-all-debug"
+        },
+        {
+          "type": "package",
+          "name": "unix-host-static-all-debug"
+        }
+      ]
+    }
+  ]
+}

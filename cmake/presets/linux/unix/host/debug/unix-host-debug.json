@@ -6,8 +6,6 @@
     "patch": 0
   },
   "include": [
-    "unix-host-debug-build.json",
-    "unix-host-debug-test.json",
-    "unix-host-debug-package.json"
+    "unix-host-debug-workflow.json"
   ]
 }

@@ -41,22 +41,12 @@
       "configFile": "$env{MICROSTRAIN_CPACK_CONFIG_ALL_FILE}"
     },
     {
-      "name": "unix-host-python2",
-      "displayName": "Packages Python2 bindings for host Unix Debug and Release",
-      "description": "This packages Python2 bindings for host Unix Debug and Release",
+      "name": "unix-host-static-all",
+      "displayName": "Packages all project options with static C++ library configurations for host Unix Debug and Release",
+      "description": "This packages all project options with static C++ library configurations for host Unix Debug and Release",
       "inherits": [
         "unix-all-configurations",
-        "unix-host-python2-release"
-      ],
-      "configFile": "$env{MICROSTRAIN_CPACK_CONFIG_ALL_FILE}"
-    },
-    {
-      "name": "unix-host-python3",
-      "displayName": "Packages Python3 bindings for host Unix Debug and Release",
-      "description": "This packages Python3 bindings for host Unix Debug and Release",
-      "inherits": [
-        "unix-all-configurations",
-        "unix-host-python3-release"
+        "unix-host-static-all-release"
       ],
       "configFile": "$env{MICROSTRAIN_CPACK_CONFIG_ALL_FILE}"
     }

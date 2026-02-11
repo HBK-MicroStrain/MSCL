@@ -54,6 +54,15 @@
         "unix-debug"
       ],
       "configurePreset": "unix-host-python3-debug"
+    },
+    {
+      "name": "unix-host-static-all-debug",
+      "displayName": "Packages all project options with static C++ library configurations for host Unix Debug",
+      "description": "This packages all project options with static C++ library configurations for host Unix Debug",
+      "inherits": [
+        "unix-debug"
+      ],
+      "configurePreset": "unix-host-static-all-debug"
     }
   ]
 }
