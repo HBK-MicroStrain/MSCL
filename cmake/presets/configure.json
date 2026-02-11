@@ -10,10 +10,11 @@
       "name": "default",
       "displayName": "Default Config",
       "description": "Default configuration",
-      "binaryDir": "${sourceDir}/build/$env{MICROSTRAIN_BUILD_SUBDIR}",
+      "binaryDir": "$env{MICROSTRAIN_BINARY_DIR}",
       "generator": "Ninja",
       "environment": {
-        "VCPKG_BINARY_SOURCES": "$penv{VCPKG_BINARY_SOURCES}"
+        "VCPKG_BINARY_SOURCES": "$penv{VCPKG_BINARY_SOURCES}",
+        "MICROSTRAIN_BINARY_DIR": "${sourceDir}/build/$env{MICROSTRAIN_BUILD_SUBDIR}"
       },
       "hidden": true
     },

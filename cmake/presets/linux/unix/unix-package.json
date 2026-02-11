@@ -11,7 +11,7 @@
   ],
   "packagePresets": [
     {
-      "name": "unix-all",
+      "name": "unix-all-configurations",
       "displayName": "Creates a package for Unix Debug and Release",
       "description": "This creates a package for Unix Debug and Release",
       "inherits": [
