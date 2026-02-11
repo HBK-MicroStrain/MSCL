@@ -248,7 +248,6 @@ if(MSCL_INSTALL)
         endif()
 
         microstrain_detect_deb(MSCL_IS_DEB)
-
         if(MSCL_IS_DEB)
             # Enable per component dependencies
             set(CPACK_DEBIAN_ENABLE_COMPONENT_DEPENDS ON PARENT_SCOPE)
@@ -256,7 +255,7 @@ if(MSCL_INSTALL)
 
         microstrain_detect_rpm(MSCL_IS_RPM)
         if(MSCL_IS_RPM)
-            set(CPACK ON PARENT_SCOPE)
+            set(CPACK_RPM_PACKAGE_AUTOREQ ON PARENT_SCOPE)
         endif()
 
         # Due to how Boost and SSL interact with MSCL, dependencies should be exact versions
