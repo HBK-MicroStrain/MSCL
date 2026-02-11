@@ -7,6 +7,7 @@
   },
   "include": [
     "unix-host-release-build.json",
-    "unix-host-release-test.json"
+    "unix-host-release-test.json",
+    "unix-host-release-package.json"
   ]
 }

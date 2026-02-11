@@ -1,0 +1,21 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "packagePresets": [
+    {
+      "name": "linux",
+      "displayName": "Creates a Linux package",
+      "description": "This creates a Linux package",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      },
+      "hidden": true
+    }
+  ]
+}

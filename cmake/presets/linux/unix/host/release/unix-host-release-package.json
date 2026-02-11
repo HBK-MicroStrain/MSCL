@@ -1,0 +1,59 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "unix-host-release-configure.json",
+    "../../unix-release-package.json"
+  ],
+  "packagePresets": [
+    {
+      "name": "unix-host-static-release",
+      "displayName": "Packages static C++ libraries for host Unix Release",
+      "description": "This packages static C++ libraries for host Unix Release",
+      "inherits": [
+        "unix-release"
+      ],
+      "configurePreset": "unix-host-static-release"
+    },
+    {
+      "name": "unix-host-shared-release",
+      "displayName": "Packages shared C++ libraries for host Unix Release",
+      "description": "This packages shared C++ libraries for host Unix Release",
+      "inherits": [
+        "unix-release"
+      ],
+      "configurePreset": "unix-host-shared-release"
+    },
+    {
+      "name": "unix-host-tests-release",
+      "displayName": "Packages static C++ libraries with tests enabled for host Unix Release",
+      "description": "This packages static C++ libraries with tests enabled for host Unix Release",
+      "inherits": [
+        "unix-release"
+      ],
+      "configurePreset": "unix-host-tests-release"
+    },
+    {
+      "name": "unix-host-python2-release",
+      "displayName": "Packages Python2 bindings for host Unix Release",
+      "description": "This packages Python2 bindings for host Unix Release",
+      "inherits": [
+        "unix-release"
+      ],
+      "configurePreset": "unix-host-python2-release"
+    },
+    {
+      "name": "unix-host-python3-release",
+      "displayName": "Packages Python3 bindings for host Unix Release",
+      "description": "This packages Python3 bindings for host Unix Release",
+      "inherits": [
+        "unix-release"
+      ],
+      "configurePreset": "unix-host-python3-release"
+    }
+  ]
+}

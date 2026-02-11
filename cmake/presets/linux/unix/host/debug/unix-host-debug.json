@@ -7,6 +7,7 @@
   },
   "include": [
     "unix-host-debug-build.json",
-    "unix-host-debug-test.json"
+    "unix-host-debug-test.json",
+    "unix-host-debug-package.json"
   ]
 }

@@ -1,0 +1,59 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "unix-host-debug-configure.json",
+    "../../unix-debug-package.json"
+  ],
+  "packagePresets": [
+    {
+      "name": "unix-host-static-debug",
+      "displayName": "Packages static C++ libraries for host Unix Debug",
+      "description": "This packages static C++ libraries for host Unix Debug",
+      "inherits": [
+        "unix-debug"
+      ],
+      "configurePreset": "unix-host-static-debug"
+    },
+    {
+      "name": "unix-host-shared-debug",
+      "displayName": "Packages shared C++ libraries for host Unix Debug",
+      "description": "This packages shared C++ libraries for host Unix Debug",
+      "inherits": [
+        "unix-debug"
+      ],
+      "configurePreset": "unix-host-shared-debug"
+    },
+    {
+      "name": "unix-host-tests-debug",
+      "displayName": "Packages static C++ libraries with tests enabled for host Unix Debug",
+      "description": "This packages static C++ libraries with tests enabled for host Unix Debug",
+      "inherits": [
+        "unix-debug"
+      ],
+      "configurePreset": "unix-host-tests-debug"
+    },
+    {
+      "name": "unix-host-python2-debug",
+      "displayName": "Packages Python2 bindings for host Unix Debug",
+      "description": "This packages Python2 bindings for host Unix Debug",
+      "inherits": [
+        "unix-debug"
+      ],
+      "configurePreset": "unix-host-python2-debug"
+    },
+    {
+      "name": "unix-host-python3-debug",
+      "displayName": "Packages Python3 bindings for host Unix Debug",
+      "description": "This packages Python3 bindings for host Unix Debug",
+      "inherits": [
+        "unix-debug"
+      ],
+      "configurePreset": "unix-host-python3-debug"
+    }
+  ]
+}

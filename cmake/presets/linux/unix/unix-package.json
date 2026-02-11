@@ -1,0 +1,27 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "../linux-package.json",
+    "../../package.json"
+  ],
+  "packagePresets": [
+    {
+      "name": "unix-all",
+      "displayName": "Creates a package for Unix Debug and Release",
+      "description": "This creates a package for Unix Debug and Release",
+      "inherits": [
+        "linux",
+        "all-configurations"
+      ],
+      "environment": {
+        "MICROSTRAIN_CPACK_CONFIG_ALL_FILE": "${sourceDir}/cmake/microstrain-package-all.cmake"
+      },
+      "hidden": true
+    }
+  ]
+}

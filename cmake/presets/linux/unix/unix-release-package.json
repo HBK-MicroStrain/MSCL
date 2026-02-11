@@ -1,0 +1,25 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "../linux-package.json"
+  ],
+  "packagePresets": [
+    {
+      "name": "unix-release",
+      "displayName": "Creates a Unix release package",
+      "description": "This creates a Unix release package",
+      "inherits": [
+        "linux"
+      ],
+      "environment": {
+        "MICROSTRAIN_BUILD_DIR_RELEASE": "$env{MICROSTRAIN_BINARY_DIR}"
+      },
+      "hidden": true
+    }
+  ]
+}

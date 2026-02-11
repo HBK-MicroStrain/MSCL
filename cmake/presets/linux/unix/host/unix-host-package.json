@@ -1,0 +1,64 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "../unix-package.json",
+    "release/unix-host-release-package.json"
+  ],
+  "packagePresets": [
+    {
+      "name": "unix-host-static",
+      "displayName": "Packages static C++ libraries for host Unix Debug and Release",
+      "description": "This packages static C++ libraries for host Unix Debug and Release",
+      "inherits": [
+        "unix-all",
+        "unix-host-static-release"
+      ],
+      "configFile": "$env{MICROSTRAIN_CPACK_CONFIG_ALL_FILE}"
+    },
+    {
+      "name": "unix-host-shared",
+      "displayName": "Packages shared C++ libraries for host Unix Debug and Release",
+      "description": "This packages shared C++ libraries for host Unix Debug and Release",
+      "inherits": [
+        "unix-all",
+        "unix-host-shared-release"
+      ],
+      "configFile": "$env{MICROSTRAIN_CPACK_CONFIG_ALL_FILE}"
+    },
+    {
+      "name": "unix-host-tests",
+      "displayName": "Packages static C++ libraries with tests enabled for host Unix Debug and Release",
+      "description": "This packages static C++ libraries with tests enabled for host Unix Debug and Release",
+      "inherits": [
+        "unix-all",
+        "unix-host-tests-release"
+      ],
+      "configFile": "$env{MICROSTRAIN_CPACK_CONFIG_ALL_FILE}"
+    },
+    {
+      "name": "unix-host-python2",
+      "displayName": "Packages Python2 bindings for host Unix Debug and Release",
+      "description": "This packages Python2 bindings for host Unix Debug and Release",
+      "inherits": [
+        "unix-all",
+        "unix-host-python2-release"
+      ],
+      "configFile": "$env{MICROSTRAIN_CPACK_CONFIG_ALL_FILE}"
+    },
+    {
+      "name": "unix-host-python3",
+      "displayName": "Packages Python3 bindings for host Unix Debug and Release",
+      "description": "This packages Python3 bindings for host Unix Debug and Release",
+      "inherits": [
+        "unix-all",
+        "unix-host-python3-release"
+      ],
+      "configFile": "$env{MICROSTRAIN_CPACK_CONFIG_ALL_FILE}"
+    }
+  ]
+}

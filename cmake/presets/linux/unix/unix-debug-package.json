@@ -1,0 +1,25 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "include": [
+    "../linux-package.json"
+  ],
+  "packagePresets": [
+    {
+      "name": "unix-debug",
+      "displayName": "Creates a Unix debug package",
+      "description": "This creates a Unix debug package",
+      "inherits": [
+        "linux"
+      ],
+      "environment": {
+        "MICROSTRAIN_BUILD_DIR_DEBUG": "$env{MICROSTRAIN_BINARY_DIR}"
+      },
+      "hidden": true
+    }
+  ]
+}
