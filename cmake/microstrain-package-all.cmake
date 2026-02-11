@@ -19,12 +19,29 @@
 #
 
 if(NOT DEFINED ENV{MICROSTRAIN_BUILD_DIR_DEBUG})
-    message(FATAL_ERROR "MICROSTRAIN_BUILD_DIR_DEBUG is required to be set as an environment variable")
+    # Neither directory is set
+    if(NOT DEFINED ENV{MICROSTRAIN_BUILD_DIR_RELEASE})
+        message(FATAL_ERROR "MICROSTRAIN_BUILD_DIR_DEBUG and/or MICROSTRAIN_BUILD_DIR_RELEASE is required to be set as an environment variable")
+    endif()
+
+    # Assume the debug directory is in the same root binary directory as release
+    # Handle case-sensitive systems
+    if(EXISTS "$ENV{MICROSTRAIN_BUILD_DIR_RELEASE}/../debug")
+        set(ENV{MICROSTRAIN_BUILD_DIR_DEBUG} "$ENV{MICROSTRAIN_BUILD_DIR_RELEASE}/../debug")
+    elseif(EXISTS "$ENV{MICROSTRAIN_BUILD_DIR_RELEASE}/../Debug")
+        set(ENV{MICROSTRAIN_BUILD_DIR_DEBUG} "$ENV{MICROSTRAIN_BUILD_DIR_RELEASE}/../Debug")
+    endif()
 endif()
 set(MICROSTRAIN_BUILD_DIR_DEBUG $ENV{MICROSTRAIN_BUILD_DIR_DEBUG})
 
 if(NOT DEFINED ENV{MICROSTRAIN_BUILD_DIR_RELEASE})
-    message(FATAL_ERROR "MICROSTRAIN_BUILD_DIR_RELEASE is required to be set as an environment variable")
+    # Assume the release directory is in the same root binary directory as debug
+    # Handle case-sensitive systems
+    if(EXISTS "$ENV{MICROSTRAIN_BUILD_DIR_DEBUG}/../release")
+        set(ENV{MICROSTRAIN_BUILD_DIR_RELEASE} "$ENV{MICROSTRAIN_BUILD_DIR_DEBUG}/../release")
+    elseif(EXISTS "$ENV{MICROSTRAIN_BUILD_DIR_DEBUG}/../Release")
+        set(ENV{MICROSTRAIN_BUILD_DIR_RELEASE} "$ENV{MICROSTRAIN_BUILD_DIR_DEBUG}/../Release")
+    endif()
 endif()
 set(MICROSTRAIN_BUILD_DIR_RELEASE $ENV{MICROSTRAIN_BUILD_DIR_RELEASE})
 
