@@ -51,7 +51,8 @@ system:
 
 Note: CMake presets don't support filtering by compiler. You must have the
 specified compiler installed and configured on your system to use the selected
-preset(s). The presets do, however, support filtering by OS/system.
+preset(s). The presets do, however, support filtering by OS/system aside from
+workflow presets which don't currently support conditionals.
 
 #### Usage Instructions
 
