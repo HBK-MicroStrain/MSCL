@@ -17,23 +17,85 @@ jobs:
       - name: Static C++ Build, Test, and Package
         run: cmake --workflow --preset msvc-2022-x64-static-tests-package
 
+      - name: Upload Static C++ Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: msvc-2022-x64-static-tests-package
+          path: packages/*
+          if-no-files-found: error
+
+      - name: Display Test Results
+        uses: mikepenz/action-junit-report@v4
+        if: always()
+        with:
+          report_paths: 'build/msvc/2022/x64/tests/mscl-test-results-*.xml'
+
       - name: C++ Examples Build and Package
         run: cmake --workflow --preset msvc-2022-x64-cpp-examples-package
+
+      - name: Upload C++ Examples Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: msvc-2022-x64-cpp-examples-package
+          path: packages/*
+          if-no-files-found: error
 
       - name: Python3 Build and Package
         run: cmake --workflow --preset msvc-2022-x64-python3-release-package
 
+      - name: Upload Python3 Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: msvc-2022-x64-python3-release-package
+          path: packages/*
+          if-no-files-found: error
+
       - name: Python3 Examples Package
         run: cmake --workflow --preset msvc-2022-x64-python3-examples-package
+
+      - name: Upload Python3 Examples Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: msvc-2022-x64-python3-examples-package
+          path: packages/*
+          if-no-files-found: error
 
       - name: C# Build and Package
         run: cmake --workflow --preset msvc-2022-x64-csharp-package
 
+      - name: Upload C# Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: msvc-2022-x64-csharp-package
+          path: packages/*
+          if-no-files-found: error
+
       - name: C# Examples Build and Package
         run: cmake --workflow --preset msvc-2022-x64-csharp-examples-package
+
+      - name: Upload C# Examples Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: msvc-2022-x64-csharp-examples-package
+          path: packages/*
+          if-no-files-found: error
 
       - name: Documentation Build and Package
         run: cmake --workflow --preset msvc-2022-x64-docs-package
 
+      - name: Upload Documentation Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: msvc-2022-x64-docs-package
+          path: packages/*
+          if-no-files-found: error
+
       - name: Shared C++ Build and Package
         run: cmake --workflow --preset msvc-2022-x64-shared-package
+
+      - name: Upload Shared C++ Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: msvc-2022-x64-shared-package
+          path: packages/*
+          if-no-files-found: error
