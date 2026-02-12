@@ -10,9 +10,19 @@
   ],
   "buildPresets": [
     {
+      "name": "default",
+      "displayName": "Default build profile",
+      "description": "This is the default build profile",
+      "jobs": 4,
+      "hidden": true
+    },
+    {
       "name": "cpp",
       "displayName": "Builds C++ libraries",
       "description": "This builds C++ libraries",
+      "inherits": [
+        "default"
+      ],
       "targets": [
         "MSCL-Cpp"
       ],
@@ -40,6 +50,9 @@
       "name": "tests",
       "displayName": "Builds unit tests",
       "description": "This builds unit tests",
+      "inherits": [
+        "default"
+      ],
       "targets": [
         "MSCL-Tests"
       ],
@@ -49,6 +62,9 @@
       "name": "cpp-examples",
       "displayName": "Builds C++ examples",
       "description": "This builds C++ examples",
+      "inherits": [
+        "default"
+      ],
       "targets": [
         "MSCL-Examples"
       ],
@@ -58,6 +74,9 @@
       "name": "python2",
       "displayName": "Builds Python2 bindings",
       "description": "This builds Python2 bindings",
+      "inherits": [
+        "default"
+      ],
       "targets": [
         "MSCL-Python2"
       ],
@@ -67,6 +86,9 @@
       "name": "python2-examples",
       "displayName": "Builds Python2 examples",
       "description": "This builds Python2 examples",
+      "inherits": [
+        "default"
+      ],
       "targets": [
         "MSCL-Examples"
       ],
@@ -76,6 +98,9 @@
       "name": "python3",
       "displayName": "Builds Python3 bindings",
       "description": "This builds Python3 bindings",
+      "inherits": [
+        "default"
+      ],
       "targets": [
         "MSCL-Python3"
       ],
@@ -85,6 +110,9 @@
       "name": "python3-examples",
       "displayName": "Builds Python3 examples",
       "description": "This builds Python3 examples",
+      "inherits": [
+        "default"
+      ],
       "targets": [
         "MSCL-Examples"
       ],
@@ -95,10 +123,13 @@
       "displayName": "Builds all configurations with static C++ libraries",
       "description": "This builds all configurations with static C++ libraries",
       "inherits": [
-        "static",
-        "tests",
-        "cpp-examples",
-        "python3"
+        "default"
+      ],
+      "targets": [
+        "MSCL-Cpp",
+        "MSCL-Tests",
+        "MSCL-Examples",
+        "MSCL-Python3"
       ],
       "hidden": true
     }

@@ -18,7 +18,8 @@
       },
       "execution": {
         "stopOnFailure": false,
-        "noTestsAction": "error"
+        "noTestsAction": "error",
+        "jobs": 4
       },
       "hidden": true
     }

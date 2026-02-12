@@ -19,6 +19,9 @@
         "lhs": "${hostSystemName}",
         "rhs": "Windows"
       },
+      "inherits": [
+        "default"
+      ],
       "hidden": true
     },
     {
@@ -62,10 +65,15 @@
       "displayName": "Builds all configurations, including Windows-specific, with static C++ libraries",
       "description": "This builds all configurations, including Windows-specific, with static C++ libraries",
       "inherits": [
-        "static-all",
-        "csharp",
-        "csharp-examples",
-        "docs"
+        "windows"
+      ],
+      "targets": [
+        "MSCL-Cpp",
+        "MSCL-Tests",
+        "MSCL-Examples",
+        "MSCL-Python3",
+        "MSCL-CSharp",
+        "MSCL-Docs"
       ],
       "hidden": true
     }

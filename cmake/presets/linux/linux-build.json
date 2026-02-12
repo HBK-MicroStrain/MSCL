@@ -19,6 +19,9 @@
         "lhs": "${hostSystemName}",
         "rhs": "Linux"
       },
+      "inherits": [
+        "default"
+      ],
       "hidden": true
     }
   ]
