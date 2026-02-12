@@ -1,0 +1,39 @@
+name: MSVC 2022 x64 Build
+
+on:
+  workflow_call:
+
+jobs:
+  build:
+    name: Build
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Static C++ Build, Test, and Package
+        run: cmake --workflow --preset msvc-2022-x64-static-tests-package
+
+      - name: C++ Examples Build and Package
+        run: cmake --workflow --preset msvc-2022-x64-cpp-examples-package
+
+      - name: Python3 Build and Package
+        run: cmake --workflow --preset msvc-2022-x64-python3-release-package
+
+      - name: Python3 Examples Package
+        run: cmake --workflow --preset msvc-2022-x64-python3-examples-package
+
+      - name: C# Build and Package
+        run: cmake --workflow --preset msvc-2022-x64-csharp-package
+
+      - name: C# Examples Build and Package
+        run: cmake --workflow --preset msvc-2022-x64-csharp-examples-package
+
+      - name: Documentation Build and Package
+        run: cmake --workflow --preset msvc-2022-x64-docs-package
+
+      - name: Shared C++ Build and Package
+        run: cmake --workflow --preset msvc-2022-x64-shared-package
