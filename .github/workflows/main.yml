@@ -1,6 +1,7 @@
 name: Main Build Workflow
 
 on:
+  workflow_dispatch:
   push:
   pull_request:
     branches: [ main, develop ]
