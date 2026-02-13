@@ -9,3 +9,7 @@ on:
 jobs:
   msvc-2022-x64:
     uses: HBK-MicroStrain-Internal/workflows/.github/workflows/msvc-2022-x64.yml@main
+    with:
+      debug: true
+      release: true
+      test: false
