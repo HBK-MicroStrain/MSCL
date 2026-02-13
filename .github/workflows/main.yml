@@ -7,4 +7,4 @@ on:
 
 jobs:
   msvc-2022-x64:
-    uses: ./.github/workflows/msvc-2022-x64.yml
+    uses: HBK-MicroStrain-Internal/workflows/.github/workflows/msvc-2022-x64.yml@main
