@@ -86,10 +86,7 @@ if(MSVC)
     )
 endif()
 
-set(JUNIT_OUTPUT_FILE_NAME "mscl-test-results")
-if(GENERATOR_IS_MULTI_CONFIG)
-    string(APPEND JUNIT_OUTPUT_FILE_NAME "-$<CONFIG>")
-endif()
+set(JUNIT_OUTPUT_FILE_NAME "mscl-unit-test-results-$<CONFIG>")
 
 # Reporting as JUNIT isn't compatible for direct CI/CD logging, but it can be easily parsed with a plugin
 add_test(
