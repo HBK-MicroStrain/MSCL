@@ -10,6 +10,23 @@ jobs:
   msvc-2022-x64:
     uses: HBK-MicroStrain-Internal/workflows/.github/workflows/msvc-2022-x64.yml@main
     with:
+      job_name: 'Static C++'
       debug: true
       release: true
-      test: false
+      configure_preset: 'tests'
+      build_preset: 'static'
+      unit_test: true
+      unit_test_preset: 'tests'
+      package_preset: 'static'
+
+  msvc-2022-x86:
+    uses: HBK-MicroStrain-Internal/workflows/.github/workflows/msvc-2022-x86.yml@main
+    with:
+      job_name: 'Static C++'
+      debug: true
+      release: true
+      configure_preset: 'tests'
+      build_preset: 'static'
+      unit_test: true
+      unit_test_preset: 'tests'
+      package_preset: 'static'
