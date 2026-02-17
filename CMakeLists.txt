@@ -142,8 +142,8 @@ if(MSCL_INSTALL)
     microstrain_get_package_architecture(CPACK_SYSTEM_NAME)
     microstrain_get_git_branch(MSCL_GIT_BRANCH MSCL_BRANCH) # Second param is used to set a cache variable
 
-    if("${MSCL_GIT_BRANCH}" STREQUAL "master")
-        # Use the project version for assets built on master
+    if("${MSCL_GIT_BRANCH}" STREQUAL "main")
+        # Use the project version for assets built on main
         set(CPACK_PACKAGE_VERSION "v${PROJECT_VERSION}")
     else()
         # Use the tag for all other assets
