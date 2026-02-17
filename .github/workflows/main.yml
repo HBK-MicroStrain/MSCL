@@ -36,20 +36,22 @@ jobs:
 
   csharp-msvc-2022-x64:
     name: 'C# (MSVC 2022 x64)'
-    uses: HBK-MicroStrain-Internal/workflows/.github/workflows/msvc-2022-x64.yml@main
+    uses: HBK-MicroStrain-Internal/workflows/.github/workflows/msvc-2022-x64-bindings.yml@main
     with:
       job_name: 'C#'
       debug: true
       release: true
       preset: 'csharp'
+      build_preset: 'static'
       artifact_match_pattern: '*MSCL-CSharp*.zip'
 
   csharp-msvc-2022-x86:
     name: 'C# (MSVC 2022 x86)'
-    uses: HBK-MicroStrain-Internal/workflows/.github/workflows/msvc-2022-x86.yml@main
+    uses: HBK-MicroStrain-Internal/workflows/.github/workflows/msvc-2022-x86-bindings.yml@main
     with:
       job_name: 'C#'
       debug: true
       release: true
       preset: 'csharp'
+      build_preset: 'static'
       artifact_match_pattern: '*MSCL-CSharp*.zip'
