@@ -7,7 +7,8 @@ on:
     branches: [ main, develop ]
 
 jobs:
-  msvc-2022-x64:
+  static-cpp-msvc-2022-x64:
+    name: 'Static C++ (MSVC 2022 x64)'
     uses: HBK-MicroStrain-Internal/workflows/.github/workflows/msvc-2022-x64.yml@main
     with:
       job_name: 'Static C++'
@@ -19,7 +20,8 @@ jobs:
       unit_test_preset: 'tests'
       package_preset: 'static'
 
-  msvc-2022-x86:
+  static-cpp-msvc-2022-x86:
+    name: 'Static C++ (MSVC 2022 x86)'
     uses: HBK-MicroStrain-Internal/workflows/.github/workflows/msvc-2022-x86.yml@main
     with:
       job_name: 'Static C++'
@@ -30,3 +32,21 @@ jobs:
       unit_test: true
       unit_test_preset: 'tests'
       package_preset: 'static'
+
+  csharp-msvc-2022-x64:
+    name: 'C# (MSVC 2022 x64)'
+    uses: HBK-MicroStrain-Internal/workflows/.github/workflows/msvc-2022-x64.yml@main
+    with:
+      job_name: 'C#'
+      debug: true
+      release: true
+      preset: 'csharp'
+
+  csharp-msvc-2022-x86:
+    name: 'C# (MSVC 2022 x86)'
+    uses: HBK-MicroStrain-Internal/workflows/.github/workflows/msvc-2022-x86.yml@main
+    with:
+      job_name: 'C#'
+      debug: true
+      release: true
+      preset: 'csharp'
