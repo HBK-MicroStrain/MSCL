@@ -2810,7 +2810,8 @@ namespace mscl
         //      NMEA         - 0x00000004 - NMEA
         //      RTCM         - 0x00000008 - RTCM
         //      SPARTN       - 0x00000010 - SPARTN
-        //      ALL          - 0x0000001F - All protocols
+        //      SBF          - 0x20000000 - SBF
+        //      ALL          - 0x21000301 - All protocols
         enum Protocol
         {
             NONE         = 0x00000000, // Not set
@@ -2818,7 +2819,8 @@ namespace mscl
             NMEA         = 0x00000100, // NMEA
             RTCM         = 0x00000200, // RTCM
             SPARTN       = 0x01000000, // SPARTN
-            ALL          = 0x01000301  // All protocols
+            SBF          = 0x20000000, // SBF
+            ALL          = 0x21000301  // All protocols
         };
 
         //API Constructor: DeviceCommPort
