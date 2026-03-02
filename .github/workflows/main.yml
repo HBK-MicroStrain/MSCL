@@ -21,18 +21,3 @@ jobs:
       check_auto: true
       package_preset: 'static'
       artifact_match_pattern: '*MSCL-Cpp*.zip'
-
-  static-cpp-msvc-2022-x86:
-    name: 'Static C++ (MSVC 2022 x86)'
-    uses: HBK-MicroStrain-Internal/workflows/.github/workflows/msvc-2022-x86.yml@main
-    with:
-      job_name: 'Static C++'
-      debug: true
-      release: true
-      configure_preset: 'tests'
-      build_preset: 'static'
-      unit_test: true
-      unit_test_preset: 'tests'
-      check_auto: true
-      package_preset: 'static'
-      artifact_match_pattern: '*MSCL-Cpp*.zip'
