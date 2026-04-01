@@ -86,8 +86,8 @@ if [ -z "${artifacts}" ] || [ -z "${docs_zip}" ] || [ -z "${release_name}" ] || 
   exit 1
 fi
 
-# Only need to perform a release for master or develop
-if [ "${target}" != "master" ] && [ "${target}" != "develop" ]; then
+# Only need to perform a release for main or develop
+if [ "${target}" != "main" ] && [ "${target}" != "develop" ]; then
   echo "No release required for ${target}"
   exit 0
 fi
@@ -111,7 +111,7 @@ fi
 # Make sure the tags are fetched
 git fetch --tags
 
-if [ "${target}" == "master" ]; then
+if [ "${target}" == "main" ]; then
   pushd "${build_dir}"
 
   github_release_version=$(git describe --tags --match "v*" --abbrev=0 HEAD)
@@ -145,7 +145,7 @@ if [ "${target}" == "master" ]; then
 fi
 
 # Some more constants and other important variables
-repo="LORD-MicroStrain/MSCL"
+repo="HBK-MicroStrain/MSCL"
 tmp_dir="/tmp"
 docs_dir="${tmp_dir}/MSCL_documentation"
 docs_release_dir="${docs_dir}/${release_name}"
@@ -172,8 +172,8 @@ fi
 popd
 
 # Generate a release notes file
-documentation_link="https://lord-microstrain.github.io/MSCL_documentation/${release_name}"
-changelog_link="https://github.com/LORD-MicroStrain/MSCL/blob/${release_name}/CHANGELOG.md"
+documentation_link="https://hbk-microstrain.github.io/MSCL_documentation/${release_name}"
+changelog_link="https://github.com/HBK-MicroStrain/MSCL/blob/${release_name}/CHANGELOG.md"
 release_notes_file="${tmp_dir}/mscl-release-notes-${release_name}.md"
 echo "## Useful Links" > ${release_notes_file}
 echo "* [Changelog](${changelog_link})" >> ${release_notes_file}
@@ -224,7 +224,7 @@ rm -f "${release_notes_file}"
 
 # Commit the documentation to the github pages branch
 rm -rf "${docs_dir}"
-git clone -b "main" "https://github.com/LORD-MicroStrain/MSCL_documentation.git" "${docs_dir}"
+git clone -b "main" "https://github.com/HBK-MicroStrain/MSCL_documentation.git" "${docs_dir}"
 rm -rf "${docs_release_dir}"
 mkdir -p "${docs_release_dir}"
 

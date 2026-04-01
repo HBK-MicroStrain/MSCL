@@ -25,7 +25,7 @@ def checkoutRepo() {
     ]],
     userRemoteConfigs: [[
       credentialsId: 'Github_User_And_Token',
-      url: 'https://github.com/LORD-MicroStrain/MSCL.git'
+      url: 'https://github.com/HBK-MicroStrain/MSCL.git'
     ]],
     extensions: [[
       $class: 'SubmoduleOption',
