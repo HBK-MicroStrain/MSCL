@@ -127,11 +127,11 @@ namespace mscl
 
         //Function: lastCommunicationTime
         //    Gets the <Timestamp> for the last time MSCL communicated with the Node.
-        const Timestamp& lastCommunicationTime() const;
+        virtual const Timestamp& lastCommunicationTime() const;
 
         //Function: lastDeviceState
         //  Gets the last known <DeviceState> for the Node.
-        DeviceState lastDeviceState() const;
+        virtual DeviceState lastDeviceState() const;
 
         //Function: setBaseStation
         //    Sets the node's parent Base Station, which will perform all communication with the Node.
