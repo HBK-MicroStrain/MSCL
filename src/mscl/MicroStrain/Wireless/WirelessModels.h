@@ -289,6 +289,28 @@ namespace mscl
         //Exceptions:
         //    - <Error>: Unknown model number.
         static BaseModel baseFromLegacyModel(uint16 legacyModel);
+
+        //Function: baseModelNumber
+        //    Gets the MODEL_NUMBER eeprom value for the given base station model.
+        //    MSCL reconstructs a BaseModel as (MODEL_NUMBER * 10000 + MODEL_OPTION).
+        //
+        //Parameters:
+        //    model - The <BaseModel> to encode.
+        //
+        //Returns:
+        //    The value to write to the MODEL_NUMBER eeprom location.
+        static uint16 baseModelNumber(BaseModel model);
+
+        //Function: baseModelOption
+        //    Gets the MODEL_OPTION eeprom value for the given base station model.
+        //    MSCL reconstructs a BaseModel as (MODEL_NUMBER * 10000 + MODEL_OPTION).
+        //
+        //Parameters:
+        //    model - The <BaseModel> to encode.
+        //
+        //Returns:
+        //    The value to write to the MODEL_OPTION eeprom location.
+        static uint16 baseModelOption(BaseModel model);
 #endif // !SWIG
     };
 } // namespace mscl
