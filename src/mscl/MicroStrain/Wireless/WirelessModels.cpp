@@ -75,4 +75,14 @@ namespace mscl
             return static_cast<BaseModel>(legacyModel);
         }
     }
+
+    uint16 WirelessModels::baseModelNumber(BaseModel model)
+    {
+        return static_cast<uint16>(model / 10000);
+    }
+
+    uint16 WirelessModels::baseModelOption(BaseModel model)
+    {
+        return static_cast<uint16>(model % 10000);
+    }
 } // namespace mscl

@@ -81,6 +81,8 @@ namespace mscl
             //if we have an invalid value (or not supported) and we are looking for lxrs+
             if(commProtocol == WirelessTypes::commProtocol_lxrsPlus)
             {
+                //LXRS+ was introduced in base station firmware 5.0 alongside ASPP v3.0 and has
+                //always been coupled to it, so v3.0 is correct for any LXRS+ capable device.
                 return Version(3, 0);
             }
 
@@ -174,6 +176,25 @@ namespace mscl
     uint8 BaseStationEepromHelper::read_fwVersionMajor() const
     {
         return Utils::msb(read(BaseStationEepromMap::FIRMWARE_VER).as_uint16());
+    }
+
+    void BaseStationEepromHelper::encode_fwVersion(const Version& firmware, uint16& ver1Out, uint16& ver2Out)
+    {
+        const uint8 major = static_cast<uint8>(firmware.majorPart());
+
+        if(major < 4)
+        {
+            //versions < 4: [Major][Minor] packed into FIRMWARE_VER, FIRMWARE_VER2 unused
+            ver1Out = static_cast<uint16>((major << 8) | (firmware.minorPart() & 0xFF));
+            ver2Out = 0;
+            return;
+        }
+
+        //versions >= 4: [Major][svn_lsb] in FIRMWARE_VER, upper svn bytes in FIRMWARE_VER2
+        //Inverse of: svnRevision = make_uint32(0, lsb(fwValue1), msb(fwValue2), lsb(fwValue2))
+        const uint32 svn = firmware.minorPart();
+        ver1Out = static_cast<uint16>((major << 8) | ((svn >> 8) & 0xFF));
+        ver2Out = static_cast<uint16>(((svn >> 16) & 0xFF) << 8 | ((svn >> 24) & 0xFF));
     }
 
     WirelessModels::BaseModel BaseStationEepromHelper::read_model() const

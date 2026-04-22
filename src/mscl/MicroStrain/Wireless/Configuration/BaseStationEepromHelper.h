@@ -90,6 +90,17 @@ namespace mscl
 
         uint8 read_fwVersionMajor() const;
 
+        //Function: encode_fwVersion
+        //  Encodes a firmware <Version> into the two EEPROM values used by read_fwVersion().
+        //  Versions < 4 use [Major].[Minor] packed into ver1Out; ver2Out is zero.
+        //  Versions >= 4 use [Major].[svnRevision] spread across both values.
+        //
+        //Parameters:
+        //  firmware  - The firmware <Version> to encode.
+        //  ver1Out   - Receives the value to write to FIRMWARE_VER.
+        //  ver2Out   - Receives the value to write to FIRMWARE_VER2.
+        static void encode_fwVersion(const Version& firmware, uint16& ver1Out, uint16& ver2Out);
+
         //Function: read_model
         //  Reads the <WirelessModels::BaseModel> of the BaseStation.
         //

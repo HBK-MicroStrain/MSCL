@@ -29,6 +29,11 @@ namespace mscl
         return Version(1, 0);
     }
 
+    uint16 WirelessProtocol::encodeAsppVersion(const Version& asppVersion)
+    {
+        return static_cast<uint16>((asppVersion.majorPart() << 8) | (asppVersion.minorPart() & 0xFF));
+    }
+
     Version WirelessProtocol::asppVersionFromNodeFw(const Version& fwVersion)
     {
         if(fwVersion >= NodeFeatures::MIN_NODE_FW_PROTOCOL_1_5)

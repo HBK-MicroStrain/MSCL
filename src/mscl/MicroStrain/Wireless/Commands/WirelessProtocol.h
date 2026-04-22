@@ -159,6 +159,17 @@ namespace mscl
         //  fwVersion - The firmware version of the Base Station.
         static Version asppVersionFromBaseFw(const Version& fwVersion);
 
+        //Function: encodeAsppVersion
+        //  Encodes an ASPP <Version> into the uint16 value used in the ASPP_VER_LXRS and
+        //  ASPP_VER_LXRS_PLUS eeprom locations. Inverse of the decode in read_asppVersion().
+        //
+        //Parameters:
+        //  asppVersion - The ASPP <Version> to encode.
+        //
+        //Returns:
+        //  The value to write to the ASPP version eeprom location.
+        static uint16 encodeAsppVersion(const Version& asppVersion);
+
         //Function: asppVersionFromNodeFw
         //  Gets the ASPP version from the Node firmware version.
         //
