@@ -85,4 +85,14 @@ namespace mscl
     {
         return static_cast<uint16>(model % 10000);
     }
+
+    uint16 WirelessModels::nodeModelNumber(NodeModel model)
+    {
+        return static_cast<uint16>(model / 10000);
+    }
+
+    uint16 WirelessModels::nodeModelOption(NodeModel model)
+    {
+        return static_cast<uint16>(model % 10000);
+    }
 } // namespace mscl
