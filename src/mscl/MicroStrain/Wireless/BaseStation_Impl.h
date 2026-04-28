@@ -1154,9 +1154,11 @@ namespace mscl
         //
         //Exceptions:
         //  - <Error_Connection>: A connection error has occurred with the BaseStation.
-        virtual bool node_autoShuntCal(const WirelessProtocol& nodeProtocol,
-                                      const AutoCalCmdDetails& commandDetails,
-                                      AutoCalResult& result);
+        virtual bool node_autoShuntCal(
+            const WirelessProtocol& nodeProtocol,
+            const AutoCalCmdDetails& commandDetails,
+            AutoCalResult& result);
+
 
         //Function: node_readSingleSensor
         //    Reads the bits value for a single channel on a Wireless Node.
