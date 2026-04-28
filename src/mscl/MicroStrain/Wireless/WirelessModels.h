@@ -311,6 +311,28 @@ namespace mscl
         //Returns:
         //    The value to write to the MODEL_OPTION eeprom location.
         static uint16 baseModelOption(BaseModel model);
+
+        //Function: nodeModelNumber
+        //    Gets the MODEL_NUMBER eeprom value for the given node model.
+        //    MSCL reconstructs a NodeModel as (MODEL_NUMBER * 10000 + MODEL_OPTION).
+        //
+        //Parameters:
+        //    model - The <NodeModel> to encode.
+        //
+        //Returns:
+        //    The value to write to the MODEL_NUMBER eeprom location.
+        static uint16 nodeModelNumber(NodeModel model);
+
+        //Function: nodeModelOption
+        //    Gets the MODEL_OPTION eeprom value for the given node model.
+        //    MSCL reconstructs a NodeModel as (MODEL_NUMBER * 10000 + MODEL_OPTION).
+        //
+        //Parameters:
+        //    model - The <NodeModel> to encode.
+        //
+        //Returns:
+        //    The value to write to the MODEL_OPTION eeprom location.
+        static uint16 nodeModelOption(NodeModel model);
 #endif // !SWIG
     };
 } // namespace mscl
