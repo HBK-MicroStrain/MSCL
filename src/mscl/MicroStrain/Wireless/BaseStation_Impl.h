@@ -1124,7 +1124,7 @@ namespace mscl
         //
         //Exceptions:
         //    - <Error_Connection>: A connection error has occurred with the BaseStation.
-        bool node_autocal_shm(const WirelessProtocol& nodeProtocol, NodeAddress nodeAddress, AutoCalResult& result);
+        virtual bool node_autocal_shm(const WirelessProtocol& nodeProtocol, NodeAddress nodeAddress, AutoCalResult& result);
 
         //Function: node_autocal_shm201
         //    Performs automatic calibration for a Wireless Node.
@@ -1139,7 +1139,7 @@ namespace mscl
         //
         //Exceptions:
         //    - <Error_Connection>: A connection error has occurred with the BaseStation.
-        bool node_autocal_shm201(const WirelessProtocol& nodeProtocol, NodeAddress nodeAddress, AutoCalResult& result);
+        virtual bool node_autocal_shm201(const WirelessProtocol& nodeProtocol, NodeAddress nodeAddress, AutoCalResult& result);
 
         //Function: node_autoShuntCal
         //  Performs automatic shunt calibration for a Wireless Node.
