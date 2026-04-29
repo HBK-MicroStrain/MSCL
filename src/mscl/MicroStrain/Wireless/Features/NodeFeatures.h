@@ -136,8 +136,7 @@ namespace mscl
         //    time - <TimeSpan> to normalize. This will be updated to hold the normalized result.
         TimeSpan normalizeTimeBetweenBursts(const TimeSpan& time) const;
 
-    private:
-        //Function: findEeprom
+        //API Function: findEeprom
         //    Finds the <EepromLocation> for the provided setting and channel mask pair.
         //
         //Parameters:
@@ -151,6 +150,7 @@ namespace mscl
         //    - <Error_NotSupported>: The <WirelessTypes::ChannelGroupSetting> or <ChannelMask> is not supported.
         const EepromLocation& findEeprom(WirelessTypes::ChannelGroupSetting setting, const ChannelMask& mask) const;
 
+    private:
         //Function: anyChannelGroupSupports
         //    Checks if any channel group on the Node supports the given <WirelessTypes::ChannelGroupSetting>.
         //
