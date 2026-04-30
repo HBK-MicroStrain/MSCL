@@ -136,7 +136,8 @@ namespace mscl
         //    time - <TimeSpan> to normalize. This will be updated to hold the normalized result.
         TimeSpan normalizeTimeBetweenBursts(const TimeSpan& time) const;
 
-        //API Function: findEeprom
+    protected:
+        //Function: findEeprom
         //    Finds the <EepromLocation> for the provided setting and channel mask pair.
         //
         //Parameters:
