@@ -125,7 +125,10 @@ endmacro()
 # The resulting binary works with any Python 3.x >= MSCL_PYTHON_ABI_VERSION without rebuilding,
 # instead of needing one build per exact Python minor version.
 macro(mscl_add_swig_python_abi3_module_library MSCL_PYTHON_ABI_VERSION)
-    set(MSCL_PYTHON_COMPONENT_NAME "Python3")
+    # Named to match MSCL_PYTHON_ABI_VERSION (e.g. "Python3.11") since that's the target name the
+    # generated examples projects (examples/python/cmake/CMakeLists.txt.in) expect to depend on --
+    # it hardcodes "@PROJECT_NAME@-Python@MSCL_PYTHON_VERSION@" using MSCL_PYTHON_REQUESTED_VERSIONS.
+    set(MSCL_PYTHON_COMPONENT_NAME "Python${MSCL_PYTHON_ABI_VERSION}")
     set(MSCL_PYTHON_TARGET_NAME "${PROJECT_NAME}-${MSCL_PYTHON_COMPONENT_NAME}")
 
     if(MSVC)
