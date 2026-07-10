@@ -14,7 +14,7 @@ RENAMED - A function/class has been renamed.
 REMOVED - A function/class has been removed.
 ___
 
-## Forthcoming
+## 68.2.0 - 2026-07-10
 - Wireless
     - Added support for the following models:
       - WSDA-Pro
