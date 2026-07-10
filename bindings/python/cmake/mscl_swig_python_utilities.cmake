@@ -156,17 +156,34 @@ macro(mscl_add_swig_python_abi3_module_library MSCL_PYTHON_ABI_VERSION)
         LIBRARY_OUTPUT_DIRECTORY "${MSCL_PYTHON_OUTPUT_DIRECTORY}"
     )
 
-    # Find the stable ABI (limited API) development components
-    # Development.SABIModule provides the version-independent artifacts (e.g. python3.lib on Windows)
+    # Find the development component needed to compile against Python.h.
+    # Windows: Development.SABIModule gives us the version-independent python3.lib import
+    # library that a limited-API extension needs to link against there.
+    # Linux/Unix: linking libpythonX.Y.so directly (what Development/Development.SABIModule
+    # resolve to here) would tie the .so to that one exact Python version at runtime, defeating
+    # the entire point of an abi3 build. Development.Module's Python3::Module target is CMake's
+    # purpose-built component for extension modules and deliberately skips linking the Python
+    # runtime library on Unix, so the resulting .so has no hard dependency on any one Python
+    # version's shared library.
     set(Python3_USE_STATIC_LIBS ${MSCL_LINK_STATIC_DEPS})
-    find_package(Python3
-        "${MSCL_PYTHON_ABI_VERSION}"
-        REQUIRED
-        COMPONENTS Development.SABIModule
-    )
+    if(WIN32)
+        find_package(Python3
+            "${MSCL_PYTHON_ABI_VERSION}"
+            REQUIRED
+            COMPONENTS Development.SABIModule
+        )
+        set(MSCL_PYTHON_ABI_LINK_TARGET Python3::SABIModule)
+    else()
+        find_package(Python3
+            "${MSCL_PYTHON_ABI_VERSION}"
+            REQUIRED
+            COMPONENTS Development.Module
+        )
+        set(MSCL_PYTHON_ABI_LINK_TARGET Python3::Module)
+    endif()
 
     target_link_libraries("${MSCL_PYTHON_TARGET_NAME}" PRIVATE
-        Python3::SABIModule
+        ${MSCL_PYTHON_ABI_LINK_TARGET}
     )
 
     # Restrict the compiled module to the stable ABI surface so it stays
@@ -179,11 +196,13 @@ macro(mscl_add_swig_python_abi3_module_library MSCL_PYTHON_ABI_VERSION)
         "Py_LIMITED_API=${MSCL_PYTHON_LIMITED_API_HEX}"
     )
 
-    # Tag the shared object with the "abi3" infix Python tooling expects for stable-ABI extensions
-    # Python3_SOSABI (e.g. "abi3") is provided by CMake's FindPython3 alongside Development.SABIModule
-    if(NOT MSVC AND Python3_SOSABI)
+    # Tag the shared object with the "abi3" infix Python tooling expects for stable-ABI extensions.
+    # We set this unconditionally on non-Windows (rather than relying on CMake's Python3_SOSABI,
+    # which is only populated by the SABIModule component we're not using on Unix) since we're
+    # already manually enforcing the stable ABI restriction via Py_LIMITED_API above.
+    if(NOT MSVC)
         set_target_properties("${MSCL_PYTHON_TARGET_NAME}" PROPERTIES
-            SUFFIX ".${Python3_SOSABI}${CMAKE_SHARED_MODULE_SUFFIX}"
+            SUFFIX ".abi3${CMAKE_SHARED_MODULE_SUFFIX}"
         )
     endif()
 
