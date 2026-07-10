@@ -17,6 +17,8 @@ set(MSCL_MICROSTRAIN_WIRELESS_FEATURES_FILES
     "${CMAKE_CURRENT_LIST_DIR}/BaseStationFeatures_wsda.h"
     "${CMAKE_CURRENT_LIST_DIR}/BaseStationFeatures_wsda2000.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/BaseStationFeatures_wsda2000.h"
+    "${CMAKE_CURRENT_LIST_DIR}/BaseStationFeatures_wsdaPro.cpp"
+    "${CMAKE_CURRENT_LIST_DIR}/BaseStationFeatures_wsdaPro.h"
     "${CMAKE_CURRENT_LIST_DIR}/ChannelGroup.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/ChannelGroup.h"
     "${CMAKE_CURRENT_LIST_DIR}/FlashInfo.cpp"

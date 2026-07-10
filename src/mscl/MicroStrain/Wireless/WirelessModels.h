@@ -240,6 +240,7 @@ namespace mscl
         //base_wsda_1000                - 63140050       -WSDA-1000
         //base_wsda_1500                - 63141500       -WSDA-1500
         //base_wsda_2000                - 63142000       -WSDA-2000
+        //base_wsdaPro                  - 63143000       -WSDA-Pro
         //base_wsdaBase_200             - 63072040       -WSDA-Base-200 (USB)
         //base_wsdaBase_200_extAntenna  - 63072140       -WSDA-Base-200 (USB) - External Antenna
         //base_wsdaBase_101_analog      - 63071010       -WSDA-Base-101 (Analog)
@@ -253,6 +254,7 @@ namespace mscl
             base_wsda_1000                 = 63140050,      //WSDA-1000
             base_wsda_1500                 = 63141500,      //WSDA-1500
             base_wsda_2000                 = 63142000,      //WSDA-2000
+            base_wsdaPro                   = 63143000,      //WSDA-Pro
             base_wsdaBase_200_legacy       = 63070200,      //WSDA-Base-200 (USB) (Legacy, never released)
             base_wsdaBase_200              = 63072040,      //WSDA-Base-200 (USB)
             base_wsdaBase_200_extAntenna   = 63072140,      //WSDA-Base-200 (USB) - External Antenna
