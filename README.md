@@ -53,7 +53,7 @@ If you'd rather build MSCL from source yourself, you can do so with the build
 
 ## Documentation
 
-MSCL has [online documentation](https://hbk-microstrain.github.io/MSCL_documentation).</br>
+MSCL has [online documentation](https://hbk-microstrain.github.io/MSCL-Documentation).</br>
 See the documentation build [instructions](docs/README.md) for information on
 building the documentation from source.
 

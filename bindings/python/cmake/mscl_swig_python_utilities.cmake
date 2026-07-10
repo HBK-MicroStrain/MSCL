@@ -156,35 +156,41 @@ macro(mscl_add_swig_python_abi3_module_library MSCL_PYTHON_ABI_VERSION)
         LIBRARY_OUTPUT_DIRECTORY "${MSCL_PYTHON_OUTPUT_DIRECTORY}"
     )
 
-    # Find the development component needed to compile against Python.h.
-    # Windows: Development.SABIModule gives us the version-independent python3.lib import
-    # library that a limited-API extension needs to link against there.
-    # Linux/Unix: linking libpythonX.Y.so directly (what Development/Development.SABIModule
-    # resolve to here) would tie the .so to that one exact Python version at runtime, defeating
-    # the entire point of an abi3 build. Development.Module's Python3::Module target is CMake's
-    # purpose-built component for extension modules and deliberately skips linking the Python
-    # runtime library on Unix, so the resulting .so has no hard dependency on any one Python
-    # version's shared library.
+    # CMake's Development.Module/Development.SABIModule sub-components need to execute the found
+    # interpreter to introspect sysconfig, which fails against this vcpkg-built Python (it isn't
+    # runnable standalone outside its own package tree). The plain Development component is what
+    # vcpkg's python3 port itself documents and is proven to work, so use that for the include
+    # directories and handle version-independent linking ourselves below instead of relying on
+    # CMake's (broken, for this build) automatic Module/SABIModule detection.
     set(Python3_USE_STATIC_LIBS ${MSCL_LINK_STATIC_DEPS})
-    if(WIN32)
-        find_package(Python3
-            "${MSCL_PYTHON_ABI_VERSION}"
-            REQUIRED
-            COMPONENTS Development.SABIModule
-        )
-        set(MSCL_PYTHON_ABI_LINK_TARGET Python3::SABIModule)
-    else()
-        find_package(Python3
-            "${MSCL_PYTHON_ABI_VERSION}"
-            REQUIRED
-            COMPONENTS Development.Module
-        )
-        set(MSCL_PYTHON_ABI_LINK_TARGET Python3::Module)
-    endif()
-
-    target_link_libraries("${MSCL_PYTHON_TARGET_NAME}" PRIVATE
-        ${MSCL_PYTHON_ABI_LINK_TARGET}
+    find_package(Python3
+        "${MSCL_PYTHON_ABI_VERSION}"
+        REQUIRED
+        COMPONENTS Development
     )
+
+    target_include_directories("${MSCL_PYTHON_TARGET_NAME}" PRIVATE
+        ${Python3_INCLUDE_DIRS}
+    )
+
+    if(WIN32)
+        # Extension modules must resolve every symbol at link time on Windows, unlike Unix shared
+        # objects. Link the version-independent "python3.lib" stable-ABI stub (shipped alongside
+        # the version-specific pythonXY.lib in CPython's Windows distribution) instead of
+        # Python3_LIBRARIES (which would be the version-specific pythonXY.lib), so the built .pyd
+        # isn't tied to one exact Python version.
+        find_library(MSCL_PYTHON_ABI_LIBRARY
+            NAMES "python3"
+            PATHS ${Python3_LIBRARY_DIRS}
+            NO_DEFAULT_PATH
+            REQUIRED
+        )
+        target_link_libraries("${MSCL_PYTHON_TARGET_NAME}" PRIVATE "${MSCL_PYTHON_ABI_LIBRARY}")
+    endif()
+    # On Linux/Unix, deliberately don't link against libpythonX.Y.so at all: its Python C-API
+    # symbols stay undefined in the built .so and are resolved at import time from the hosting
+    # interpreter process. That's the standard way to build a Python-version-independent
+    # extension on Unix -- linking libpythonX.Y.so directly would tie the .so to that one version.
 
     # Restrict the compiled module to the stable ABI surface so it stays
     # forward-compatible with newer Python 3.x releases without rebuilding

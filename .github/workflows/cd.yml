@@ -207,7 +207,7 @@ jobs:
             echo "| Python | [pymscl ${version}](https://pypi.org/project/pymscl/${version}/) | \`pip install pymscl==${version}\` |"
             echo "| C# | [MicroStrain.MSCL ${version}](https://www.nuget.org/packages/MicroStrain.MSCL/${version}) | \`dotnet add package MicroStrain.MSCL --version ${version}\` |"
             echo ""
-            echo "Documentation: https://hbk-microstrain.github.io/MSCL_documentation/${RELEASE_VERSION}"
+            echo "Documentation: https://hbk-microstrain.github.io/MSCL-Documentation/${RELEASE_VERSION}"
           } > release-body.md
 
       - name: Create release
@@ -233,8 +233,8 @@ jobs:
           DOCS_PAT: ${{ secrets.MSCL_DOCUMENTATION_PAT }}
           VERSION: ${{ needs.gate.outputs.version }}
         run: |
-          docs_dir="$(mktemp -d)/MSCL_documentation"
-          git clone -b main "https://x-access-token:${DOCS_PAT}@github.com/HBK-MicroStrain/MSCL_documentation.git" "${docs_dir}"
+          docs_dir="$(mktemp -d)/MSCL-Documentation"
+          git clone -b main "https://x-access-token:${DOCS_PAT}@github.com/HBK-MicroStrain/MSCL-Documentation.git" "${docs_dir}"
 
           release_dir="${docs_dir}/${VERSION}"
           rm -rf "${release_dir}"
@@ -246,8 +246,8 @@ jobs:
           rm -rf "${release_dir}/mscl"
 
           readme="${docs_dir}/README.md"
-          full_link="https://hbk-microstrain.github.io/MSCL_documentation/${VERSION}/MSCL_Docs"
-          public_link="https://hbk-microstrain.github.io/MSCL_documentation/${VERSION}/MSCL_API_Docs"
+          full_link="https://hbk-microstrain.github.io/MSCL-Documentation/${VERSION}/MSCL_Docs"
+          public_link="https://hbk-microstrain.github.io/MSCL-Documentation/${VERSION}/MSCL_API_Docs"
           if ! grep -qE "^\| ${VERSION} +\|" "${readme}"; then
             sed -i -E "/^\| latest +/s,\$,\n| ${VERSION} | [Full Documentation](${full_link}) | [Public Documentation](${public_link}) |,g" "${readme}"
           fi

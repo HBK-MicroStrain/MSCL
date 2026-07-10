@@ -16,7 +16,7 @@ import mscl
 
 ## Documentation
 
-- [Full documentation](https://hbk-microstrain.github.io/MSCL_documentation)
+- [Full documentation](https://hbk-microstrain.github.io/MSCL-Documentation)
 - [Python examples](https://github.com/HBK-MicroStrain/MSCL/tree/main/examples/python)
 - [Source repository](https://github.com/HBK-MicroStrain/MSCL)
 
