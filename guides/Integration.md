@@ -14,7 +14,7 @@ projects should use their respective package managers:
 ### Python (PyPI)
 
 ```shell
-pip install mscl
+pip install pymscl
 ```
 
 ```python

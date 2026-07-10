@@ -9,7 +9,7 @@ sensors.
 
 [![CI C++ (Windows)](https://github.com/HBK-MicroStrain/MSCL/actions/workflows/ci-cpp-windows.yml/badge.svg)](https://github.com/HBK-MicroStrain/MSCL/actions/workflows/ci-cpp-windows.yml) &nbsp;
 [![CI C++ (Linux)](https://github.com/HBK-MicroStrain/MSCL/actions/workflows/ci-cpp-linux.yml/badge.svg)](https://github.com/HBK-MicroStrain/MSCL/actions/workflows/ci-cpp-linux.yml) &nbsp;
-[![PyPI](https://img.shields.io/pypi/v/mscl)](https://pypi.org/project/mscl/) &nbsp;
+[![PyPI](https://img.shields.io/pypi/v/pymscl)](https://pypi.org/project/pymscl/) &nbsp;
 [![NuGet](https://img.shields.io/nuget/v/MicroStrain.MSCL)](https://www.nuget.org/packages/MicroStrain.MSCL/)
 
 ### Support
@@ -33,7 +33,7 @@ Please see our [releases](../../releases) page for all of our release notes.
 | Language | Package                                                                | Install                                        |
 |----------|-------------------------------------------------------------------------|-------------------------------------------------|
 | C++      | —                                                                        | See the [Integration guide](guides/Integration.md) below |
-| Python   | [mscl](https://pypi.org/project/mscl/)                                  | `pip install mscl`                               |
+| Python   | [pymscl](https://pypi.org/project/pymscl/)                               | `pip install pymscl`                             |
 | C#       | [MicroStrain.MSCL](https://www.nuget.org/packages/MicroStrain.MSCL/)    | `dotnet add package MicroStrain.MSCL`            |
 
 MSCL no longer publishes prebuilt C++ archives with each release. C++ projects

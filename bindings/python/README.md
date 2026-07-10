@@ -7,7 +7,11 @@ Wireless and Inertial sensors.
 ## Installation
 
 ```shell
-pip install mscl
+pip install pymscl
+```
+
+```python
+import mscl
 ```
 
 ## Documentation

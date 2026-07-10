@@ -204,7 +204,7 @@ jobs:
             echo "| Language | Package | Install |"
             echo "|---|---|---|"
             echo "| C++ | — | See the [Integration guide](guides/Integration.md) for using this tag via FetchContent |"
-            echo "| Python | [mscl ${version}](https://pypi.org/project/mscl/${version}/) | \`pip install mscl==${version}\` |"
+            echo "| Python | [pymscl ${version}](https://pypi.org/project/pymscl/${version}/) | \`pip install pymscl==${version}\` |"
             echo "| C# | [MicroStrain.MSCL ${version}](https://www.nuget.org/packages/MicroStrain.MSCL/${version}) | \`dotnet add package MicroStrain.MSCL --version ${version}\` |"
             echo ""
             echo "Documentation: https://hbk-microstrain.github.io/MSCL_documentation/${RELEASE_VERSION}"
