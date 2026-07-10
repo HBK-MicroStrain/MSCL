@@ -1,12 +1,60 @@
 # MSCL Project Integration
 
 Integrating MSCL into your project allows you to communicate with and configure
-MicroStrain Wireless, Inertial, and Displacement sensors. The recommended
-approach is using **CMake**, but manual integration is also supported.
+MicroStrain Wireless, Inertial, and Displacement sensors.
 
 ---
 
-## CMake Integration (Recommended)
+## Package Manager Integration (Recommended)
+
+MSCL no longer publishes prebuilt C++ archives with each release, so C++
+projects use CMake's `FetchContent` (see below) instead. Python and C#
+projects should use their respective package managers:
+
+### Python (PyPI)
+
+```shell
+pip install mscl
+```
+
+```python
+import mscl
+```
+
+### C# (NuGet)
+
+```shell
+dotnet add package MicroStrain.MSCL
+```
+
+---
+
+## C++ Integration via CMake `FetchContent` (Recommended)
+
+Pull a specific released version directly from source at configure time,
+instead of downloading a prebuilt archive:
+
+```cmake
+include(FetchContent)
+FetchContent_Declare(
+    MSCL
+    GIT_REPOSITORY https://github.com/HBK-MicroStrain/MSCL.git
+    GIT_TAG v68.2.0 # Use the tag of the release you want
+)
+FetchContent_MakeAvailable(MSCL)
+
+add_executable(my_app main.cpp)
+target_link_libraries(my_app PRIVATE ${MSCL_LIBRARIES})
+target_include_directories(my_app PRIVATE ${MSCL_INCLUDE_DIRS})
+```
+
+This builds MSCL from source as part of your project's configure step, so the
+same [build prerequisites](Build.md) (CMake 3.23+, a C++14 compiler, and the
+vcpkg submodule dependencies) apply.
+
+---
+
+## CMake Integration (Building From Source Yourself)
 
 MSCL provides a CMake configuration file (`mscl-config.cmake`) that makes it
 easy to find and link the library in your own CMake-based projects.

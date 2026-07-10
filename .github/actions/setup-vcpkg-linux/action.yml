@@ -1,0 +1,23 @@
+name: Setup vcpkg (Linux)
+description: Install vcpkg's build prerequisites and restore/save its binary cache so CI doesn't rebuild dependencies (Boost, OpenSSL, etc.) from source every run.
+
+runs:
+  using: composite
+  steps:
+    - name: Install build tools
+      shell: bash
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y ninja-build curl zip unzip tar pkg-config autoconf automake libtool build-essential
+
+    - name: Cache vcpkg binaries
+      uses: actions/cache@v4
+      with:
+        path: ${{ github.workspace }}/.vcpkg-cache
+        key: vcpkg-linux-${{ hashFiles('vcpkg.json') }}
+        restore-keys: |
+          vcpkg-linux-
+
+    - name: Configure vcpkg binary cache
+      shell: bash
+      run: echo "VCPKG_BINARY_SOURCES=clear;files,${GITHUB_WORKSPACE}/.vcpkg-cache,readwrite" >> "${GITHUB_ENV}"

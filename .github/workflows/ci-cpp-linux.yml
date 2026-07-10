@@ -1,0 +1,43 @@
+name: CI C++ (Linux)
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  build-cpp:
+    name: Build C++ (Linux)
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - uses: ./.github/actions/setup-vcpkg-linux
+
+      - name: Configure
+        run: >
+          cmake -S . -B build
+          -DCMAKE_BUILD_TYPE:STRING=Release
+          -DMSCL_BUILD_TESTS:BOOL=ON
+          -DMSCL_BUILD_CPP_EXAMPLES:BOOL=ON
+          -DMSCL_BUILD_PYTHON3:BOOL=ON
+          -DMSCL_BUILD_PYTHON_EXAMPLES:BOOL=ON
+
+      - name: Build
+        run: cmake --build build --parallel $(nproc)
+
+      - name: Test
+        run: >
+          ctest
+          --test-dir build
+          --build-config Release
+          --output-on-failure
+          --parallel $(nproc)

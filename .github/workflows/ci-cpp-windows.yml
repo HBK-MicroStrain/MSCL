@@ -1,0 +1,44 @@
+name: CI C++ (Windows)
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  build-cpp:
+    name: Build C++ (Windows)
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - uses: ./.github/actions/setup-vcpkg-windows
+
+      - name: Configure
+        run: >
+          cmake -S . -B build -A x64
+          -DMSCL_BUILD_TESTS:BOOL=ON
+          -DMSCL_BUILD_CPP_EXAMPLES:BOOL=ON
+          -DMSCL_BUILD_PYTHON3:BOOL=ON
+          -DMSCL_BUILD_PYTHON_EXAMPLES:BOOL=ON
+          -DMSCL_BUILD_CSHARP:BOOL=ON
+          -DMSCL_BUILD_CSHARP_EXAMPLES:BOOL=ON
+
+      - name: Build
+        run: cmake --build build --config Release --parallel $env:NUMBER_OF_PROCESSORS
+
+      - name: Test
+        run: >
+          ctest
+          --test-dir build
+          --build-config Release
+          --output-on-failure
+          --parallel $env:NUMBER_OF_PROCESSORS

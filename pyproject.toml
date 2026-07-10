@@ -1,0 +1,50 @@
+[build-system]
+requires = ["scikit-build-core>=0.10"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "mscl"
+dynamic = ["version"]
+description = "MSCL - The MicroStrain Communication Library"
+readme = "bindings/python/README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.11"
+authors = [
+    { name = "MicroStrain by HBK", email = "microstrainsupport@hbkworld.com" },
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+]
+
+[project.urls]
+Homepage = "https://github.com/HBK-MicroStrain/MSCL"
+Documentation = "https://hbk-microstrain.github.io/MSCL_documentation"
+Changelog = "https://github.com/HBK-MicroStrain/MSCL/releases"
+
+# Builds the Python3 bindings (bindings/python) using the existing CMake project.
+# The compiled extension targets the stable ABI (see MSCL_PYTHON_LIMITED_API in
+# bindings/python/CMakeLists.txt) so one wheel per OS/arch supports Python 3.11+.
+[tool.scikit-build]
+cmake.source-dir = "."
+cmake.build-type = "Release"
+cmake.args = [
+    "-DMSCL_USE_VCPKG:BOOL=ON",
+    "-DMSCL_BUILD_PYTHON3:BOOL=ON",
+    "-DMSCL_PYTHON_LIMITED_API:BOOL=ON",
+    "-DMSCL_BUILD_TESTS:BOOL=OFF",
+    "-DMSCL_BUILD_CPP_EXAMPLES:BOOL=OFF",
+    "-DMSCL_BUILD_CSHARP:BOOL=OFF",
+    "-DMSCL_BUILD_PACKAGE:BOOL=OFF",
+]
+install.components = ["Python3"]
+wheel.packages = []
+wheel.install-dir = "."
+wheel.py-api = "cp311"
+
+[tool.scikit-build.metadata.version]
+provider = "scikit_build_core.metadata.regex"
+input = "CMakeLists.txt"
+regex = "project\\(\"MSCL\"\\s+LANGUAGES CXX\\s+VERSION (?P<value>[0-9]+\\.[0-9]+\\.[0-9]+)\\s*\\)"

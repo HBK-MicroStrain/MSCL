@@ -1,4 +1,10 @@
 ___
+**Archived.** This file is no longer hand-edited as part of the release
+process. Release notes for v68.2.0 and later are generated from conventional
+commits and published on the
+[GitHub Releases](https://github.com/HBK-MicroStrain/MSCL/releases) page.
+This file is kept for historical reference to earlier releases.
+___
 MSCL Change Log
 
 The version number scheme in MSCL is as follows:
