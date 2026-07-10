@@ -1,0 +1,317 @@
+name: CD
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Tag to release (e.g. v68.2.0)'
+        required: true
+
+env:
+  RELEASE_VERSION: ${{ github.event.inputs.version || github.ref_name }}
+
+jobs:
+  gate:
+    name: Verify version
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.RELEASE_VERSION }}
+
+      - name: Compare tag to CMakeLists.txt version
+        id: version
+        run: |
+          tag_version="${RELEASE_VERSION#v}"
+          cmake_version="$(grep -A2 'project("MSCL"' CMakeLists.txt | grep -oE 'VERSION [0-9]+\.[0-9]+\.[0-9]+' | awk '{print $2}')"
+
+          if [ -z "${cmake_version}" ]; then
+            echo "Could not find a VERSION in CMakeLists.txt's project() declaration" >&2
+            exit 1
+          fi
+
+          if [ "${tag_version}" != "${cmake_version}" ]; then
+            echo "Tag ${RELEASE_VERSION} does not match CMakeLists.txt VERSION ${cmake_version}" >&2
+            exit 1
+          fi
+
+          echo "version=${tag_version}" >> "$GITHUB_OUTPUT"
+
+  build-docs:
+    name: Build docs
+    needs: gate
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.RELEASE_VERSION }}
+          submodules: recursive
+          fetch-depth: 0
+
+      - uses: ./.github/actions/setup-vcpkg-windows
+
+      - name: Configure
+        run: >
+          cmake -S . -B build -A x64
+          -DMSCL_BUILD_DOCUMENTATION:BOOL=ON
+          -DMSCL_BUILD_PACKAGE:BOOL=ON
+
+      - name: Build docs
+        run: >
+          cmake --build build --config Release
+          --target MSCL-Docs
+          --parallel $env:NUMBER_OF_PROCESSORS
+
+      - name: Package docs
+        working-directory: build
+        run: cpack --config CPackConfig.cmake -C Release
+
+      - name: Upload docs artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-zip
+          path: build/MSCL-Documentation-*.zip
+
+  build-python:
+    name: Build Python wheel (${{ matrix.os }})
+    needs: gate
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-22.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.RELEASE_VERSION }}
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Setup vcpkg (Windows)
+        if: runner.os == 'Windows'
+        uses: ./.github/actions/setup-vcpkg-windows
+
+      - name: Setup vcpkg (Linux)
+        if: runner.os == 'Linux'
+        uses: ./.github/actions/setup-vcpkg-linux
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install build
+        run: pip install build
+
+      - name: Build wheel
+        run: python -m build --wheel
+
+      - name: Upload wheel artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: wheel-${{ matrix.os }}
+          path: dist/*.whl
+
+  build-nuget:
+    name: Build NuGet package
+    needs: gate
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.RELEASE_VERSION }}
+          submodules: recursive
+          fetch-depth: 0
+
+      - uses: ./.github/actions/setup-vcpkg-windows
+
+      - name: Configure
+        run: >
+          cmake -S . -B build -A x64
+          -DMSCL_BUILD_CSHARP:BOOL=ON
+
+      - name: Build
+        run: cmake --build build --config Release --parallel $env:NUMBER_OF_PROCESSORS
+
+      - name: Install
+        run: cmake --install build --config Release --prefix install-stage
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v2
+
+      - name: Pack
+        run: >
+          ./scripts/pack-nuget.ps1
+          -InstallDir install-stage
+          -Version "${{ needs.gate.outputs.version }}"
+          -OutputDir nuget-output
+
+      - name: Upload NuGet artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuget-package
+          path: nuget-output/*.nupkg
+
+  create-release:
+    name: Create GitHub release
+    needs: gate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.RELEASE_VERSION }}
+          fetch-depth: 0
+
+      - name: Generate changelog
+        uses: orhun/git-cliff-action@v4
+        with:
+          config: cliff.toml
+          args: --latest --strip header
+        env:
+          OUTPUT: CHANGES.md
+
+      - name: Detect prerelease
+        id: prerelease
+        run: |
+          if [[ "$RELEASE_VERSION" == *-* ]]; then
+            echo "value=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build release body
+        run: |
+          version="${{ needs.gate.outputs.version }}"
+          {
+            cat CHANGES.md
+            echo ""
+            echo "---"
+            echo ""
+            echo "## Packages"
+            echo ""
+            echo "| Language | Package | Install |"
+            echo "|---|---|---|"
+            echo "| C++ | — | See the [Integration guide](guides/Integration.md) for using this tag via FetchContent |"
+            echo "| Python | [pymscl ${version}](https://pypi.org/project/pymscl/${version}/) | \`pip install pymscl==${version}\` |"
+            echo "| C# | [MicroStrain.MSCL ${version}](https://www.nuget.org/packages/MicroStrain.MSCL/${version}) | \`dotnet add package MicroStrain.MSCL --version ${version}\` |"
+            echo ""
+            echo "Documentation: https://hbk-microstrain.github.io/MSCL-Documentation/${RELEASE_VERSION}"
+          } > release-body.md
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.RELEASE_VERSION }}
+          body_path: release-body.md
+          prerelease: ${{ steps.prerelease.outputs.value }}
+
+  publish-docs:
+    name: Publish docs
+    needs: [gate, build-docs]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download docs artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: docs-zip
+          path: docs-zip
+
+      - name: Publish documentation
+        env:
+          DOCS_PAT: ${{ secrets.MSCL_DOCUMENTATION_PAT }}
+          VERSION: ${{ needs.gate.outputs.version }}
+        run: |
+          docs_dir="$(mktemp -d)/MSCL-Documentation"
+          git clone -b main "https://x-access-token:${DOCS_PAT}@github.com/HBK-MicroStrain/MSCL-Documentation.git" "${docs_dir}"
+
+          release_dir="${docs_dir}/${VERSION}"
+          rm -rf "${release_dir}"
+          mkdir -p "${release_dir}"
+
+          zip_file="$(find docs-zip -name 'MSCL-Documentation-*.zip' | head -n 1)"
+          unzip -o "${zip_file}" -d "${release_dir}"
+          mv "${release_dir}"/mscl/Documentation/* "${release_dir}"
+          rm -rf "${release_dir}/mscl"
+
+          readme="${docs_dir}/README.md"
+          full_link="https://hbk-microstrain.github.io/MSCL-Documentation/${VERSION}/MSCL_Docs"
+          public_link="https://hbk-microstrain.github.io/MSCL-Documentation/${VERSION}/MSCL_API_Docs"
+          if ! grep -qE "^\| ${VERSION} +\|" "${readme}"; then
+            sed -i -E "/^\| latest +/s,\$,\n| ${VERSION} | [Full Documentation](${full_link}) | [Public Documentation](${public_link}) |,g" "${readme}"
+          fi
+
+          cd "${docs_dir}"
+          git config user.name "microstrain-build"
+          git config user.email "support@sensorcloud.com"
+          git add --all
+          if ! git diff --cached --quiet; then
+            git commit -m "Adds/updates documentation for release ${VERSION} at HBK-MicroStrain/MSCL@${GITHUB_SHA}."
+            git push origin main
+          else
+            echo "No changes to commit to documentation"
+          fi
+
+  publish-pypi:
+    name: Publish to PyPI
+    needs: build-python
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+    steps:
+      - name: Download wheels
+        uses: actions/download-artifact@v4
+        with:
+          pattern: wheel-*
+          path: dist
+          merge-multiple: true
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/
+          skip-existing: true
+
+  publish-nuget:
+    name: Publish to NuGet.org
+    needs: build-nuget
+    runs-on: ubuntu-latest
+    environment: nuget
+    permissions:
+      id-token: write
+    steps:
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Download NuGet artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: nuget-package
+          path: nuget-dist
+
+      - name: NuGet login
+        uses: NuGet/login@v1
+        id: nuget-login
+        with:
+          user: microstrain-by-hbk
+
+      - name: Push to NuGet.org
+        run: |
+          dotnet nuget push nuget-dist/*.nupkg \
+            --api-key ${{ steps.nuget-login.outputs.NUGET_API_KEY }} \
+            --source https://api.nuget.org/v3/index.json \
+            --skip-duplicate

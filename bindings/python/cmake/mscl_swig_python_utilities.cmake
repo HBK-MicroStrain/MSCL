@@ -121,6 +121,138 @@ macro(mscl_add_swig_python_module_library MSCL_PYTHON_VERSION MSCL_PYTHON_MAJOR_
     endif()
 endmacro()
 
+# Builds a single Python3 binding library against the stable ABI (Py_LIMITED_API).
+# The resulting binary works with any Python 3.x >= MSCL_PYTHON_ABI_VERSION without rebuilding,
+# instead of needing one build per exact Python minor version.
+macro(mscl_add_swig_python_abi3_module_library MSCL_PYTHON_ABI_VERSION)
+    # Named to match MSCL_PYTHON_ABI_VERSION (e.g. "Python3.11") since that's the target name the
+    # generated examples projects (examples/python/cmake/CMakeLists.txt.in) expect to depend on --
+    # it hardcodes "@PROJECT_NAME@-Python@MSCL_PYTHON_VERSION@" using MSCL_PYTHON_REQUESTED_VERSIONS.
+    set(MSCL_PYTHON_COMPONENT_NAME "Python${MSCL_PYTHON_ABI_VERSION}")
+    set(MSCL_PYTHON_TARGET_NAME "${PROJECT_NAME}-${MSCL_PYTHON_COMPONENT_NAME}")
+
+    if(MSVC)
+        set(MSCL_PYTHON_LINK_OPTIONS
+            "$<$<CONFIG:Release>:/LTCG>"
+        )
+    else()
+        set(MSCL_PYTHON_LINK_OPTIONS
+            "-Wl,--no-as-needed"
+        )
+    endif()
+
+    set(MSCL_PYTHON_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${MSCL_PYTHON_TARGET_NAME}")
+    if(MSVC)
+        string(APPEND MSCL_PYTHON_OUTPUT_DIRECTORY "/$<CONFIG>")
+    endif()
+
+    mscl_add_swig_module_library(
+        LIB_NAME "${MSCL_PYTHON_TARGET_NAME}"
+        MODULE_LANGUAGE "python"
+        LINK_OPTIONS ${MSCL_PYTHON_LINK_OPTIONS}
+        OUTFILE_DIR "${MSCL_PYTHON_OUTPUT_DIRECTORY}"
+    )
+
+    set_target_properties("${MSCL_PYTHON_TARGET_NAME}" PROPERTIES
+        ARCHIVE_OUTPUT_DIRECTORY "${MSCL_PYTHON_OUTPUT_DIRECTORY}"
+        RUNTIME_OUTPUT_DIRECTORY "${MSCL_PYTHON_OUTPUT_DIRECTORY}"
+        LIBRARY_OUTPUT_DIRECTORY "${MSCL_PYTHON_OUTPUT_DIRECTORY}"
+    )
+
+    # CMake's Development.Module/Development.SABIModule sub-components need to execute the found
+    # interpreter to introspect sysconfig, which fails against this vcpkg-built Python (it isn't
+    # runnable standalone outside its own package tree). The plain Development component is what
+    # vcpkg's python3 port itself documents and is proven to work, so use that for the include
+    # directories and handle version-independent linking ourselves below instead of relying on
+    # CMake's (broken, for this build) automatic Module/SABIModule detection.
+    set(Python3_USE_STATIC_LIBS ${MSCL_LINK_STATIC_DEPS})
+    find_package(Python3
+        "${MSCL_PYTHON_ABI_VERSION}"
+        REQUIRED
+        COMPONENTS Development
+    )
+
+    target_include_directories("${MSCL_PYTHON_TARGET_NAME}" PRIVATE
+        ${Python3_INCLUDE_DIRS}
+    )
+
+    if(WIN32)
+        # Extension modules must resolve every symbol at link time on Windows, unlike Unix shared
+        # objects. Link the version-independent "python3.lib" stable-ABI stub (shipped alongside
+        # the version-specific pythonXY.lib in CPython's Windows distribution) instead of
+        # Python3_LIBRARIES (which would be the version-specific pythonXY.lib), so the built .pyd
+        # isn't tied to one exact Python version.
+        find_library(MSCL_PYTHON_ABI_LIBRARY
+            NAMES "python3"
+            PATHS ${Python3_LIBRARY_DIRS}
+            NO_DEFAULT_PATH
+            REQUIRED
+        )
+        target_link_libraries("${MSCL_PYTHON_TARGET_NAME}" PRIVATE "${MSCL_PYTHON_ABI_LIBRARY}")
+    endif()
+    # On Linux/Unix, deliberately don't link against libpythonX.Y.so at all: its Python C-API
+    # symbols stay undefined in the built .so and are resolved at import time from the hosting
+    # interpreter process. That's the standard way to build a Python-version-independent
+    # extension on Unix -- linking libpythonX.Y.so directly would tie the .so to that one version.
+
+    # Restrict the compiled module to the stable ABI surface so it stays
+    # forward-compatible with newer Python 3.x releases without rebuilding
+    string(REPLACE "." ";" MSCL_PYTHON_ABI_VERSION_LIST "${MSCL_PYTHON_ABI_VERSION}")
+    list(GET MSCL_PYTHON_ABI_VERSION_LIST 0 MSCL_PYTHON_ABI_MAJOR)
+    list(GET MSCL_PYTHON_ABI_VERSION_LIST 1 MSCL_PYTHON_ABI_MINOR)
+    math(EXPR MSCL_PYTHON_LIMITED_API_HEX "(${MSCL_PYTHON_ABI_MAJOR} << 24) | (${MSCL_PYTHON_ABI_MINOR} << 16)" OUTPUT_FORMAT HEXADECIMAL)
+    target_compile_definitions("${MSCL_PYTHON_TARGET_NAME}" PRIVATE
+        "Py_LIMITED_API=${MSCL_PYTHON_LIMITED_API_HEX}"
+    )
+
+    # Tag the shared object with the "abi3" infix Python tooling expects for stable-ABI extensions.
+    # We set this unconditionally on non-Windows (rather than relying on CMake's Python3_SOSABI,
+    # which is only populated by the SABIModule component we're not using on Unix) since we're
+    # already manually enforcing the stable ABI restriction via Py_LIMITED_API above.
+    if(NOT MSVC)
+        set_target_properties("${MSCL_PYTHON_TARGET_NAME}" PROPERTIES
+            SUFFIX ".abi3${CMAKE_SHARED_MODULE_SUFFIX}"
+        )
+    endif()
+
+    if(MSVC)
+        target_link_options("${MSCL_PYTHON_TARGET_NAME}" PRIVATE
+            "/ignore:4099"
+        )
+    endif()
+
+    # Get the generated .py files
+    get_target_property(MSCL_GENERATED_PYTHON_SOURCES "${MSCL_PYTHON_TARGET_NAME}" SWIG_SUPPORT_FILES)
+
+    # Install to the root of the package so `import mscl` works the same way whether
+    # installed via CPack or assembled into a wheel by scikit-build-core
+    install(
+        TARGETS "${MSCL_PYTHON_TARGET_NAME}"
+        CONFIGURATIONS "Release"
+        RUNTIME
+            COMPONENT "${MSCL_PYTHON_COMPONENT_NAME}"
+            DESTINATION "."
+        LIBRARY
+            COMPONENT "${MSCL_PYTHON_COMPONENT_NAME}"
+            DESTINATION "."
+    )
+
+    install(
+        FILES "${MSCL_GENERATED_PYTHON_SOURCES}"
+        DESTINATION "."
+        CONFIGURATIONS "Release"
+        COMPONENT "${MSCL_PYTHON_COMPONENT_NAME}"
+    )
+
+    if(MSCL_BUILD_PACKAGE)
+        microstrain_set_cpack_component_file_name(
+            COMPONENT_NAME "${MSCL_PYTHON_COMPONENT_NAME}"
+            COMPONENT_VERSION "${CPACK_PACKAGE_VERSION}"
+            PACKAGE_ARCH "${CPACK_SYSTEM_NAME}"
+        )
+    endif()
+endmacro()
+
 # Get the baseline version for the vcpkg manifest file
 execute_process(
     COMMAND ${GIT_EXECUTABLE} rev-parse HEAD

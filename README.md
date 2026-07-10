@@ -7,8 +7,10 @@ with our [Wireless](https://www.hbkworld.com/en/products/instruments/wireless-da
 and [Inertial](https://www.hbkworld.com/en/products/transducers/inertial-sensors)
 sensors.
 
-[![GitHub tag status](https://img.shields.io/github/checks-status/LORD-MicroStrain/MSCL/v68.1.0?label=v68.1.0)](https://github.com/LORD-MicroStrain/MSCL/releases/v68.1.0/) &nbsp;
-[![GitHub tag status](https://img.shields.io/github/checks-status/LORD-MicroStrain/MSCL/latest?label=latest)](https://github.com/LORD-MicroStrain/MSCL/releases/latest/)
+[![CI C++ (Windows)](https://github.com/HBK-MicroStrain/MSCL/actions/workflows/ci-cpp-windows.yml/badge.svg)](https://github.com/HBK-MicroStrain/MSCL/actions/workflows/ci-cpp-windows.yml) &nbsp;
+[![CI C++ (Linux)](https://github.com/HBK-MicroStrain/MSCL/actions/workflows/ci-cpp-linux.yml/badge.svg)](https://github.com/HBK-MicroStrain/MSCL/actions/workflows/ci-cpp-linux.yml) &nbsp;
+[![PyPI](https://img.shields.io/pypi/v/pymscl)](https://pypi.org/project/pymscl/) &nbsp;
+[![NuGet](https://img.shields.io/nuget/v/MicroStrain.MSCL)](https://www.nuget.org/packages/MicroStrain.MSCL/)
 
 ### Support
 
@@ -24,53 +26,34 @@ lightweight C/C++ API, [MIP SDK](https://github.com/LORD-MicroStrain/mip_sdk)
 
 ## Releases
 
-Please see our [releases](../../releases) page for all of our release notes and
-packages</br>
-Packages for the current release, <b>v68.1.0</b>, can be found
-[here](../../releases/tag/v68.1.0)</br>
-Latest pre-release packages can be found [here](../../releases/tag/latest)</br>
+Please see our [releases](../../releases) page for all of our release notes.
 
-## Supported Packages
+## Packages
 
-MSCL is built and tested for the following list of systems and architectures.
-Refer to the build [instructions](guides/Build.md) for more information on
-building MSCL from source if your system configuration isn't listed.
+| Language | Package                                                                | Install                                        |
+|----------|-------------------------------------------------------------------------|-------------------------------------------------|
+| C++      | —                                                                        | See the [Integration guide](guides/Integration.md) below |
+| Python   | [pymscl](https://pypi.org/project/pymscl/)                               | `pip install pymscl`                             |
+| C#       | [MicroStrain.MSCL](https://www.nuget.org/packages/MicroStrain.MSCL/)    | `dotnet add package MicroStrain.MSCL`            |
 
-### Windows (MSVC)
-
-MSCL is supported on Windows for both x64 and x86 architectures, including all
-supported [bindings](bindings/README.md)
-
-### Linux
-
-#### Debian
-
-MSCL is supported on Debian for x64 (x86_64), ARM64 (aarch64) and ARM32 (armv8l)
-architectures, including Python [bindings](bindings/README.md)
-
-#### RPM
-
-We are no longer providing RPM packages.</br>
-If you wish to continue using MSCL on RPM systems, please see
-build [instructions](guides/Build.md) for more information on how to build an
-RPM package
+MSCL no longer publishes prebuilt C++ archives with each release. C++ projects
+should consume a specific released version directly from source using CMake's
+`FetchContent` against a git tag &mdash; see the
+[Integration guide](guides/Integration.md) for details.
 
 ## Project Integration
 
-The best approach to using MSCL is integrating it into your project with the
-pre-built packages following the integration [guide](guides/Integration.md)
+See the [Integration guide](guides/Integration.md) for how to consume MSCL
+from C++ (via CMake `FetchContent`), Python (via PyPI), and C# (via NuGet).
 
 ## Building From Source
 
-If the pre-built packages aren't available on your platform, or you prefer to
-build MSCL from source yourself, you can do so with the build
+If you'd rather build MSCL from source yourself, you can do so with the build
 [instructions](guides/Build.md)
 
 ## Documentation
 
-MSCL has both [online](https://lord-microstrain.github.io/MSCL_documentation)
-and [offline](../../releases/download/v68.1.0/MSCL-Documentation-v68.1.0.zip)
-documentation.</br>
+MSCL has [online documentation](https://hbk-microstrain.github.io/MSCL-Documentation).</br>
 See the documentation build [instructions](docs/README.md) for information on
 building the documentation from source.
 

@@ -1,0 +1,33 @@
+[changelog]
+body = """
+{% if message %}# {{ message | trim }}
+
+{% endif %}\
+{% set ordered_groups = ["Features", "Bug Fixes", "Documentation", "Performance", "Reverts"] %}\
+{% for group_name in ordered_groups %}\
+{% set group_commits = commits | filter(attribute="group", value=group_name) %}\
+{% if group_commits | length > 0 %}\
+### {{ group_name }}
+
+{% for commit in group_commits %}\
+- {% if commit.scope %}**{{ commit.scope }}:** {% endif %}{{ commit.message }}\
+{% if commit.breaking %} [**BREAKING CHANGE**]{% endif %}
+
+{% endfor %}\
+{% endif %}\
+{% endfor %}\
+"""
+trim = true
+
+[git]
+conventional_commits = true
+filter_unconventional = true
+filter_commits = true
+commit_parsers = [
+  { message = "^feat",    group = "Features"      },
+  { message = "^fix",     group = "Bug Fixes"     },
+  { message = "^docs?",   group = "Documentation" },
+  { message = "^perf",    group = "Performance"   },
+  { message = "^revert",  group = "Reverts"       },
+]
+tag_pattern = "v[0-9]+\\.[0-9]+\\.[0-9]+.*"

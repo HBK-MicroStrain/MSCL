@@ -1,7 +1,14 @@
 /[Bb]uild
 /[Bb]uild_*
-.*git-askpass
 _deps
+
+# Python packaging (pyproject.toml / scikit-build-core)
+/dist
+/_skbuild
+*.egg-info
+
+# CI vcpkg binary cache
+/.vcpkg-cache
 
 ## Ignore any CMake generated project files
 LibVersion.h

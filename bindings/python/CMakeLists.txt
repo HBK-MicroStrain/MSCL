@@ -3,6 +3,30 @@
 # but Python might not be included with Debug files
 option(MSCL_PACKAGE_PYTHON_DEBUG "Include the debug package of Python builds" OFF)
 
+# When enabled, the Python3 bindings are built once against the stable ABI (Py_LIMITED_API)
+# so a single binary works across all Python 3.x versions >= MSCL_PYTHON_ABI_VERSION,
+# instead of building a separate binary per exact Python version.
+option(MSCL_PYTHON_LIMITED_API "Build the Python3 bindings against the stable ABI (abi3)" ON)
+
+if(MSCL_BUILD_PYTHON3 AND MSCL_PYTHON_LIMITED_API)
+    # Development.SABIModule requires CMake's stable ABI support for FindPython3
+    cmake_minimum_required(VERSION 3.26)
+
+    set(MSCL_PYTHON_ABI_VERSION "3.11" CACHE STRING "The minimum Python3 version the stable ABI build targets")
+
+    # Include the Swig Python utilities file for easier binding configuration
+    list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
+    include(mscl_swig_python_utilities)
+
+    mscl_download_python("${MSCL_PYTHON_ABI_VERSION}" "3")
+    mscl_add_swig_python_abi3_module_library("${MSCL_PYTHON_ABI_VERSION}")
+
+    # Used by the examples to build/run against the single abi3 interpreter
+    set(MSCL_PYTHON_REQUESTED_VERSIONS "${MSCL_PYTHON_ABI_VERSION}" CACHE INTERNAL "")
+
+    return()
+endif()
+
 # Add all the requested versions of Python2 to a list for project creation
 if(MSCL_BUILD_PYTHON2)
     # Allow the user to request a certain version of Python2

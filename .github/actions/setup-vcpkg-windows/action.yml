@@ -1,0 +1,18 @@
+name: Setup vcpkg (Windows)
+description: Restore/save vcpkg's binary cache so CI doesn't rebuild dependencies (Boost, OpenSSL, etc.) from source every run.
+
+runs:
+  using: composite
+  steps:
+    - name: Cache vcpkg binaries
+      uses: actions/cache@v4
+      with:
+        path: ${{ github.workspace }}/.vcpkg-cache
+        key: vcpkg-windows-${{ hashFiles('vcpkg.json') }}
+        restore-keys: |
+          vcpkg-windows-
+
+    - name: Configure vcpkg binary cache
+      shell: pwsh
+      run: |
+        echo "VCPKG_BINARY_SOURCES=clear;files,$env:GITHUB_WORKSPACE/.vcpkg-cache,readwrite" >> $env:GITHUB_ENV
