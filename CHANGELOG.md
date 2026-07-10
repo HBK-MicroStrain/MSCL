@@ -15,6 +15,10 @@ REMOVED - A function/class has been removed.
 ___
 
 ## Forthcoming
+- Wireless
+    - Added support for the following models:
+      - WSDA-Pro
+      - G-Link-200-P-RGD
 
 ## 68.1.0 - 2026-02-03
 - Updated build/configuration instructions to match new project structure
