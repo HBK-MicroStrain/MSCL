@@ -13,6 +13,7 @@
 #include "mscl/MicroStrain/Wireless/Features/BaseStationFeatures_usb200.h"
 #include "mscl/MicroStrain/Wireless/Features/BaseStationFeatures_wsda.h"
 #include "mscl/MicroStrain/Wireless/Features/BaseStationFeatures_wsda2000.h"
+#include "mscl/MicroStrain/Wireless/Features/BaseStationFeatures_wsdaPro.h"
 
 namespace mscl
 {
@@ -45,6 +46,8 @@ namespace mscl
 
             case WirelessModels::base_wsda_2000:
                 return std::unique_ptr<BaseStationFeatures>(new BaseStationFeatures_wsda2000(info));
+            case WirelessModels::base_wsdaPro:
+                return std::unique_ptr<BaseStationFeatures>(new BaseStationFeatures_wsdaPro(info));
 
             default:
                 //we don't know anything about this node, throw an exception
