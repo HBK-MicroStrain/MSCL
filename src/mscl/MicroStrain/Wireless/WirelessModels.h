@@ -123,6 +123,7 @@ namespace mscl
         //  node_wirelessImpactSensor             - 65080000 - Wireless Impact Sensor
         //  node_gLink_200_40g_s                  - 65226001 - G-Link-200 40g (custom default configuration)
         //  node_gLink_200_p                      - 65236000 - G-Link-200 8g External Power Option
+        //  node_gLink_200_p_rgd                  - 65236182 - G-Link-200-P-RGD
         //=========================================================================
         enum NodeModel
         {
@@ -231,6 +232,7 @@ namespace mscl
             node_wirelessImpactSensor             =  65080000,     //Wireless Impact Sensor
             node_gLink_200_40g_s                  =  65226001,     //G-Link-200 40g (custom default configuration)
             node_gLink_200_p                      =  65236000,     //G-Link-200 8g External Power Option
+            node_gLink_200_p_rgd                  =  65236182,     //G-Link-200-P-RGD
         };
 
         //=========================================================================
