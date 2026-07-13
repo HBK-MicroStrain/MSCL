@@ -16,6 +16,7 @@ param(
 $ErrorActionPreference = "Stop"
 
 $repoRoot = Resolve-Path (Join-Path $PSScriptRoot "..")
+$InstallDir = (Resolve-Path $InstallDir).Path
 $dotnetDir = Join-Path $InstallDir "dotnet\x64"
 $managedDll = Join-Path $dotnetDir "MSCL_Managed.dll"
 $nativeDll = Join-Path $dotnetDir "MSCL.dll"
