@@ -4,11 +4,14 @@
 # Instead, do macro_name(VARIABLE_NAME) which will do `set(${PARAM_OUT} value)` and is equivalent to set(VARIABLE_NAME value)
 #
 
-macro(microstrain_get_git_version GIT_VERSION_OUT GIT_VERSION_CLEAN_OUT)
+macro(microstrain_get_git_version GIT_VERSION_OUT GIT_VERSION_CLEAN_OUT GIT_COMMIT)
     # Use Git to find the version
     find_package(Git)
 
-    set(MICROSTRAIN_DEFAULT_GIT_VERSION "v${PROJECT_VERSION}")
+    # Called before project(), so there is no PROJECT_VERSION yet to fall back on.
+    # Include the commit hash so a build with no reachable tag (e.g. a shallow CI clone)
+    # is still traceable to a specific commit instead of a bare "0.0.0".
+    set(MICROSTRAIN_DEFAULT_GIT_VERSION "v0.0.0-${GIT_COMMIT}")
 
     if(NOT GIT_FOUND)
         message(WARNING "Unable to find Git, defaulting to version ${MICROSTRAIN_DEFAULT_GIT_VERSION}")

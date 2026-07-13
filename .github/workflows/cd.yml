@@ -20,24 +20,13 @@ jobs:
     outputs:
       version: ${{ steps.version.outputs.version }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ env.RELEASE_VERSION }}
-
-      - name: Compare tag to CMakeLists.txt version
+      - name: Determine version
         id: version
         run: |
           tag_version="${RELEASE_VERSION#v}"
-          cmake_version="$(grep -A2 'project("MSCL"' CMakeLists.txt | grep -oE 'VERSION [0-9]+\.[0-9]+\.[0-9]+' | awk '{print $2}')"
 
-          if [ -z "${cmake_version}" ]; then
-            echo "Could not find a VERSION in CMakeLists.txt's project() declaration" >&2
-            exit 1
-          fi
-
-          if [ "${tag_version}" != "${cmake_version}" ]; then
-            echo "Tag ${RELEASE_VERSION} does not match CMakeLists.txt VERSION ${cmake_version}" >&2
+          if ! [[ "${tag_version}" =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then
+            echo "Tag ${RELEASE_VERSION} is not a valid semantic version (expected vX.Y.Z)" >&2
             exit 1
           fi
 

@@ -11,10 +11,18 @@ include(mscl-options)
 # Configure vcpkg for use
 include(mscl-configure-vcpkg)
 
+# Include some utilities used for MicroStrain projects
+include(microstrain-utilities)
+
 cmake_minimum_required(VERSION 3.23)
+
+# Determine the project version from the latest git tag so the tag is the single source of truth
+microstrain_get_git_commit(MSCL_GIT_COMMIT)
+microstrain_get_git_version(MSCL_GIT_VERSION MSCL_GIT_VERSION_CLEAN ${MSCL_GIT_COMMIT})
+
 project("MSCL"
     LANGUAGES CXX
-    VERSION 68.2.0
+    VERSION ${MSCL_GIT_VERSION_CLEAN}
 )
 
 # Enable the use of organizing projects into folders for IDEs that support it
@@ -55,9 +63,6 @@ endif()
 
 # Get the current year to make sure the file copyright is up-to-date in any generated files that use it
 string(TIMESTAMP MSCL_CURRENT_YEAR "%Y")
-
-# Include some utilities used for MicroStrain projects
-include(microstrain-utilities)
 
 # Update the copyright in the license and readme files if needed
 microstrain_update_copyright_in_files(FILES
@@ -107,10 +112,6 @@ else()
         set(MSCL_BUILD_DOCUMENTATION OFF)
     endif()
 endif()
-
-# Use Git to find the version and commit of this repo
-microstrain_get_git_version(MSCL_GIT_VERSION MSCL_GIT_VERSION_CLEAN)
-microstrain_get_git_commit(MSCL_GIT_COMMIT)
 
 string(TOLOWER "${PROJECT_NAME}" PROJECT_NAME_LOWER)
 
