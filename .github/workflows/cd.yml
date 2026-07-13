@@ -54,6 +54,9 @@ jobs:
           ref: ${{ env.RELEASE_VERSION }}
           submodules: recursive
 
+      - name: Unshallow vcpkg
+        run: git -C deps/vcpkg fetch --unshallow
+
       - uses: ./.github/actions/setup-vcpkg-windows
 
       - name: Configure
@@ -93,6 +96,9 @@ jobs:
           ref: ${{ env.RELEASE_VERSION }}
           submodules: recursive
 
+      - name: Unshallow vcpkg
+        run: git -C deps/vcpkg fetch --unshallow
+
       - name: Setup vcpkg (Windows)
         if: runner.os == 'Windows'
         uses: ./.github/actions/setup-vcpkg-windows
@@ -128,6 +134,9 @@ jobs:
         with:
           ref: ${{ env.RELEASE_VERSION }}
           submodules: recursive
+
+      - name: Unshallow vcpkg
+        run: git -C deps/vcpkg fetch --unshallow
 
       - uses: ./.github/actions/setup-vcpkg-windows
 

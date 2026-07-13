@@ -19,6 +19,9 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Unshallow vcpkg
+        run: git -C deps/vcpkg fetch --unshallow
+
       - uses: ./.github/actions/setup-vcpkg-linux
 
       - name: Configure
