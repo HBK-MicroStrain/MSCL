@@ -2,8 +2,8 @@
 
 [![License](https://img.shields.io/github/license/HBK-MicroStrain/MSCL)](LICENSE) &nbsp;
 [![C++](https://img.shields.io/github/v/release/HBK-MicroStrain/MSCL?label=C%2B%2B)](https://github.com/HBK-MicroStrain/MSCL/releases) &nbsp;
-[![C#](https://img.shields.io/nuget/v/MicroStrain.MSCL?label=C%23)](https://www.nuget.org/packages/MicroStrain.MSCL/)
-[![Python](https://img.shields.io/pypi/v/pymscl?label=Python)](https://pypi.org/project/pymscl/) &nbsp;
+[![C#](https://img.shields.io/nuget/v/MicroStrain.MSCL?label=C%23)](https://www.nuget.org/packages/MicroStrain.MSCL/) &nbsp;
+[![Python](https://img.shields.io/pypi/v/pymscl?label=Python)](https://pypi.org/project/pymscl/)
 
 [![CI C++ (Windows)](https://github.com/HBK-MicroStrain/MSCL/actions/workflows/ci-cpp-windows.yml/badge.svg)](https://github.com/HBK-MicroStrain/MSCL/actions/workflows/ci-cpp-windows.yml) &nbsp;
 [![CI C++ (Linux)](https://github.com/HBK-MicroStrain/MSCL/actions/workflows/ci-cpp-linux.yml/badge.svg)](https://github.com/HBK-MicroStrain/MSCL/actions/workflows/ci-cpp-linux.yml) &nbsp;
