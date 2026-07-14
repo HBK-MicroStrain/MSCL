@@ -1,16 +1,20 @@
 # MSCL - The MicroStrain Communication Library
 
+[![License](https://img.shields.io/github/license/HBK-MicroStrain/MSCL)](LICENSE) &nbsp;
+[![C++](https://img.shields.io/github/v/release/HBK-MicroStrain/MSCL?label=C%2B%2B)](https://github.com/HBK-MicroStrain/MSCL/releases) &nbsp;
+[![C#](https://img.shields.io/nuget/v/MicroStrain.MSCL?label=C%23)](https://www.nuget.org/packages/MicroStrain.MSCL/)
+[![Python](https://img.shields.io/pypi/v/pymscl?label=Python)](https://pypi.org/project/pymscl/) &nbsp;
+
+[![CI C++ (Windows)](https://github.com/HBK-MicroStrain/MSCL/actions/workflows/ci-cpp-windows.yml/badge.svg)](https://github.com/HBK-MicroStrain/MSCL/actions/workflows/ci-cpp-windows.yml) &nbsp;
+[![CI C++ (Linux)](https://github.com/HBK-MicroStrain/MSCL/actions/workflows/ci-cpp-linux.yml/badge.svg)](https://github.com/HBK-MicroStrain/MSCL/actions/workflows/ci-cpp-linux.yml) &nbsp;
+[![CD](https://github.com/HBK-MicroStrain/MSCL/actions/workflows/cd.yml/badge.svg)](https://github.com/HBK-MicroStrain/MSCL/actions/workflows/cd.yml)
+
 MSCL is developed by
 [MicroStrain](https://www.hbkworld.com/en/Campaign/microstrain-by-hbk) in
 Williston, VT. Its purpose is to serve as a simple user-friendly API to interact
 with our [Wireless](https://www.hbkworld.com/en/products/instruments/wireless-daq-systems),
 and [Inertial](https://www.hbkworld.com/en/products/transducers/inertial-sensors)
 sensors.
-
-[![CI C++ (Windows)](https://github.com/HBK-MicroStrain/MSCL/actions/workflows/ci-cpp-windows.yml/badge.svg)](https://github.com/HBK-MicroStrain/MSCL/actions/workflows/ci-cpp-windows.yml) &nbsp;
-[![CI C++ (Linux)](https://github.com/HBK-MicroStrain/MSCL/actions/workflows/ci-cpp-linux.yml/badge.svg)](https://github.com/HBK-MicroStrain/MSCL/actions/workflows/ci-cpp-linux.yml) &nbsp;
-[![PyPI](https://img.shields.io/pypi/v/pymscl)](https://pypi.org/project/pymscl/) &nbsp;
-[![NuGet](https://img.shields.io/nuget/v/MicroStrain.MSCL)](https://www.nuget.org/packages/MicroStrain.MSCL/)
 
 ### Support
 
