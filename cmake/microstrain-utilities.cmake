@@ -364,22 +364,40 @@ function(microstrain_download_and_extract_archive)
     set(ARCHIVE_PATH "${DEPS_BASE_DIR}/${FILENAME}")
 
     if(NOT EXISTS "${ARCHIVE_PATH}")
-        message(STATUS "Downloading ${NAME}...")
-        file(DOWNLOAD "${URL}" "${ARCHIVE_PATH}" STATUS DOWNLOAD_STATUS)
+        # Some hosts (e.g. naturaldocs.org) transiently return non-200 responses (rate limiting,
+        # blips) for CI traffic, so retry a few times with a short backoff before giving up.
+        set(DOWNLOAD_MAX_ATTEMPTS 5)
+        set(DOWNLOAD_RETRY_DELAY_SECONDS 5)
 
-        list(GET DOWNLOAD_STATUS 0 STATUS_CODE)
-        if(NOT ${STATUS_CODE} EQUAL 0)
-            # Remove the corrupt archive
+        foreach(DOWNLOAD_ATTEMPT RANGE 1 ${DOWNLOAD_MAX_ATTEMPTS})
+            message(STATUS "Downloading ${NAME}... (attempt ${DOWNLOAD_ATTEMPT}/${DOWNLOAD_MAX_ATTEMPTS})")
+            file(DOWNLOAD "${URL}" "${ARCHIVE_PATH}"
+                STATUS DOWNLOAD_STATUS
+                USERAGENT "Mozilla/5.0 (compatible; MSCL-CI-Downloader)"
+            )
+
+            list(GET DOWNLOAD_STATUS 0 STATUS_CODE)
+            if(${STATUS_CODE} EQUAL 0)
+                break()
+            endif()
+
+            # Remove the corrupt/partial archive before retrying (or failing)
             file(REMOVE "${ARCHIVE_PATH}")
 
-            # Certificate issues
+            # Certificate issues are not transient, fail immediately
             if(${STATUS_CODE} EQUAL 60)
                 message(WARNING "The download encountered a certificate authority issue. Set CMAKE_TLS_CAINFO to the certificate authority file needed to fix the download issue")
             endif()
 
             list(GET DOWNLOAD_STATUS 1 STATUS_MESSAGE)
-            message(FATAL_ERROR "Error downloading ${NAME}: ${STATUS_MESSAGE}")
-        endif()
+
+            if(${STATUS_CODE} EQUAL 60 OR ${DOWNLOAD_ATTEMPT} EQUAL ${DOWNLOAD_MAX_ATTEMPTS})
+                message(FATAL_ERROR "Error downloading ${NAME}: ${STATUS_MESSAGE}")
+            endif()
+
+            message(STATUS "Download of ${NAME} failed (${STATUS_MESSAGE}), retrying in ${DOWNLOAD_RETRY_DELAY_SECONDS}s...")
+            execute_process(COMMAND "${CMAKE_COMMAND}" -E sleep ${DOWNLOAD_RETRY_DELAY_SECONDS})
+        endforeach()
     endif()
 
     message(STATUS "Extracting ${NAME}...")
