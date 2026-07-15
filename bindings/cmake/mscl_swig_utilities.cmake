@@ -130,10 +130,19 @@ macro(mscl_add_swig_module_library)
         endif()
     endforeach()
 
+    # The module name should always match the MSCL library name, except for Python: its import
+    # system is case-sensitive (unlike Windows DLL lookup, which C# relies on), and the published
+    # package documents `import mscl` (lowercase), so lowercase the module name for Python only.
+    if(MODULE_LANGUAGE STREQUAL "python")
+        string(TOLOWER "${MSCL_LIBRARY}" MSCL_SWIG_MODULE_NAME)
+    else()
+        set(MSCL_SWIG_MODULE_NAME "${MSCL_LIBRARY}")
+    endif()
+
     # Set up the Swig interface file properties
     set_source_files_properties(${SWIG_SOURCE_FILES} PROPERTIES
         CPLUSPLUS ON
-        SWIG_MODULE_NAME "${MSCL_LIBRARY}" # The module name should always match the MSCL library name
+        SWIG_MODULE_NAME "${MSCL_SWIG_MODULE_NAME}"
         INCLUDE_DIRECTORIES "${MSCL_INCLUDE_DIRS}"
         COMPILE_OPTIONS "${ADDITIONAL_SWIG_OPTIONS}"
     )
@@ -160,7 +169,7 @@ macro(mscl_add_swig_module_library)
 
     set_target_properties("${LIB_NAME}" PROPERTIES
         WINDOWS_EXPORT_ALL_SYMBOLS OFF # Exporting all symbols causes issues in Swig with the precompiled header
-        OUTPUT_NAME "${MSCL_LIBRARY}"
+        OUTPUT_NAME "${MSCL_SWIG_MODULE_NAME}"
         POSITION_INDEPENDENT_CODE TRUE # Make sure Linux compiles static libraries with -fPIC
     )
 

@@ -160,11 +160,11 @@ If you are not using CMake, you must manually configure your compiler and linker
 
 ### Python Integration
 
-Python integration does not strictly require CMake. You just need the `MSCL.py`
-and `_MSCL` extension module.
+Python integration does not strictly require CMake. You just need the `mscl.py`
+and `_mscl` extension module.
 
-1.  **Locate Files**: Find `MSCL.py` and the compiled extension (`_MSCL.pyd` on
-    Windows or `_MSCL.so` on Linux).
+1.  **Locate Files**: Find `mscl.py` and the compiled extension (`_mscl.pyd` on
+    Windows or `_mscl.so` on Linux).
 2.  **Add to Path**:
     - **Method A (Recommended)**: Copy these files into your project directory
       or into a standard Python `site-packages` or `dist-packages` directory.
@@ -177,5 +177,5 @@ and `_MSCL` extension module.
     ```python
     import sys
     sys.path.append('/path/to/mscl/python/bindings')
-    import MSCL as mscl
+    import mscl
     ```

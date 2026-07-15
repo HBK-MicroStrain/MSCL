@@ -4,8 +4,8 @@ This directory contains Python example projects for MSCL.
 
 ## Prerequisites
 
-- **MSCL Python Library**: You must have `MSCL.py` and the native module
-  `_MSCL.pyd` (Windows) or `_MSCL.so` (Linux).
+- **MSCL Python Library**: You must have `mscl.py` and the native module
+  `_mscl.pyd` (Windows) or `_mscl.so` (Linux).
 - **Python**: A compatible Python version.
 
 See the bindings [instructions](../bindings/README.md) for more information on
@@ -18,7 +18,7 @@ MSCL Python bindings.
 
 To run the Python examples:
 
-1. **Locate MSCL**: Find the `MSCL.py` and `_MSCL.pyd`/`_MSCL.so` files.
+1. **Locate MSCL**: Find the `mscl.py` and `_mscl.pyd`/`_mscl.so` files.
 2. **Set PYTHONPATH**: Add the directory containing these files to your
    `PYTHONPATH` environment variable.
 
@@ -39,7 +39,7 @@ To run the Python examples:
    python examples/python/wireless/main.py
    ```
 
-Alternatively, you can copy `MSCL.py` and the native module into the same
+Alternatively, you can copy `mscl.py` and the native module into the same
 directory as the example script or into your site-packages/dist-packages.
 
 ## Running with CMake
