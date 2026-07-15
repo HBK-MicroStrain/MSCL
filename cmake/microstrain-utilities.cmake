@@ -373,7 +373,7 @@ function(microstrain_download_and_extract_archive)
             message(STATUS "Downloading ${NAME}... (attempt ${DOWNLOAD_ATTEMPT}/${DOWNLOAD_MAX_ATTEMPTS})")
             file(DOWNLOAD "${URL}" "${ARCHIVE_PATH}"
                 STATUS DOWNLOAD_STATUS
-                USERAGENT "Mozilla/5.0 (compatible; MSCL-CI-Downloader)"
+                HTTPHEADER "User-Agent: Mozilla/5.0 (compatible; MSCL-CI-Downloader)"
             )
 
             list(GET DOWNLOAD_STATUS 0 STATUS_CODE)
