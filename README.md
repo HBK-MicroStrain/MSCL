@@ -1,5 +1,7 @@
 # MSCL - The MicroStrain Communication Library
 
+![Official MSCL logo](docs/images/MSCL_logo.png)
+
 [![License](https://img.shields.io/github/license/HBK-MicroStrain/MSCL?label=License)](LICENSE)
 [![C++](https://img.shields.io/github/v/release/HBK-MicroStrain/MSCL?label=C%2B%2B)](https://github.com/HBK-MicroStrain/MSCL/releases)
 [![C#](https://img.shields.io/nuget/v/MicroStrain.MSCL?label=C%23)](https://www.nuget.org/packages/MicroStrain.MSCL/)
