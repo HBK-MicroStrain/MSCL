@@ -308,18 +308,19 @@ endmacro()
 function(microstrain_download_and_extract_archive)
     set(OPTIONS CREATE_EXTRACTED_DIR)
     set(SINGLE_VALUES NAME URL DEPS_BASE_DIR EXTRACTED_DIR)
+    set(OPTIONAL_SINGLE_VALUES HTTP_USER_AGENT)
     set(MULTI_VALUES)
 
     set(DOWNLOAD_EXTRACT_ARG_PREFIX "DOWNLOAD_EXTRACT_ARG")
     cmake_parse_arguments(${DOWNLOAD_EXTRACT_ARG_PREFIX}
         "${OPTIONS}"
-        "${SINGLE_VALUES}"
+        "${SINGLE_VALUES};${OPTIONAL_SINGLE_VALUES}"
         "${MULTI_VALUES}"
         "${ARGN}"
     )
 
     # Remove the prefix from the arguments
-    foreach(ARG IN LISTS OPTIONS SINGLE_VALUES MULTI_VALUES)
+    foreach(ARG IN LISTS OPTIONS SINGLE_VALUES OPTIONAL_SINGLE_VALUES MULTI_VALUES)
         set(${ARG} ${${DOWNLOAD_EXTRACT_ARG_PREFIX}_${ARG}})
     endforeach()
 
@@ -369,11 +370,20 @@ function(microstrain_download_and_extract_archive)
         set(DOWNLOAD_MAX_ATTEMPTS 5)
         set(DOWNLOAD_RETRY_DELAY_SECONDS 5)
 
+        # Only apply a custom User-Agent when the caller asks for one. Some hosts (e.g.
+        # naturaldocs.org) block requests that don't look like a browser, but others (e.g.
+        # sourceforge.net) do the opposite: a browser-like User-Agent makes them serve an HTML
+        # "choose your mirror" page instead of redirecting straight to the file.
+        set(DOWNLOAD_HTTPHEADER_OPTION "")
+        if(HTTP_USER_AGENT)
+            set(DOWNLOAD_HTTPHEADER_OPTION HTTPHEADER "User-Agent: ${HTTP_USER_AGENT}")
+        endif()
+
         foreach(DOWNLOAD_ATTEMPT RANGE 1 ${DOWNLOAD_MAX_ATTEMPTS})
             message(STATUS "Downloading ${NAME}... (attempt ${DOWNLOAD_ATTEMPT}/${DOWNLOAD_MAX_ATTEMPTS})")
             file(DOWNLOAD "${URL}" "${ARCHIVE_PATH}"
                 STATUS DOWNLOAD_STATUS
-                HTTPHEADER "User-Agent: Mozilla/5.0 (compatible; MSCL-CI-Downloader)"
+                ${DOWNLOAD_HTTPHEADER_OPTION}
             )
 
             list(GET DOWNLOAD_STATUS 0 STATUS_CODE)

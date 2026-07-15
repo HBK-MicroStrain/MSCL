@@ -21,6 +21,7 @@ if(NOT NaturalDocs_EXECUTABLE)
         URL "${NaturalDocs_ARCHIVE_URL}"
         DEPS_BASE_DIR "${MSCL_DEPS_BASE_DIR}"
         EXTRACTED_DIR "${NaturalDocs_ARCHIVE_DIR}"
+        HTTP_USER_AGENT "Mozilla/5.0 (compatible; MSCL-CI-Downloader)"
     )
 
     # NaturalDocs_ROOT is required to find the Natural Docs program
