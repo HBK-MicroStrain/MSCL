@@ -106,7 +106,7 @@ namespace mscl
         case WirelessModels::node_gLink_200_40g_oem_u_fl:
         case WirelessModels::node_gLink_200_40g_s:
         case WirelessModels::node_gLink_200_p:
-        case WirelessModels::node_gLink_200_p_rgd:
+        case WirelessModels::node_gLink_200_px8:
             return std::unique_ptr<NodeFeatures>(new NodeFeatures_glink200(info));
 
         case WirelessModels::node_gLink_200_r:
