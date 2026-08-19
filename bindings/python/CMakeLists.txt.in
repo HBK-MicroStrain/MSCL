@@ -1,0 +1,24 @@
+#
+# This file was generated as a pseudo Python project for MSCL linking
+# Modify the CMakeLists.txt.in file instead
+#
+
+set(VCPKG_INSTALL_OPTIONS "--x-buildtrees-root=${CMAKE_BINARY_DIR}/buildtrees")
+# Without this, vcpkg falls back to building both Release and Debug for the python3
+# port (and its whole dependency tree) here, even when the outer MSCL configure
+# passed -DVCPKG_BUILD_TYPE=release -- this is a separate CMake project run via its
+# own execute_process() call, so it doesn't inherit that setting automatically.
+set(VCPKG_BUILD_TYPE "@VCPKG_BUILD_TYPE@")
+set(CMAKE_TOOLCHAIN_FILE "@CMAKE_TOOLCHAIN_FILE@")
+set(Z_VCPKG_CMAKE_GENERATOR "@CMAKE_GENERATOR@")
+set(VCPKG_PLATFORM_TOOLSET "@CMAKE_GENERATOR_PLATFORM@")
+set(Z_VCPKG_PLATFORM_TOOLSET "@CMAKE_GENERATOR_PLATFORM@")
+set(VCPKG_OVERLAY_TRIPLETS "@VCPKG_OVERLAY_TRIPLETS@")
+set(VCPKG_TARGET_TRIPLET "@VCPKG_TARGET_TRIPLET@")
+set(VCPKG_CHAINLOAD_TOOLCHAIN_FILE "@VCPKG_CHAINLOAD_TOOLCHAIN_FILE@")
+set(VCPKG_INSTALLED_DIR "@VCPKG_INSTALLED_DIR@")
+
+cmake_minimum_required(VERSION @CMAKE_MINIMUM_REQUIRED_VERSION@)
+project("@PROJECT_NAME@_Python@MSCL_PYTHON_VERSION@"
+    LANGUAGES NONE
+)

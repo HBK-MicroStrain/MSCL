@@ -1,0 +1,235 @@
+# Set the module directory for ease of use in other parts of the configuration
+set(MSCL_MODULE_DIR "${CMAKE_CURRENT_LIST_DIR}/cmake")
+
+# Append the custom CMake directory so the files can be imported
+list(APPEND CMAKE_MODULE_PATH "${MSCL_MODULE_DIR}")
+
+# Set some options for the build
+# Any options needed to configure the root project are defined here
+include(mscl-options)
+
+# Configure vcpkg for use
+include(mscl-configure-vcpkg)
+
+# Include some utilities used for MicroStrain projects
+include(microstrain-utilities)
+
+cmake_minimum_required(VERSION 3.23)
+
+# Determine the project version from the latest git tag so the tag is the single source of truth
+microstrain_get_git_commit(MSCL_GIT_COMMIT)
+microstrain_get_git_version(MSCL_GIT_VERSION MSCL_GIT_VERSION_CLEAN ${MSCL_GIT_COMMIT})
+
+project("MSCL"
+    LANGUAGES CXX
+    VERSION ${MSCL_GIT_VERSION_CLEAN}
+)
+
+# Enable the use of organizing projects into folders for IDEs that support it
+set_property(GLOBAL PROPERTY
+    USE_FOLDERS ON
+)
+
+# Set the root folder name for IDE folders
+set(CMAKE_FOLDER "${PROJECT_NAME}")
+
+# Supported build configurations
+set(CMAKE_CONFIGURATION_TYPES "Release;Debug")
+
+# Export compile commands by default (helpful for clang-tidy and autocomplete for certain IDEs)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# Set some global C++ options
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+get_property(GENERATOR_IS_MULTI_CONFIG GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
+
+# If a build type was not specified, default to debug
+if(NOT GENERATOR_IS_MULTI_CONFIG AND NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE "Debug")
+endif()
+
+if(BUILD_SHARED_LIBS AND (MSCL_BUILD_PYTHON OR MSCL_BUILD_CSHARP))
+    message(WARNING "${PROJECT_NAME} needs to be built as a static library to build language bindings. Disabling BUILD_SHARED_LIBS")
+    set(BUILD_SHARED_LIBS OFF)
+endif()
+
+# Create the common dependencies directory in the project root
+# This is for use by downloaded dependencies during project configuration
+if(NOT MSCL_DEPS_BASE_DIR)
+    set(MSCL_DEPS_BASE_DIR "${CMAKE_CURRENT_LIST_DIR}/_deps")
+endif()
+
+# Get the current year to make sure the file copyright is up-to-date in any generated files that use it
+string(TIMESTAMP MSCL_CURRENT_YEAR "%Y")
+
+# Update the copyright in the license and readme files if needed
+microstrain_update_copyright_in_files(FILES
+    "${CMAKE_CURRENT_LIST_DIR}/LICENSE"
+    "${CMAKE_CURRENT_LIST_DIR}/README.md"
+)
+
+# Detect if this is a x64 or x86 build
+microstrain_get_architecture(MSCL_ARCH_NAME)
+if(${MSCL_ARCH_NAME} STREQUAL "x64")
+    # This needs to be enabled to properly find any libraries that use the lib64 naming convention
+    set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS ON)
+endif()
+
+# This will make windows create a .lib file with all the symbols of the .dll files exported
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+
+# Parse some flags
+# These are all ON/OFF flags. For example, -DBUILD_SHARED_LIBS="ON"
+option(MSCL_WITH_WEBSOCKETS "Whether or not to compile the library with Websocket support" ON)
+option(MSCL_BUILD_CPP_EXAMPLES "Whether to build the C++ examples" OFF)
+option(MSCL_BUILD_PACKAGE "Whether to build a package from the resulting binaries" OFF)
+
+if(WIN32)
+    option(MSCL_BUILD_CSHARP "Whether to build the C# bindings. Only supported on Windows" OFF)
+    option(MSCL_BUILD_CSHARP_EXAMPLES "Whether to build the C# examples" OFF)
+
+    if(MSCL_BUILD_CSHARP_EXAMPLES AND NOT MSCL_BUILD_CSHARP)
+        message(WARNING "'MSCL_BUILD_CSHARP_EXAMPLES' is ON but 'MSCL_BUILD_CSHARP' is not. Enabling 'MSCL_BUILD_CSHARP'")
+        set(MSCL_BUILD_CSHARP ON)
+    endif()
+
+    option(MSCL_BUILD_DOCUMENTATION "Whether to build the documentation" OFF)
+else()
+    if(MSCL_BUILD_CSHARP)
+        message(WARNING "'MSCL_BUILD_CSHARP' is enabled but not supported. Disabling")
+        set(MSCL_BUILD_CSHARP OFF)
+    endif()
+
+    if(MSCL_BUILD_CSHARP_EXAMPLES)
+        message(WARNING "'MSCL_BUILD_CSHARP_EXAMPLES' is enabled but not supported. Disabling")
+        set(MSCL_BUILD_CSHARP_EXAMPLES OFF)
+    endif()
+
+    if(MSCL_BUILD_DOCUMENTATION)
+        message(WARNING "'MSCL_BUILD_DOCUMENTATION' is enabled but not supported. Disabling")
+        set(MSCL_BUILD_DOCUMENTATION OFF)
+    endif()
+endif()
+
+string(TOLOWER "${PROJECT_NAME}" PROJECT_NAME_LOWER)
+
+# Configure packaging before including all the targets with add_subdirectory
+# Subdirectories depend on most of these options
+if(MSCL_BUILD_PACKAGE)
+    # Set the CPack generators to use based on the system
+    microstrain_set_cpack_archive_generators()
+
+    set(CPACK_PACKAGE_VENDOR "MicroStrain by HBK")
+    set(CPACK_PACKAGE_CONTACT "MicroStrain Support <microstrainsupport@hbkworld.com>")
+
+    microstrain_get_package_architecture(CPACK_SYSTEM_NAME)
+    microstrain_get_git_branch(MSCL_GIT_BRANCH MSCL_BRANCH) # Second param is used to set a cache variable
+
+    if("${MSCL_GIT_BRANCH}" STREQUAL "master")
+        # Use the project version for assets built on master
+        set(CPACK_PACKAGE_VERSION "v${PROJECT_VERSION}")
+    else()
+        # Use the tag for all other assets
+        set(CPACK_PACKAGE_VERSION "${MSCL_GIT_VERSION}")
+    endif()
+
+    # Don't group packages
+    set(CPACK_COMPONENTS_GROUPING IGNORE)
+
+    if(CPACK_BINARY_DEB)
+        # Turn on automatic dependency detection for Linux packages (RPM has this option enabled by default)
+        # Allow dpkg to determine the package dependencies
+        set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
+
+        # Create one package per component
+        set(CPACK_DEB_COMPONENT_INSTALL ON)
+
+        # Set the Debian package version to conform to the standard
+        if(CPACK_PACKAGE_VERSION MATCHES "^v([0-9.]+)$")
+            set(CPACK_DEBIAN_PACKAGE_VERSION "${CMAKE_MATCH_1}")
+        elseif(CPACK_PACKAGE_VERSION MATCHES "^v([0-9.]+)-([0-9]+)-g([0-9a-f]+)")
+            set(CPACK_DEBIAN_PACKAGE_VERSION "${CMAKE_MATCH_1}+git${CMAKE_MATCH_2}.${CMAKE_MATCH_3}")
+        endif()
+    elseif(CPACK_BINARY_RPM)
+        # Create one package per component
+        set(CPACK_RPM_COMPONENT_INSTALL ON)
+    else()
+        # Create one package per component
+        set(CPACK_ARCHIVE_COMPONENT_INSTALL ON)
+    endif()
+
+    # Setup the install prefix for all packages
+    if(MSVC)
+        string(APPEND CPACK_PACKAGING_INSTALL_PREFIX "/${PROJECT_NAME_LOWER}")
+    endif()
+endif()
+
+if(MSVC)
+    # Set the runtime library linking for all projects
+    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
+endif()
+
+# Use common installation directory naming conventions
+include(GNUInstallDirs)
+
+# Set the proper library install directory
+set(MSCL_INSTALL_LIBDIR "${CMAKE_INSTALL_LIBDIR}")
+
+# Set the library install directory for x86 builds
+if(${MSCL_ARCH_NAME} STREQUAL "x86")
+    string(APPEND MSCL_INSTALL_LIBDIR "32")
+endif()
+
+# Set the library install directory for debug builds
+string(APPEND MSCL_INSTALL_LIBDIR "$<$<CONFIG:Debug>:/debug>")
+
+# Build the library
+add_subdirectory("${CMAKE_CURRENT_LIST_DIR}/src")
+
+# Build the documentation
+if(MSCL_BUILD_DOCUMENTATION)
+    add_subdirectory("${CMAKE_CURRENT_LIST_DIR}/docs")
+endif()
+
+# Build the testing suite
+if(MSCL_BUILD_TESTS)
+    enable_testing()
+    add_subdirectory("${CMAKE_CURRENT_LIST_DIR}/tests")
+endif()
+
+# Build one or more of the bindings
+if(MSCL_BUILD_PYTHON OR MSCL_BUILD_CSHARP)
+    add_subdirectory("${CMAKE_CURRENT_LIST_DIR}/bindings")
+endif()
+
+# Build the examples
+if(MSCL_BUILD_CPP_EXAMPLES OR MSCL_BUILD_CSHARP_EXAMPLES)
+    add_subdirectory("${CMAKE_CURRENT_LIST_DIR}/examples")
+endif()
+
+# Include the CPack module for packaging
+# Package options are configured before including any subdirectories to ensure proper configurations
+if(MSCL_BUILD_PACKAGE)
+    # Make sure to always create separate packages per component
+    # When only one component is specified CPack will make a project package instead of a component package
+    get_cmake_property(CPACK_COMPONENTS_ALL COMPONENTS)
+
+    # NOTE: CPack requires all configuration variables to be set before including this module
+    # Always include this AFTER configuring everything for CPack
+    include(CPack)
+
+    get_property(GENERATOR_IS_MULTI_CONFIG GLOBAL
+        PROPERTY GENERATOR_IS_MULTI_CONFIG
+    )
+
+    # Add the packaging configuration file to the build directory for single-config generators
+    # This allows easy access to the file from the build directory
+    if(NOT GENERATOR_IS_MULTI_CONFIG)
+        file(
+            COPY "${MSCL_MODULE_DIR}/microstrain-package-all.cmake"
+            DESTINATION "${CMAKE_CURRENT_BINARY_DIR}"
+        )
+    endif()
+endif()

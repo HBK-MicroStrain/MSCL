@@ -1,0 +1,28 @@
+microstrain_append_cmake_folder()
+
+set(MSCL_CPP_EXAMPLES_SUBDIRECTORIES
+    "${CMAKE_CURRENT_LIST_DIR}/displacement"
+    "${CMAKE_CURRENT_LIST_DIR}/inertial"
+)
+
+# Add all of the example projects
+foreach(MSCL_CPP_EXAMPLES_SUBDIRECTORY IN LISTS MSCL_CPP_EXAMPLES_SUBDIRECTORIES)
+    add_subdirectory("${MSCL_CPP_EXAMPLES_SUBDIRECTORY}")
+
+    # Get the name of the target that was just generated
+    get_property(MSCL_CPP_EXAMPLES_TARGET_NAME DIRECTORY "${MSCL_CPP_EXAMPLES_SUBDIRECTORY}"
+        PROPERTY BUILDSYSTEM_TARGETS
+    )
+
+    if (NOT MSCL_CPP_EXAMPLES_TARGET_NAME)
+        message(FATAL_ERROR "Could not find the C++ example target")
+    endif()
+
+    # Add the example target to the all examples target
+    add_dependencies("${MSCL_EXAMPLES_ALL_TARGET}" "${MSCL_CPP_EXAMPLES_TARGET_NAME}")
+endforeach()
+
+mscl_install_examples(
+    SUBDIRECTORIES ${MSCL_CPP_EXAMPLES_SUBDIRECTORIES}
+    COMPONENT_NAME "Cpp-Examples"
+)

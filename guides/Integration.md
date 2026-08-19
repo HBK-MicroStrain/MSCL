@@ -1,0 +1,195 @@
+# MSCL Project Integration
+
+Integrating MSCL into your project allows you to communicate with and configure
+MicroStrain Wireless, Inertial, and Displacement sensors.
+
+---
+
+## Package Manager Integration (Recommended)
+
+MSCL no longer publishes prebuilt C++ archives with each release, so C++
+projects use CMake's `FetchContent` (see below) instead. Python and C#
+projects should use their respective package managers:
+
+### Python (PyPI)
+
+```shell
+pip install pymscl
+```
+
+```python
+import mscl
+```
+
+### C# (NuGet)
+
+```shell
+dotnet add package MicroStrain.MSCL
+```
+
+---
+
+## C++ Integration via CMake `FetchContent` (Recommended)
+
+Pull a specific released version directly from source at configure time,
+instead of downloading a prebuilt archive:
+
+```cmake
+include(FetchContent)
+FetchContent_Declare(
+    MSCL
+    GIT_REPOSITORY https://github.com/HBK-MicroStrain/MSCL.git
+    GIT_TAG v68.2.0 # Use the tag of the release you want
+)
+FetchContent_MakeAvailable(MSCL)
+
+add_executable(my_app main.cpp)
+target_link_libraries(my_app PRIVATE ${MSCL_LIBRARIES})
+target_include_directories(my_app PRIVATE ${MSCL_INCLUDE_DIRS})
+```
+
+This builds MSCL from source as part of your project's configure step, so the
+same [build prerequisites](Build.md) (CMake 3.23+, a C++14 compiler, and the
+vcpkg submodule dependencies) apply.
+
+---
+
+## CMake Integration (Building From Source Yourself)
+
+MSCL provides a CMake configuration file (`mscl-config.cmake`) that makes it
+easy to find and link the library in your own CMake-based projects.
+
+### 1. Prerequisites
+Ensure you have MSCL installed or built from source. If you built from source,
+the `mscl-config.cmake` file will be located in your build directory.
+
+MSCL's dependencies (Boost, and OpenSSL if `MSCL_WITH_SSL` was enabled) are
+resolved via vcpkg. Configure your consuming project with the same vcpkg
+toolchain file MSCL was built with:
+
+```cmake
+cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE="/path/to/mscl/deps/vcpkg/scripts/buildsystems/vcpkg.cmake" -DVCPKG_TARGET_TRIPLET="<triplet-mscl-was-built-with>"
+```
+
+Locating dependencies via a plain `CMAKE_PREFIX_PATH` instead of the vcpkg
+toolchain file will find the libraries, but on Windows a statically-linked
+OpenSSL also needs `crypt32.lib` and `ws2_32.lib` (for its CryptoAPI backend),
+which only the vcpkg toolchain's OpenSSL integration adds automatically.
+Without it, linking will fail with unresolved `Cert*` symbols.
+
+### 2. C++ Integration
+
+To use MSCL in a C++ project, use `find_package` to locate the library and then
+link your target to `${MSCL_LIBRARIES}`.
+
+**Example `CMakeLists.txt`:**
+
+```cmake
+cmake_minimum_required(VERSION 3.16)
+project(MyMsclProject)
+
+# Set MSCL_ROOT_DIR to the location where MSCL is installed or built
+set(MSCL_ROOT_DIR "/path/to/mscl" CACHE PATH "Path to MSCL")
+list(APPEND CMAKE_PREFIX_PATH "${MSCL_ROOT_DIR}")
+
+# Find the MSCL package
+find_package(MSCL REQUIRED CONFIG)
+
+add_executable(my_app main.cpp)
+
+# Link to MSCL libraries
+target_link_libraries(my_app PRIVATE ${MSCL_LIBRARIES})
+
+# Optional MSCL include directories (implied by target_link_libraries)
+target_include_directories(my_app PRIVATE ${MSCL_INCLUDE_DIRS})
+
+# MSCL uses precompiled headers or 'mscl.h' for all-in-one inclusion
+target_precompile_headers(my_app PRIVATE "${MSCL_INCLUDE_DIR}/mscl/stdafx.h")
+```
+
+#### Available CMake Variables
+
+For consistency across different integration methods, source built or installed
+packages (`mscl-config.cmake`), the following CMake variables are always
+available:
+
+- `MSCL_LIBRARY`: Name of the MSCL library to link against.
+- `MSCL_INCLUDE_DIR`: Path to the MSCL include directory.
+- `MSCL_LIBRARIES`: List of MSCL libraries to link against (including MSCL
+   itself).
+- `MSCL_INCLUDE_DIRS`: List of MSCL include directories.
+
+### 3. C# (.NET) Integration
+
+For C# projects, MSCL provides an `MSCL_Managed` package.
+
+**Example `CMakeLists.txt`:**
+
+```cmake
+cmake_minimum_required(VERSION 3.16)
+project(MyMsclCSharpProject LANGUAGES CSharp)
+
+# Set MSCL_MANAGED_ROOT_DIR to the location of MSCL_Managed
+set(MSCL_MANAGED_ROOT_DIR "/path/to/mscl" CACHE PATH "Path to MSCL Managed")
+list(APPEND CMAKE_PREFIX_PATH "${MSCL_MANAGED_ROOT_DIR}")
+
+# Find the MSCL_Managed package
+find_package(MSCL_Managed REQUIRED CONFIG)
+
+add_executable(my_csharp_app Program.cs)
+
+# Use the helper function provided by MSCL_Managed to add references
+mscl_managed_add_references(my_csharp_app)
+```
+
+---
+
+## Manual Integration (Without CMake)
+
+If you are not using CMake, you must manually configure your compiler and linker.
+
+### C++ Integration
+
+1.  **Include Paths**: Add the following to your compiler's include search paths:
+    - `<MSCL_ROOT>/src` (if using source) or `<MSCL_INSTALL>/include`
+      (if using installed headers).
+    - **Boost** include directory (v1.70.0+).
+    - **OpenSSL** include directory (if using SSL).
+
+2.  **Compiler Definitions**:
+    - `MSCL_WITH_SSL` (to enable SSL support).
+    - `MSCL_WITH_WEBSOCKETS` (to enable WebSocket support).
+
+3.  **Linking**:
+    - Link against the MSCL library (`MSCL.lib` on Windows, `libMSCL.so` on
+      Linux).
+
+### C# (.NET) Integration
+
+1.  **Add Reference**: In your IDE, add a reference to `MSCL_Managed.dll`.
+2.  **Runtime Dependency**: Ensure `MSCL.dll` (the native C++ library) is
+    present in the same directory as your application's executable at runtime.
+3.  **Platform**: Ensure your project targets the correct architecture (`x64` or
+    `x86`) to match the MSCL binaries.
+
+### Python Integration
+
+Python integration does not strictly require CMake. You just need the `mscl.py`
+and `_mscl` extension module.
+
+1.  **Locate Files**: Find `mscl.py` and the compiled extension (`_mscl.pyd` on
+    Windows or `_mscl.so` on Linux).
+2.  **Add to Path**:
+    - **Method A (Recommended)**: Copy these files into your project directory
+      or into a standard Python `site-packages` or `dist-packages` directory.
+      * Note: The MSCL Python bindings are packaged using the respective Python
+        `site-packages` or `dist-packages` directories and can be installed
+        directly into those directories
+    - **Method B (Manual Path)**: Add the path to the directory containing these
+      files in your Python script:
+
+    ```python
+    import sys
+    sys.path.append('/path/to/mscl/python/bindings')
+    import mscl
+    ```
