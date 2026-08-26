@@ -9,7 +9,7 @@
 
 ![CI C++ (Windows)](https://img.shields.io/badge/CI%20C%2B%2B%20%28Windows%29-passing-brightgreen) <!-- mirror-badge: ci-windows -->
 ![CI C++ (Linux)](https://img.shields.io/badge/CI%20C%2B%2B%20%28Linux%29-passing-brightgreen) <!-- mirror-badge: ci-linux -->
-![CD](https://img.shields.io/badge/CD-failing-red) <!-- mirror-badge: cd -->
+![CD](https://img.shields.io/badge/CD-passing-brightgreen) <!-- mirror-badge: cd -->
 
 MSCL is developed by
 [MicroStrain](https://www.hbkworld.com/en/Campaign/microstrain-by-hbk) in
