@@ -4,8 +4,8 @@
 
 [![License](https://img.shields.io/github/license/HBK-MicroStrain/MSCL?label=License)](LICENSE)
 [![C++](https://img.shields.io/github/v/release/HBK-MicroStrain/MSCL?label=C%2B%2B)](https://github.com/HBK-MicroStrain/MSCL/releases)
-[![C#](https://img.shields.io/nuget/v/MicroStrain.MSCL?label=C%23)](https://www.nuget.org/packages/MicroStrain.MSCL/)
-[![Python](https://img.shields.io/pypi/v/pymscl?label=Python)](https://pypi.org/project/pymscl/)
+[![NuGet](https://img.shields.io/nuget/v/MicroStrain.MSCL?label=NuGet&logo=nuget&logoColor=white)](https://www.nuget.org/packages/MicroStrain.MSCL/)
+[![PyPI](https://img.shields.io/pypi/v/pymscl?label=PyPI&logo=pypi&logoColor=white)](https://pypi.org/project/pymscl/)
 
 ![CI C++ (Windows)](https://img.shields.io/badge/CI%20C%2B%2B%20%28Windows%29-passing-brightgreen) <!-- mirror-badge: ci-windows -->
 ![CI C++ (Linux)](https://img.shields.io/badge/CI%20C%2B%2B%20%28Linux%29-passing-brightgreen) <!-- mirror-badge: ci-linux -->
