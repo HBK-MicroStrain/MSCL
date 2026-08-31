@@ -13,7 +13,7 @@ pip install pymscl
 Import the MSCL module:
 
 ```python
-from mscl import mscl
+import mscl
 ```
 
 Create a `Connection` to the Base Station's serial port, then wrap it in a `BaseStation`. Base Stations use a baudrate of 3000000:
