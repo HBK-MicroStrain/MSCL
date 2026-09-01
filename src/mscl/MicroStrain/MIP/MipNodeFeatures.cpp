@@ -504,6 +504,7 @@ namespace mscl
             case MipModels::node_3dm_gv7_ins:
             {
                 return HeadingAlignmentMethod(
+                    GNSS_DualAntenna |
                     GNSS_Kinematic |
                     Magnetometer |
                     External
