@@ -11,7 +11,7 @@ pip install pymscl
 ```
 
 ```python
-from mscl import mscl
+import mscl
 ```
 
 ## Documentation
