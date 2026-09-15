@@ -264,10 +264,5 @@ namespace mscl
         {
             appendTo.push_back(Value::FLOAT(as_floatAt(i)));
         }
-
-        if (m_format == EULER_ANGLES)
-        {
-            appendTo.push_back(Value::FLOAT(0.0f));
-        }
     }
 } // namespace mscl

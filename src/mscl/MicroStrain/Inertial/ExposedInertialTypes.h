@@ -3553,7 +3553,7 @@ namespace mscl
             appendTo.push_back(Value::BOOL(m_errorTrackingEnabled));
 
             m_translation.appendMipFieldValues(appendTo);
-            m_rotation.appendMipFieldValues(appendTo);
+            m_rotation.appendMipFieldValues(appendTo, false);
         }
 
     private:
