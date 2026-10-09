@@ -703,9 +703,21 @@ namespace mscl
 
             case MipModels::node_3dm_gv7_ins:
             case MipModels::node_3dm_cv7_ins:
+                return{
+                    InertialTypes::AidingMeasurementSource::GNSS_POS_VEL_AIDING,
+                    InertialTypes::AidingMeasurementSource::GNSS_HEADING_AIDING,
+                    InertialTypes::AidingMeasurementSource::ALTIMETER_AIDING,
+                    InertialTypes::AidingMeasurementSource::MAGNETOMETER_AIDING,
+                    InertialTypes::AidingMeasurementSource::EXTERNAL_HEADING_AIDING,
+                    InertialTypes::AidingMeasurementSource::EXTERNAL_ALTIMETER_AIDING,
+                    InertialTypes::AidingMeasurementSource::EXTERNAL_MAGNETOMETER_AIDING,
+                    InertialTypes::AidingMeasurementSource::BODY_FRAME_VEL_AIDING
+                };
+
             case MipModels::node_3dm_cx7_ins:
                 return{
                     InertialTypes::AidingMeasurementSource::GNSS_POS_VEL_AIDING,
+                    InertialTypes::AidingMeasurementSource::GNSS_HEADING_AIDING,
                     InertialTypes::AidingMeasurementSource::ALTIMETER_AIDING,
                     InertialTypes::AidingMeasurementSource::MAGNETOMETER_AIDING,
                     InertialTypes::AidingMeasurementSource::EXTERNAL_HEADING_AIDING,
